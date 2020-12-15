@@ -1,2 +1,2 @@
-# supervisor-frontend
-Reference frontend for SuperVisor written in Flask
+# supervisor-frontend-service
+Reference frontend service for SuperVisor written in Flask
