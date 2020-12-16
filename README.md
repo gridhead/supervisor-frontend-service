@@ -36,5 +36,13 @@
 - Hybrid theming controls with a variety of colour options are coming soon with the following release
 - Complex process control with per-task authenticated **`TERMINATE`**, **`KILL`**, **`SUSPEND`** and **`RESUME`** ops
 
+## Table of contents
+1. [Home](https://github.com/t0xic0der/supervisor-frontend-service/wiki)
+2. [Notice](https://github.com/t0xic0der/supervisor-frontend-service/wiki/Notice)
+3. [Installing on Raspberry Pi](https://github.com/t0xic0der/supervisor-frontend-service/wiki/Installing-on-Raspberry-Pi)
+4. [Installing on a Generic PC](https://github.com/t0xic0der/supervisor-frontend-service/wiki/Installing-on-a-Generic-PC)
+5. [Download releases](https://github.com/t0xic0der/supervisor-frontend-service/releases)
+6. [SuperVisor Driver Service](https://github.com/t0xic0der/supervisor-driver-service)
+
 ## Contribute
 You may request for the addition of new features in the [issues](https://github.com/t0xic0der/supervisor-frontend-service/issues) page but as the project is singlehandedly maintained - it might take time to develop on them. Please consider forking the repository and contributing to its development. :heart:
