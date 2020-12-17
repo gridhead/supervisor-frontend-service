@@ -23,6 +23,9 @@
 - For people seeking a secure passcode-protected dashboard utility for process control
 - For people aiming to analyse system performance using informative graphs and insights
 
+## Note
+This project works as a web-interface client for users to view their system performance and manage processes from the browser applications of their choice but they need to have the [SuperVisor Driver Service](https://github.com/t0xic0der/supervisor-driver-service/) running on their server or headless Raspberry Pi setup and connect to the same with the URI and passcode provided on the driver service startup.
+
 ## Features
 - Simplistic implementation of asynchronous periodic AJAX calls to fetch information
 - Rewritten entirely in Go's excellent [net/http](https://golang.org/pkg/net/http/) implementation for speed and efficiency
