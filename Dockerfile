@@ -1,4 +1,4 @@
 FROM golang:alpine
 COPY . .
-EXPOSE 6969
-CMD ["go", "run", "main.go", "-port", "6969"]
+EXPOSE 9696
+CMD ["go", "run", "main.go", "-port", "9696"]
