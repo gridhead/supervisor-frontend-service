@@ -2,4 +2,4 @@ services:
   svfrontend:
     build: .
     ports:
-      - "9696:9696"
+      - "6969:6969"
