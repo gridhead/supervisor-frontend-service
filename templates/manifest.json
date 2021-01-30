@@ -1,0 +1,21 @@
+{
+  "pagelist": {
+    "logepage.html": "This is the login page where the users would get to choose their active sync endpoint and passcode for it.",
+    "dashbord.html": "This is the page which shows the number and list of containers, images, networks and volumes.",
+    "proclist.html": "This is the page especially for listing processes on the host device and handling them.",
+    "systdata.html": "This is the page especially for monitoring devices on the host device and handling them",
+    "dockstat.html": "This is the page which shows the info() and version() information of the Docker client.",
+    "contlist.html": "This is the page which lists all the containers.",
+    "continfo.html": "This is the page which shows static information about a given container.",
+    "conthtop.html": "This is the page which shows top() information about a given container.",
+    "contstat.html": "This is the page which shows stats() information about a given container.",
+    "contlogs.html": "This is the page which shows logs() information about a given container.",
+    "imejlist.html": "This is the page which lists all the images.",
+    "imejinfo.html": "This is the page which shows static information about a given image.",
+    "imejrevs.html": "This is the page which shows history() information about a given image.",
+    "ntwklist.html": "This is the page which lists all the networks.",
+    "ntwkinfo.html": "This is the page which shows static information about a given network.",
+    "volmlist.html": "This is the page which lists all the volumes.",
+    "volminfo.html": "This is the page which shows static information about a given volume."
+  }
+}
