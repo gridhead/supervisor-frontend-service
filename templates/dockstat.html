@@ -1,10 +1,437 @@
+<!--
+##########################################################################
+*
+*   Copyright © 2019-2021 Akashdeep Dhar <t0xic0der@fedoraproject.org>
+*
+*   This program is free software: you can redistribute it and/or modify
+*   it under the terms of the GNU General Public License as published by
+*   the Free Software Foundation, either version 3 of the License, or
+*   (at your option) any later version.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*
+##########################################################################
+-->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SuperVisor v1.1.0-beta</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for("static", filename="plugins/fontawesome-free/css/all.min.css") }}">
+        <link rel="stylesheet" href="{{ url_for("static", filename="dist/css/adminlte.min.css") }}">
+    </head>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        .condqant {
+            font-family: 'Barlow Condensed', sans-serif;
+        }
+        .monotext {
+            font-family: 'Roboto Mono', monospace;
+        }
+    </style>
+    <body class="hold-transition sidebar-mini text-sm" onload="docker_statistics_operations();">
+        <div class="wrapper">
+            <nav class="main-header navbar navbar-expand navbar-light">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="" role="button"><i class="fas fa-cog"></i></a>
+                    </li>
+                </ul>
+            </nav>
+            <aside class="main-sidebar sidebar-light-olive elevation-4">
+                <a href="#" class="brand-link navbar-light">
+                    <span class="brand-text font-weight-heavy">
+                        SuperVisor
+                    </span>
+                </a>
+                <div class="sidebar">
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <li class="nav-item"><a href="/dashbord/" class="nav-link"><i class="nav-icon fas fa-th"></i><p>Dashboard</p></a></li>
+                            <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon fas fa-drafting-compass"></i><p>System</p></a></li>
+                            <li class="nav-item"><a href="#" class="nav-link active"><i class="nav-icon fas fa-box-open"></i><p>Station</p></a></li>
+                            <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon fas fa-people-arrows"></i><p>Containers</p></a></li>
+                            <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon fas fa-trash"></i><p>Images</p></a></li>
+                            <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon fas fa-trash"></i><p>Volumes</p></a></li>
+                            <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon fas fa-trash"></i><p>Networks</p></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
+            <div class="content-wrapper">
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1 class="m-0 text-dark condqant">Docker Station</h1>
+                            </div>
+                            <div class="col-sm-6">
+                                <ol class="breadcrumb float-sm-right">
+                                    <li class="breadcrumb-item active">Statistics</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <section class="content">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-olive"><i class="fas fa-fingerprint"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Server ID</span>
+                            <span class="info-box-number h2 mb-0 condqant font-weight-normal" id="speciden">UNAVAILABLE</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-olive"><i class="fas fa-info-circle"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Docker</span>
+                                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">Information</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header bg-olive pl-2">
+                                    <h3 class="card-title font-weight-bold">Driver Status</h3>
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="pl-2">Attributes</th>
+                                                <th class="pl-2">Data</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="drstatus">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header bg-olive pl-2">
+                                    <h3 class="card-title font-weight-bold">Driver Features</h3>
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="pl-2" width="1%;">#</th>
+                                                <th class="pl-2">Specifications</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="pl-2" id="featmmlt"><i class="fas fa-info"></i></td>
+                                                <td class="pl-2">Memory limit</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2" id="featswap"><i class="fas fa-info"></i></td>
+                                                <td class="pl-2">Swap limit</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2" id="featkmem"><i class="fas fa-info"></i></td>
+                                                <td class="pl-2">Kernel memory</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2" id="featktcp"><i class="fas fa-info"></i></td>
+                                                <td class="pl-2">Kernel memory TCP</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2" id="featcfpd"><i class="fas fa-info"></i></td>
+                                                <td class="pl-2">CPU Cfs period</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2" id="featcfqt"><i class="fas fa-info"></i></td>
+                                                <td class="pl-2">CPU Cfs quota</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2" id="featcpsh"><i class="fas fa-info"></i></td>
+                                                <td class="pl-2">CPU shares</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2" id="featcpst"><i class="fas fa-info"></i></td>
+                                                <td class="pl-2">CPU set</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2" id="featpidl"><i class="fas fa-info"></i></td>
+                                                <td class="pl-2">PIDs limit</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2" id="featip4f"><i class="fas fa-info"></i></td>
+                                                <td class="pl-2">IPv4 forwarding</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2" id="featbnf4"><i class="fas fa-info"></i></td>
+                                                <td class="pl-2">Bridge Nf IPv4 tables</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2" id="featbnf6"><i class="fas fa-info"></i></td>
+                                                <td class="pl-2">Bridge Nf IPv6 tables</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2" id="featdbug"><i class="fas fa-info"></i></td>
+                                                <td class="pl-2">Debug</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2" id="featoomk"><i class="fas fa-info"></i></td>
+                                                <td class="pl-2">OOM kill disable</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2" id="featlive"><i class="fas fa-info"></i></td>
+                                                <td class="pl-2">Live restore enabled</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2" id="featexpb"><i class="fas fa-info"></i></td>
+                                                <td class="pl-2">Experimental build</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header bg-olive pl-2">
+                                    <h3 class="card-title font-weight-bold">Driver Specifications</h3>
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="pl-2">Attributes</th>
+                                                <th class="pl-2">Data</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">System time</td>
+                                                <td class="pl-2 monotext" id="spectime">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Logging driver</td>
+                                                <td class="pl-2 monotext" id="speclogr">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">CGroup driver</td>
+                                                <td class="pl-2 monotext" id="speccgdv">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">CGroup version</td>
+                                                <td class="pl-2 monotext" id="speccgvr">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Event Listeners</td>
+                                                <td class="pl-2 monotext" id="specevlt">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Kernel version</td>
+                                                <td class="pl-2 monotext" id="specknvr">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Operating system</td>
+                                                <td class="pl-2 monotext" id="specopsy">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Operating system version</td>
+                                                <td class="pl-2 monotext" id="specosvr">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Operating system type</td>
+                                                <td class="pl-2 monotext" id="specostp">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Architecture</td>
+                                                <td class="pl-2 monotext" id="specarch">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Indexing server</td>
+                                                <td class="pl-2 monotext" id="specindx">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">CPU count</td>
+                                                <td class="pl-2 monotext" id="speccpuq">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Physical memory</td>
+                                                <td class="pl-2 monotext" id="specphym">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Docker root directory</td>
+                                                <td class="pl-2 monotext" id="specdcrd">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Device hostname</td>
+                                                <td class="pl-2 monotext" id="spechost">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Server version</td>
+                                                <td class="pl-2 monotext" id="specsrvr">UNAVAILABLE</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header bg-olive pl-2">
+                                    <h3 class="card-title font-weight-bold">Warnings</h3>
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="pl-2">Notifications</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="warnlist">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-olive"><i class="fas fa-code-branch"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Docker</span>
+                                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">Version</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header bg-olive pl-2">
+                                    <h3 class="card-title font-weight-bold">Driver Revision</h3>
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="pl-2">Attributes</th>
+                                                <th class="pl-2">Data</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Version</td>
+                                                <td class="pl-2 monotext" id="revsvers">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">API version</td>
+                                                <td class="pl-2 monotext" id="revsapiv">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Build commit</td>
+                                                <td class="pl-2 monotext" id="revsbild">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Go version</td>
+                                                <td class="pl-2 monotext" id="revsgovr">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Operating system</td>
+                                                <td class="pl-2 monotext" id="revsopsy">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Architecture</td>
+                                                <td class="pl-2 monotext" id="revsarch">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Kernel version</td>
+                                                <td class="pl-2 monotext" id="revskrnl">UNAVAILABLE</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-2 font-weight-bold">Build time</td>
+                                                <td class="pl-2 monotext" id="revstime">UNAVAILABLE</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="tablsett">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="card card-widget widget-user-2">
+                                <div class="card-footer p-0">
+                                    <ul class="nav flex-column" id="contlist">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="card card-widget widget-user-2">
+                                <div class="card-footer p-0">
+                                    <ul class="nav flex-column" id="imejlist">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <footer class="main-footer">
+                <div class="float-right d-none d-sm-inline">SuperVisor</div>
+                <strong data-widget="pushmenu" href="#">http://localhost:6969/</strong>
+            </footer>
+        </div>
+        <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="abstcred">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-teal">
+                        <h3 class="modal-title condqant font-weight-bold">Credentials absent</h3>
+                    </div>
+                    <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                        <p class="text-justify mt-0 mb-0">
+                            The frontend service was unable to establish connection to the driver service as no
+                            credentials were provided to make the check. Please check your inputs for Synchronization
+                            URI and passcode, and attempt connecting again.
+                        </p>
+                    </div>
+                    <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-teal">
+                        <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/'">Return to login screen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="connfail">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-teal">
+                        <h3 class="modal-title condqant font-weight-bold">Connection failed</h3>
+                    </div>
+                    <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                        <p class="text-justify mt-0 mb-0">
+                            The frontend service was unable to establish connection to the driver service using the
+                            provided credentials. Please check your inputs for Synchronization URI and passcode, and
+                            attempt connecting again.
+                        </p>
+                    </div>
+                    <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-teal">
+                        <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/'">Return to login screen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="{{ url_for("static", filename="plugins/jquery/jquery.min.js") }}"></script>
+        <script src="{{ url_for("static", filename="plugins/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
+        <script src="{{ url_for("static", filename="dist/js/adminlte.min.js") }}"></script>
+        <script src="{{ url_for("static", filename="jscn/dockstat.js") }}"></script>
+    </body>
 </html>

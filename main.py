@@ -42,7 +42,12 @@ def logepage():
 
 @main.route("/dashbord/")
 def dashbord():
-    return render_template("dashbard.html", username="u", versinfo="c")
+    return render_template("dashbard.html")
+
+
+@main.route("/dockstat/")
+def dockstat():
+    return render_template("dockstat.html")
 
 
 @click.command()
