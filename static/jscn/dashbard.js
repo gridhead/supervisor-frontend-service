@@ -184,10 +184,11 @@ async function populate_volume_list() {
     }
 }
 
-function dashboard_operations() {
-    authenticate_endpoint_access();
-    populate_container_list();
-    populate_image_list();
-    populate_network_list();
-    populate_volume_list();
+async function dashboard_operations() {
+    await authenticate_endpoint_access();
+    await populate_container_list();
+    await populate_image_list();
+    await populate_network_list();
+    await populate_volume_list();
+    document.getElementById("contwrap").removeAttribute("hidden");
 }

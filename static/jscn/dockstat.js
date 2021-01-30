@@ -196,8 +196,9 @@ async function populate_version_section() {
     }
 }
 
-function docker_statistics_operations () {
-    authenticate_endpoint_access();
-    populate_information_section();
-    populate_version_section();
+async function docker_statistics_operations () {
+    await authenticate_endpoint_access();
+    await populate_information_section();
+    await populate_version_section();
+    document.getElementById("contwrap").removeAttribute("hidden");
 }
