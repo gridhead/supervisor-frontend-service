@@ -30,9 +30,19 @@ loge = logging.getLogger("werkzeug")
 loge.setLevel(logging.ERROR)
 
 
-@main.route("/")
+@main.route("/mainpytm/")
 def graphing():
     return render_template("mainpytm.html")
+
+
+@main.route("/")
+def logepage():
+    return render_template("logepage.html")
+
+
+@main.route("/dashbord/")
+def dashbord():
+    return render_template("dashbard.html", username="u", versinfo="c")
 
 
 @click.command()
