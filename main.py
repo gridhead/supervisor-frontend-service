@@ -60,6 +60,11 @@ def imejlist():
     return render_template("imejlist.html")
 
 
+@main.route("/volmlist/")
+def volmlist():
+    return render_template("volmlist.html")
+
+
 @main.route("/imejdata/<imejiden>")
 def imejdata(imejiden):
     if len(imejiden) == 71:
