@@ -89,6 +89,11 @@ def contdata(contiden):
         abort(404)
 
 
+@main.route("/volmdata/<volmiden>")
+def volmdata(volmiden):
+    return render_template("volminfo.html", volmiden=volmiden)
+
+
 @main.route("/contlogs/<contiden>")
 def contlogs(contiden):
     if len(contiden) == 64:
