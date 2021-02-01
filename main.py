@@ -94,6 +94,14 @@ def contdata(contiden):
         abort(404)
 
 
+@main.route("/ntwkdata/<ntwkiden>")
+def ntwkdata(ntwkiden):
+    if len(ntwkiden) == 64:
+        return render_template("ntwkinfo.html", ntwkiden=ntwkiden)
+    else:
+        abort(404)
+
+
 @main.route("/volmdata/<volmiden>")
 def volmdata(volmiden):
     return render_template("volminfo.html", volmiden=volmiden)
