@@ -60,6 +60,22 @@ def imejlist():
     return render_template("imejlist.html")
 
 
+@main.route("/imejdata/<imejiden>")
+def imejdata(imejiden):
+    if len(imejiden) == 71:
+        return render_template("imejinfo.html", imejiden=imejiden)
+    else:
+        abort(404)
+
+
+@main.route("/imejrevs/<imejiden>")
+def imejrevs(imejiden):
+    if len(imejiden) == 71:
+        return render_template("imejrevs.html", imejiden=imejiden)
+    else:
+        abort(404)
+
+
 @main.route("/contdata/<contiden>")
 def contdata(contiden):
     if len(contiden) == 64:
