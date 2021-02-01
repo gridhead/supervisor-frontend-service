@@ -70,7 +70,7 @@ async function populate_container_list () {
                             <span class="float-right text-olive text-uppercase pl-0 pr-0">
                                 <button type="button" class="btn btn-default btn-sm" onclick="document.location.href = '/contstat/${data[indx]["id"]}'"><i class="fas fa-tachometer-alt"></i>&nbsp;View stats</button>
                                 <button type="button" class="btn btn-default btn-sm" onclick="document.location.href = '/contlogs/${data[indx]["id"]}'"><i class="fas fa-file-alt"></i>&nbsp;View logs</button>
-                                <button type="button" class="btn btn-default btn-sm" onclick="document.location.href = '/conthtop/${data[indx]["id"]}'"><i class="fas fa-chart-line"></i>&nbsp;View usage</button>
+                                <button type="button" class="btn btn-default btn-sm" onclick="document.location.href = '/conthtop/${data[indx]["id"]}'"><i class="fas fa-chart-line"></i>&nbsp;View processes</button>
                             </span>
                         </div>
                         `

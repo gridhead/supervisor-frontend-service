@@ -184,6 +184,7 @@ async function initiate_dom_placeholder_creation (contiden) {
                         `
                     );
                 }
+                document.getElementById("contwrap").removeAttribute("hidden");
             }
         });
     }
@@ -295,6 +296,5 @@ async function container_statistics_operations (contiden) {
     await authenticate_endpoint_access();
     await populate_container_name_and_status(contiden);
     await initiate_dom_placeholder_creation(contiden);
-    document.getElementById("contwrap").removeAttribute("hidden");
     await refresh_container_stats_periodically(contiden, rfrstime, physgraf, physline);
 }
