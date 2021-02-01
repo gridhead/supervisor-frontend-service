@@ -46,40 +46,136 @@ async function authenticate_endpoint_access () {
 
 async function populate_information_section() {
     let dockfeat = {
-        "featmmlt": "MemoryLimit",
-        "featswap": "SwapLimit",
-        "featkmem": "KernelMemory",
-        "featktcp": "KernelMemoryTCP",
-        "featcfpd": "CpuCfsPeriod",
-        "featcfqt": "CpuCfsQuota",
-        "featcpsh": "CPUShares",
-        "featcpst": "CPUSet",
-        "featpidl": "PidsLimit",
-        "featip4f": "IPv4Forwarding",
-        "featbnf4": "BridgeNfIptables",
-        "featbnf6": "BridgeNfIp6tables",
-        "featdbug": "Debug",
-        "featoomk": "OomKillDisable",
-        "featlive": "LiveRestoreEnabled",
-        "featexpb": "ExperimentalBuild"
+        "featmmlt": {
+            "keye": "MemoryLimit",
+            "name": "Memory limit"
+        },
+        "featswap": {
+            "keye": "SwapLimit",
+            "name": "Swap limit"
+        },
+        "featkmem": {
+            "keye": "KernelMemory",
+            "name": "Kernel memory"
+        },
+        "featktcp": {
+            "keye": "KernelMemoryTCP",
+            "name": "Kernel memory TCP"
+        },
+        "featcfpd": {
+            "keye": "CpuCfsPeriod",
+            "name": "CPU Cfs period"
+        },
+        "featcfqt": {
+            "keye": "CpuCfsQuota",
+            "name": "CPU Cfs quota"
+        },
+        "featcpsh": {
+            "keye": "CPUShares",
+            "name": "CPU shares"
+        },
+        "featcpst": {
+            "keye": "CPUSet",
+            "name": "CPU set"
+        },
+        "featpidl": {
+            "keye": "PidsLimit",
+            "name": "PIDs limit"
+        },
+        "featip4f": {
+            "keye": "IPv4Forwarding",
+            "name": "IPv4 forwarding"
+        },
+        "featbnf4": {
+            "keye": "BridgeNfIptables",
+            "name": "Bridge Nf IP tables"
+        },
+        "featbnf6": {
+            "keye": "BridgeNfIp6tables",
+            "name": "Bridge Nf IPv6 tables"
+        },
+        "featdbug": {
+            "keye": "Debug",
+            "name": "Debug"
+        },
+        "featoomk": {
+            "keye": "OomKillDisable",
+            "name": "OOM kill disable"
+        },
+        "featlive": {
+            "keye": "LiveRestoreEnabled",
+            "name": "Live restore enabled"
+        },
+        "featexpb": {
+            "keye": "ExperimentalBuild",
+            "name": "Experimental build"
+        }
     }
     let dockspec = {
-        "spectime": "SystemTime",
-        "speclogr": "LoggingDriver",
-        "speccgdv": "CgroupDriver",
-        "speccgvr": "CgroupVersion",
-        "specevlt": "NEventsListener",
-        "specknvr": "KernelVersion",
-        "specopsy": "OperatingSystem",
-        "specosvr": "OSVersion",
-        "specostp": "OSType",
-        "specarch": "Architecture",
-        "specindx": "IndexServerAddress",
-        "speccpuq": "NCPU",
-        "specphym": "MemTotal",
-        "specdcrd": "DockerRootDir",
-        "spechost": "Name",
-        "specsrvr": "ServerVersion"
+        "spectime": {
+            "keye": "SystemTime",
+            "name": "System time"
+        },
+        "speclogr": {
+            "keye": "LoggingDriver",
+            "name": "Logging driver"
+        },
+        "speccgdv": {
+            "keye": "CgroupDriver",
+            "name": "CGroup driver"
+        },
+        "speccgvr": {
+            "keye": "CgroupVersion",
+            "name": "CGroup version"
+        },
+        "specevlt": {
+            "keye": "NEventsListener",
+            "name": "Events listeners"
+        },
+        "specknvr": {
+            "keye": "KernelVersion",
+            "name": "Kernel version"
+        },
+        "specopsy": {
+            "keye": "OperatingSystem",
+            "name": "Operating system"
+        },
+        "specosvr": {
+            "keye": "OSVersion",
+            "name": "OS version"
+        },
+        "specostp": {
+            "keye": "OSType",
+            "name": "OS type"
+        },
+        "specarch": {
+            "keye": "Architecture",
+            "name": "Architecture"
+        },
+        "specindx": {
+            "keye": "IndexServerAddress",
+            "name": "Indexing server"
+        },
+        "speccpuq": {
+            "keye": "NCPU",
+            "name": "CPU count"
+        },
+        "specphym": {
+            "keye": "MemTotal",
+            "name": "Physical memory"
+        },
+        "specdcrd": {
+            "keye": "DockerRootDir",
+            "name": "Docker root directory"
+        },
+        "spechost": {
+            "keye": "Name",
+            "name": "Name"
+        },
+        "specsrvr": {
+            "keye": "ServerVersion",
+            "name": "Server version"
+        }
     }
     if (sessionStorage.getItem("vsoniden") !== null) {
         let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
@@ -103,17 +199,45 @@ async function populate_information_section() {
                     )
                 }
                 for (indx in dockfeat) {
-                    if (data[dockfeat[indx]] === true) {
-                        document.getElementById(indx).innerHTML = `<i class="fas fa-check text-success"></i>`;
+                    if (data[dockfeat[indx]["keye"]] === true) {
+                        $("#dockfeat").append(
+                            `
+                            <tr>
+                                <td class="pl-2"><i class="fas fa-check text-success"></i></td>
+                                <td class="pl-2">${dockfeat[indx]["name"]}</td>
+                            </tr>
+                            `
+                        );
                     } else {
-                        document.getElementById(indx).innerHTML = `<i class="fas fa-times text-danger"></i>`;
+                        $("#dockfeat").append(
+                            `
+                            <tr>
+                                <td class="pl-2"><i class="fas fa-times text-danger"></i></td>
+                                <td class="pl-2">${dockfeat[indx]["name"]}</td>
+                            </tr>
+                            `
+                        );
                     }
                 }
                 for (indx in dockspec) {
-                    if (data[dockspec[indx]] !== "") {
-                        document.getElementById(indx).innerHTML = data[dockspec[indx]];
+                    if (data[dockspec[indx]["keye"]] !== "") {
+                        $("#dockspec").append(
+                            `
+                            <tr>
+                                <td class="pl-2 font-weight-bold">${dockspec[indx]["name"]}</td>
+                                <td class="pl-2 monotext" id="spectime">${data[dockspec[indx]["keye"]]}</td>
+                            </tr>
+                            `
+                        );
                     } else {
-                        document.getElementById(indx).innerHTML = "UNAVAILABLE";
+                        $("#dockspec").append(
+                            `
+                            <tr>
+                                <td class="pl-2 font-weight-bold">${dockspec[indx]["name"]}</td>
+                                <td class="pl-2 monotext" id="spectime">UNAVAILABLE</td>
+                            </tr>
+                            `
+                        );
                     }
                 }
                 for (indx in data["Warnings"]) {
@@ -136,14 +260,38 @@ async function populate_information_section() {
 
 async function populate_version_section() {
     let revslist = {
-        "revsvers": "Version",
-        "revsapiv": "ApiVersion",
-        "revsbild": "GitCommit",
-        "revsgovr": "GoVersion",
-        "revsopsy": "Os",
-        "revsarch": "Arch",
-        "revskrnl": "KernelVersion",
-        "revstime": "BuildTime"
+        "revsvers": {
+            "keye": "Version",
+            "name": "Version"
+        },
+        "revsapiv": {
+            "keye": "ApiVersion",
+            "name": "API version"
+        },
+        "revsbild": {
+            "keye": "GitCommit",
+            "name": "Git commit"
+        },
+        "revsgovr": {
+            "keye": "GoVersion",
+            "name": "Go version"
+        },
+        "revsopsy": {
+            "keye": "Os",
+            "name": "Operating system"
+        },
+        "revsarch": {
+            "keye": "Arch",
+            "name": "Architecture"
+        },
+        "revskrnl": {
+            "keye": "KernelVersion",
+            "name": "Kernel version"
+        },
+        "revstime": {
+            "keye": "BuildTime",
+            "name": "Build time"
+        }
     }
     if (sessionStorage.getItem("vsoniden") !== null) {
         let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
@@ -156,7 +304,25 @@ async function populate_version_section() {
                 $("#connfail").modal("show");
             } else {
                 for (indx in revslist) {
-                    document.getElementById(indx).innerText = data[revslist[indx]];
+                    if (data[revslist[indx]["keye"]] !== "") {
+                        $("#revslist").append(
+                            `
+                            <tr>
+                                <td class="pl-2 font-weight-bold">${revslist[indx]["name"]}</td>
+                                <td class="pl-2 monotext" id="spectime">${data[revslist[indx]["keye"]]}</td>
+                            </tr>
+                            `
+                        );
+                    } else {
+                        $("#revslist").append(
+                            `
+                            <tr>
+                                <td class="pl-2 font-weight-bold">${revslist[indx]["name"]}</td>
+                                <td class="pl-2 monotext" id="spectime">UNAVAILABLE</td>
+                            </tr>
+                            `
+                        );
+                    }
                 }
                 for (indx in data["Components"]) {
                     $("#tablsett").append(
@@ -169,8 +335,8 @@ async function populate_version_section() {
                                 <table class="table table-sm">
                                     <thead>
                                         <tr>
-                                            <th class="pl-2">Attributes</th>
-                                            <th class="pl-2">Data</th>
+                                            <th class="pl-2 col-4">Attributes</th>
+                                            <th class="pl-2 col-8">Data</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tablindx-${indx}">

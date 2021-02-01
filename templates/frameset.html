@@ -1,0 +1,162 @@
+<!--
+##########################################################################
+*
+*   Copyright © 2019-2021 Akashdeep Dhar <t0xic0der@fedoraproject.org>
+*
+*   This program is free software: you can redistribute it and/or modify
+*   it under the terms of the GNU General Public License as published by
+*   the Free Software Foundation, either version 3 of the License, or
+*   (at your option) any later version.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*
+##########################################################################
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SuperVisor v1.1.0-beta</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for("static", filename="plugins/fontawesome-free/css/all.min.css") }}">
+        <link rel="stylesheet" href="{{ url_for("static", filename="dist/css/adminlte.min.css") }}">
+    </head>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        .condqant {
+            font-family: 'Barlow Condensed', sans-serif;
+        }
+        .monotext {
+            font-family: 'Roboto Mono', monospace;
+        }
+        .nogetout {
+            /* These are technically the same, but use both */
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            -ms-word-break: break-all;
+            /* This is the dangerous one in WebKit, as it breaks things wherever */
+            word-break: break-all;
+            /* Instead use this non-standard one: */
+            word-break: break-word;
+            /* Adds a hyphen where the word breaks, if supported (No Blink) */
+            -ms-hyphens: none;
+            -moz-hyphens: none;
+            -webkit-hyphens: none;
+            hyphens: auto;
+        }
+    </style>
+    <body class="hold-transition sidebar-mini text-sm" onload="{% block onldscpt %}{% endblock %}" style="">
+        <div class="wrapper">
+            <nav class="main-header navbar navbar-expand navbar-dark bg-olive">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="" role="button"><i class="fas fa-cog"></i></a>
+                    </li>
+                </ul>
+            </nav>
+            <aside class="main-sidebar sidebar-light-olive elevation-4">
+                <a href="#" class="brand-link navbar-light bg-olive">
+                    <span class="brand-text font-weight-heavy">
+                        SuperVisor
+                    </span>
+                </a>
+                <div class="sidebar">
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        	{% block sidebrel %}
+                            {% endblock %}
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
+            <div class="content-wrapper">
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                {% block headelem %}{% endblock %}
+                            </div>
+                            <div class="col-sm-6">
+                                <ol class="breadcrumb float-sm-right">
+                                	{% block bdcumbls %}
+                                	{% endblock %}
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <section class="content" id="contwrap" hidden>
+                	{% block contwrap %}
+                	{% endblock %}
+                </section>
+            </div>
+            <footer class="main-footer">
+                <div class="float-right d-none d-sm-inline">SuperVisor</div>
+                <strong data-widget="pushmenu" href="#">http://localhost:6969/</strong>
+            </footer>
+        </div>
+        <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="abstcred">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-teal">
+                        <h3 class="modal-title condqant font-weight-bold">Credentials absent</h3>
+                    </div>
+                    <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                        <p class="text-justify mt-0 mb-0">
+                            The frontend service was unable to establish connection to the driver service as no
+                            credentials were provided to make the check. Please check your inputs for Synchronization
+                            URI and passcode, and attempt connecting again.
+                        </p>
+                    </div>
+                    <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-teal">
+                        <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/'">Return to login screen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="connfail">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-teal">
+                        <h3 class="modal-title condqant font-weight-bold">Connection failed</h3>
+                    </div>
+                    <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                        <p class="text-justify mt-0 mb-0">
+                            The frontend service was unable to establish connection to the driver service using the
+                            provided credentials. Please check your inputs for Synchronization URI and passcode, and
+                            attempt connecting again.
+                        </p>
+                    </div>
+                    <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-teal">
+                        <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/'">Return to login screen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% block extramod %}
+        {% endblock %}
+        <script src="{{ url_for("static", filename="plugins/jquery/jquery.min.js") }}"></script>
+        <script src="{{ url_for("static", filename="plugins/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
+        <script src="{{ url_for("static", filename="dist/js/adminlte.min.js") }}"></script>
+        {% block pagejsas %}
+        {% endblock %}
+    </body>
+</html>

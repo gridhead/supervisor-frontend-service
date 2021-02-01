@@ -63,7 +63,7 @@ async function populate_container_list () {
                             <a class="info-box" href="/contdata/${data[indx]["id"]}">
                                 <span class="info-box-icon bg-olive"><i class="fas fa-box-open"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text monotext">${data[indx]["id"]}</span>
+                                    <span class="info-box-text monotext">${data[indx]["id"].substring(0,10)}</span>
                                     <span class="info-box-number h2 mb-0 condqant font-weight-normal">${data[indx]["name"]}</span>
                                 </div>
                             </a>

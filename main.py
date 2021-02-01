@@ -22,7 +22,7 @@
 import logging
 
 import click
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 
 
 main = Flask(__name__)
@@ -53,6 +53,14 @@ def dockstat():
 @main.route("/contlist/")
 def contlist():
     return render_template("contlist.html")
+
+
+@main.route("/contdata/<contiden>")
+def contdata(contiden):
+    if len(contiden) == 64:
+        return render_template("continfo.html", contiden=contiden)
+    else:
+        abort(404)
 
 
 @click.command()
