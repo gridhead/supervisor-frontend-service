@@ -45,6 +45,27 @@
     </div>
     <p><span id="revsnumb">0</span> revision(s) found.</p>
 {% endblock %}
+{% block extramod %}
+    <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="imejntfd">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-teal">
+                    <h3 class="modal-title condqant font-weight-bold">Image absent</h3>
+                </div>
+                <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                    <p class="text-justify mt-0 mb-0">
+                        The image identity provided does not match any from the list of existing images on
+                        the station and hence, the information pertaining to that image could not be displayed.
+                        Please check your inputs for image identity and attempt again.
+                    </p>
+                </div>
+                <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-teal">
+                    <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/imejlist/'">Return to images listing</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 {% block pagejsas %}
     <script src="{{ url_for("static", filename="jscn/imejrevs.js") }}"></script>
 {% endblock %}

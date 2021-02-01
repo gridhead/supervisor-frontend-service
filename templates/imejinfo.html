@@ -1,10 +1,237 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<!--
+##########################################################################
+*
+*   Copyright © 2019-2021 Akashdeep Dhar <t0xic0der@fedoraproject.org>
+*
+*   This program is free software: you can redistribute it and/or modify
+*   it under the terms of the GNU General Public License as published by
+*   the Free Software Foundation, either version 3 of the License, or
+*   (at your option) any later version.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*
+##########################################################################
+-->
 
-</body>
-</html>
+{% extends "frameset.html" %}
+{% block onldscpt %}
+    image_information_operations('{{ imejiden }}');
+{% endblock %}
+{% block sidebrel %}
+    <li class="nav-item"><a href="/dashbord/" class="nav-link"><i class="nav-icon fas fa-th"></i><p>Dashboard</p></a></li>
+    <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon fas fa-microchip"></i><p>System</p></a></li>
+    <li class="nav-item"><a href="/dockstat/" class="nav-link"><i class="nav-icon fas fa-anchor"></i><p>Station</p></a></li>
+    <li class="nav-item"><a href="/contlist/" class="nav-link"><i class="nav-icon fas fa-box-open"></i><p>Containers</p></a></li>
+    <li class="nav-item"><a href="#" class="nav-link active"><i class="nav-icon fas fa-sd-card"></i><p>Images</p></a></li>
+    <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon fas fa-database"></i><p>Volumes</p></a></li>
+    <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon fas fa-network-wired"></i><p>Networks</p></a></li>
+{% endblock %}
+{% block headelem %}
+    <h1 class="m-0 text-dark condqant" id="imejname">UNAVAILABLE</h1>
+{% endblock %}
+{% block bdcumbls %}
+    <a class="breadcrumb-item" href="/imejlist/">Images</a>
+    <a class="breadcrumb-item active">{{ imejiden[7:17] }}</a>
+{% endblock %}
+{% block contwrap %}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">Image attributes</h3>
+                    <div class="card-tools">
+                        <ul class="nav nav-pills ml-auto">
+                            <li class="nav-item ml-1 mr-1">
+                                <a class="nav-link text-olive bg-white pt-1 pb-1" href="/imejrevs/{{ imejiden }}"><i class="fas fa-clock"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2 col-3">Attributes</th>
+                                <th class="pl-2 col-9">Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Identity</td>
+                                <td class="pl-2 monotext nogetout" id="attriden">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Name</td>
+                                <td class="pl-2 monotext nogetout" id="attrname">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Parent</td>
+                                <td class="pl-2 monotext nogetout" id="attrprnt">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Comment</td>
+                                <td class="pl-2 monotext nogetout" id="attrcomt">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Created on</td>
+                                <td class="pl-2 monotext nogetout" id="attrcton">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Container</td>
+                                <td class="pl-2 monotext nogetout" id="attrcntr">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Docker version</td>
+                                <td class="pl-2 monotext nogetout" id="attrdcvr">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Author</td>
+                                <td class="pl-2 monotext nogetout" id="attrauth">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Architecture</td>
+                                <td class="pl-2 monotext nogetout" id="attrarch">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">OS</td>
+                                <td class="pl-2 monotext nogetout" id="attropsy">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Size</td>
+                                <td class="pl-2 monotext nogetout" id="attrsize">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Virtual size</td>
+                                <td class="pl-2 monotext nogetout" id="attrvrsz">UNAVAILABLE</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">Container configuration</h3>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2 col-3">Attributes</th>
+                                <th class="pl-2 col-9">Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Hostname</td>
+                                <td class="pl-2 monotext nogetout" id="cocohost">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Domain name</td>
+                                <td class="pl-2 monotext nogetout" id="cocodonm">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">User</td>
+                                <td class="pl-2 monotext nogetout" id="cocouser">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Attach STDIN</td>
+                                <td class="pl-2 monotext nogetout" id="cocoatin">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Attach STDOUT</td>
+                                <td class="pl-2 monotext nogetout" id="cocoatot">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Attach STDERR</td>
+                                <td class="pl-2 monotext nogetout" id="cocoater">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">TTY</td>
+                                <td class="pl-2 monotext nogetout" id="cocoatty">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Open STDIN</td>
+                                <td class="pl-2 monotext nogetout" id="cocoopin">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">STDIN once</td>
+                                <td class="pl-2 monotext nogetout" id="cocostdo">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Image</td>
+                                <td class="pl-2 monotext nogetout" id="cocoimej">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Working directory</td>
+                                <td class="pl-2 monotext nogetout" id="cocowrdr">UNAVAILABLE</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">Graph driver</h3>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2 col-3">Attributes</th>
+                                <th class="pl-2 col-9">Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Name</td>
+                                <td class="pl-2 monotext nogetout" id="grafname">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Device ID</td>
+                                <td class="pl-2 monotext nogetout" id="grafdvid">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Device name</td>
+                                <td class="pl-2 monotext nogetout" id="grafdvnm">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Device size</td>
+                                <td class="pl-2 monotext nogetout" id="grafdvsz">UNAVAILABLE</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extramod %}
+    <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="imejntfd">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-teal">
+                    <h3 class="modal-title condqant font-weight-bold">Image absent</h3>
+                </div>
+                <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                    <p class="text-justify mt-0 mb-0">
+                        The image identity provided does not match any from the list of existing images on the
+                        station and hence, the information pertaining to that image could not be displayed. Please
+                        check your inputs for image identity and attempt again.
+                    </p>
+                </div>
+                <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-teal">
+                    <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/imejlist/'">Return to images listing</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block pagejsas %}
+    <script src="{{ url_for("static", filename="jscn/imejdata.js") }}"></script>
+{% endblock %}

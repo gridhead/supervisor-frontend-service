@@ -54,7 +54,7 @@ async function populate_image_revision_list (imejiden) {
             "imejiden": imejiden
         }, function (data) {
             if (data["retnmesg"] === "deny") {
-                $("#connfail").modal("show");
+                $("#imejntfd").modal("show");
             } else {
                 let revslent = 0;
                 for (indx in data["history"]) {
@@ -96,23 +96,23 @@ async function populate_image_revision_list (imejiden) {
                                         <tbody>
                                             <tr>
                                                 <td class="pl-2 font-weight-bold">Comment</td>
-                                                <td class="pl-2 monotext">${comt}</td>
+                                                <td class="pl-2 monotext nogetout">${comt}</td>
                                             </tr>
                                             <tr>
                                                 <td class="pl-2 font-weight-bold">Created on</td>
-                                                <td class="pl-2 monotext">${cret}</td>
+                                                <td class="pl-2 monotext nogetout">${cret}</td>
                                             </tr>
                                             <tr>
                                                 <td class="pl-2 font-weight-bold">Created by</td>
-                                                <td class="pl-2 monotext">${crby}</td>
+                                                <td class="pl-2 monotext nogetout">${crby}</td>
                                             </tr>
                                             <tr>
                                                 <td class="pl-2 font-weight-bold">Identity</td>
-                                                <td class="pl-2 monotext">${iden}</td>
+                                                <td class="pl-2 monotext nogetout">${iden}</td>
                                             </tr>
                                             <tr>
                                                 <td class="pl-2 font-weight-bold">Size</td>
-                                                <td class="pl-2 monotext">${imsz}</td>
+                                                <td class="pl-2 monotext nogetout">${imsz}&nbsp;bytes</td>
                                             </tr>
                                         </tbody>
                                     </table>
