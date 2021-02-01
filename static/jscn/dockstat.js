@@ -331,8 +331,8 @@ async function populate_version_section() {
                             <div class="card-header bg-olive pl-2">
                                 <h3 class="card-title font-weight-bold">${data["Components"][indx]["Name"]}&nbsp;${data["Components"][indx]["Version"]}</h3>
                             </div>
-                            <div class="card-body p-0">
-                                <table class="table table-sm">
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-sm table-hover text-nowrap">
                                     <thead>
                                         <tr>
                                             <th class="pl-2 col-4">Attributes</th>

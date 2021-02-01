@@ -55,6 +55,11 @@ def contlist():
     return render_template("contlist.html")
 
 
+@main.route("/imejlist/")
+def imejlist():
+    return render_template("imejlist.html")
+
+
 @main.route("/contdata/<contiden>")
 def contdata(contiden):
     if len(contiden) == 64:
