@@ -65,6 +65,11 @@ def volmlist():
     return render_template("volmlist.html")
 
 
+@main.route("/ntwklist/")
+def ntwklist():
+    return render_template("ntwklist.html")
+
+
 @main.route("/imejdata/<imejiden>")
 def imejdata(imejiden):
     if len(imejiden) == 71:

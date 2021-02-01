@@ -30,7 +30,7 @@
     <li class="nav-item"><a href="/contlist/" class="nav-link"><i class="nav-icon fas fa-box-open"></i><p>Containers</p></a></li>
     <li class="nav-item"><a href="/imejlist/" class="nav-link"><i class="nav-icon fas fa-sd-card"></i><p>Images</p></a></li>
     <li class="nav-item"><a href="/volmlist/" class="nav-link"><i class="nav-icon fas fa-database"></i><p>Volumes</p></a></li>
-    <li class="nav-item"><a href="" class="nav-link"><i class="nav-icon fas fa-network-wired"></i><p>Networks</p></a></li>
+    <li class="nav-item"><a href="/ntwklist/" class="nav-link"><i class="nav-icon fas fa-network-wired"></i><p>Networks</p></a></li>
 {% endblock %}
 {% block headelem %}
     <h1 class="m-0 text-dark condqant">Welcome to SuperVisor!</h1>
@@ -72,21 +72,6 @@
         </div>
         <div class="col-md-6 col-sm-6 col-12">
             <div class="info-box">
-                <span class="info-box-icon bg-olive"><i class="fas fa-network-wired"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Networks</span>
-                    <span class="info-box-number h2 mb-0 condqant font-weight-normal" id="ntwknumb">0</span>
-                </div>
-            </div>
-            <div class="card card-widget widget-user-2">
-                <div class="card-footer p-0">
-                    <ul class="nav flex-column" id="ntwklist">
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-6 col-12">
-            <div class="info-box">
                 <span class="info-box-icon bg-olive"><i class="fas fa-database"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Volumes</span>
@@ -96,6 +81,21 @@
             <div class="card card-widget widget-user-2">
                 <div class="card-footer p-0">
                     <ul class="nav flex-column" id="volmlist">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-network-wired"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Networks</span>
+                    <span class="info-box-number h2 mb-0 condqant font-weight-normal" id="ntwknumb">0</span>
+                </div>
+            </div>
+            <div class="card card-widget widget-user-2">
+                <div class="card-footer p-0">
+                    <ul class="nav flex-column" id="ntwklist">
                     </ul>
                 </div>
             </div>
