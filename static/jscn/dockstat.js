@@ -193,7 +193,7 @@ async function populate_information_section() {
                         `
                         <tr>
                             <td class="pl-2 font-weight-bold">${data["DriverStatus"][indx][0]}</td>
-                            <td class="pl-2 monotext">${data["DriverStatus"][indx][1]}</td>
+                            <td class="pl-2 monotext nogetout">${data["DriverStatus"][indx][1]}</td>
                         </tr>
                         `
                     )
@@ -225,7 +225,7 @@ async function populate_information_section() {
                             `
                             <tr>
                                 <td class="pl-2 font-weight-bold">${dockspec[indx]["name"]}</td>
-                                <td class="pl-2 monotext" id="spectime">${data[dockspec[indx]["keye"]]}</td>
+                                <td class="pl-2 monotext nogetout" id="spectime">${data[dockspec[indx]["keye"]]}</td>
                             </tr>
                             `
                         );
@@ -234,7 +234,7 @@ async function populate_information_section() {
                             `
                             <tr>
                                 <td class="pl-2 font-weight-bold">${dockspec[indx]["name"]}</td>
-                                <td class="pl-2 monotext" id="spectime">UNAVAILABLE</td>
+                                <td class="pl-2 monotext nogetout" id="spectime">UNAVAILABLE</td>
                             </tr>
                             `
                         );
@@ -245,7 +245,7 @@ async function populate_information_section() {
                         `
                         <tr>
                             <td class="pl-2">
-                                <code class="monotext">
+                                <code class="monotext nogetout">
                                     ${data["Warnings"][indx]}
                                 </code>
                             </td>
@@ -309,7 +309,7 @@ async function populate_version_section() {
                             `
                             <tr>
                                 <td class="pl-2 font-weight-bold">${revslist[indx]["name"]}</td>
-                                <td class="pl-2 monotext" id="spectime">${data[revslist[indx]["keye"]]}</td>
+                                <td class="pl-2 monotext nogetout" id="spectime">${data[revslist[indx]["keye"]]}</td>
                             </tr>
                             `
                         );
@@ -318,7 +318,7 @@ async function populate_version_section() {
                             `
                             <tr>
                                 <td class="pl-2 font-weight-bold">${revslist[indx]["name"]}</td>
-                                <td class="pl-2 monotext" id="spectime">UNAVAILABLE</td>
+                                <td class="pl-2 monotext nogetout" id="spectime">UNAVAILABLE</td>
                             </tr>
                             `
                         );
@@ -351,7 +351,7 @@ async function populate_version_section() {
                             `
                             <tr>
                                 <td class="pl-2 font-weight-bold">${jndx}</td>
-                                <td class="pl-2 monotext">${data["Components"][indx]["Details"][jndx]}</td>
+                                <td class="pl-2 monotext nogetout">${data["Components"][indx]["Details"][jndx]}</td>
                             </tr>
                             `
                         )

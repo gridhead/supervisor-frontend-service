@@ -60,13 +60,18 @@ async function populate_container_list () {
                     $("#contlist").append(
                         `
                         <div class="col-md-12 col-sm-12 col-12">
-                            <a class="info-box" href="/contdata/${data[indx]["id"]}">
+                            <a class="info-box mb-1 mt-1" href="/contdata/${data[indx]["id"]}">
                                 <span class="info-box-icon bg-olive"><i class="fas fa-box-open"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text monotext">${data[indx]["id"].substring(0,10)}</span>
                                     <span class="info-box-number h2 mb-0 condqant font-weight-normal">${data[indx]["name"]}</span>
                                 </div>
                             </a>
+                            <span class="float-right text-olive text-uppercase pl-0 pr-0">
+                                <button type="button" class="btn btn-default btn-sm" onclick="document.location.href = '/contstat/${data[indx]["id"]}'"><i class="fas fa-tachometer-alt"></i>&nbsp;View stats</button>
+                                <button type="button" class="btn btn-default btn-sm" onclick="document.location.href = '/contlogs/${data[indx]["id"]}'"><i class="fas fa-file-alt"></i>&nbsp;View logs</button>
+                                <button type="button" class="btn btn-default btn-sm" onclick="document.location.href = '/conthtop/${data[indx]["id"]}'"><i class="fas fa-chart-line"></i>&nbsp;View usage</button>
+                            </span>
                         </div>
                         `
                     )

@@ -463,7 +463,6 @@ async function populate_container_information(contiden) {
     }
 }
 
-
 async function container_information_operations(contiden) {
     await authenticate_endpoint_access();
     await populate_container_information(contiden);

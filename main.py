@@ -63,6 +63,14 @@ def contdata(contiden):
         abort(404)
 
 
+@main.route("/contlogs/<contiden>")
+def contlogs(contiden):
+    if len(contiden) == 64:
+        return render_template("contlogs.html", contiden=contiden)
+    else:
+        abort(404)
+
+
 @click.command()
 @click.option("-p", "--portdata", "portdata", help="Set the port value [0-65536]", default="9696")
 @click.option("-6", "--ipprotv6", "netprotc", flag_value="ipprotv6", help="Start the server on an IPv6 address")
