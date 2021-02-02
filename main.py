@@ -70,6 +70,11 @@ def ntwklist():
     return render_template("ntwklist.html")
 
 
+@main.route("/systdata/")
+def systdata():
+    return render_template("systdata.html")
+
+
 @main.route("/imejdata/<imejiden>")
 def imejdata(imejiden):
     if len(imejiden) == 71:
