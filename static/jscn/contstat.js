@@ -190,7 +190,7 @@ async function initiate_dom_placeholder_creation (contiden) {
     }
 }
 
-async function refresh_container_stats_periodically (contiden, rfrstime, physgraf, physline) {
+async function refresh_container_stats_periodically (contiden, rfrstime, physgraf, physline, cpuugraf, cpuuline) {
     if (sessionStorage.getItem("vsoniden") !== null) {
         while (1) {
             await new Promise(r => setTimeout(r, rfrstime * 1000));
@@ -244,6 +244,21 @@ async function refresh_container_stats_periodically (contiden, rfrstime, physgra
                         document.getElementById("ntwk-ertx-" + indx).innerText = data["stats"]["networks"][indx]["tx_errors"];
                         document.getElementById("ntwk-dptx-" + indx).innerText = data["stats"]["networks"][indx]["tx_dropped"];
                     }
+
+                    // Thank you TomasTomecek for your code snippet for finding out CPU usage percent!
+                    // https://github.com/TomasTomecek/sen/blob/master/sen/util.py#L158
+
+                    let percqant = data["stats"]["cpu_stats"]["online_cpus"];
+                    let cpuuperc = 0.0;
+                    let cpudelta = data["stats"]["cpu_stats"]["cpu_usage"]["total_usage"] - data["stats"]["precpu_stats"]["cpu_usage"]["total_usage"];
+                    let sysdelta = data["stats"]["cpu_stats"]["system_cpu_usage"] - data["stats"]["precpu_stats"]["system_cpu_usage"];
+                    if (sysdelta > 0.0) {
+                        cpuuperc = (cpudelta / sysdelta) * 100.0 * percqant;
+                    }
+                    document.getElementById("cpuuperc").innerText = cpuuperc.toPrecision(3) + "%";
+                    cpuuline.append(new Date().getTime(), cpuuperc.toPrecision(3));
+                    cpuugraf.streamTo(document.getElementById("cpuuover"), rfrstime * 1000);
+
                     let usejperc = data["stats"]["memory_stats"]["usage"]/data["stats"]["memory_stats"]["limit"];
                     document.getElementById("physperc").innerText = usejperc.toPrecision(3) + "%";
                     physline.append(new Date().getTime(), usejperc.toPrecision(3));
@@ -293,8 +308,11 @@ async function container_statistics_operations (contiden) {
     let physgraf = new SmoothieChart(grafstyl);
     let physline = new TimeSeries();
     physgraf.addTimeSeries(physline, linestyl);
+    let cpuugraf = new SmoothieChart(grafstyl);
+    let cpuuline = new TimeSeries();
+    cpuugraf.addTimeSeries(cpuuline, linestyl);
     await authenticate_endpoint_access();
     await populate_container_name_and_status(contiden);
     await initiate_dom_placeholder_creation(contiden);
-    await refresh_container_stats_periodically(contiden, rfrstime, physgraf, physline);
+    await refresh_container_stats_periodically(contiden, rfrstime, physgraf, physline, cpuugraf, cpuuline);
 }
