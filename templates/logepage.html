@@ -44,13 +44,13 @@
             font-family: 'Roboto Mono', monospace;
         }
     </style>
-    <body class="hold-transition login-page text-sm" onload="sessionStorage.clear();">
+    <body class="hold-transition login-page text-sm text-light bg-gradient-olive" onload="sessionStorage.clear();">
         <div class="login-box">
             <div class="login-logo">
                 <b class="condqant font-weight-bold">SuperVisor</b>
             </div>
             <div class="card">
-                <div class="card-body login-card-body">
+                <div class="card-body login-card-body" style="border-radius: 5%;">
                     <p class="login-box-msg" id="textordr">Log in to start your session</p>
                     <form onsubmit="return false;" id="inptform">
                         <div class="input-group mb-3">
@@ -74,7 +74,7 @@
                     </form>
                     <br/>
                     <p class="mb-1" style="text-align: center;" id="versinfo">
-                        SuperVisor v1.1.0-beta
+                        v1.1.0-beta
                     </p>
                 </div>
             </div>
@@ -82,17 +82,17 @@
         <div class="modal" tabindex="-1" role="dialog" id="connfail">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-teal">
+                    <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
                         <h3 class="modal-title condqant font-weight-bold">Connection failed</h3>
                     </div>
                     <div class="modal-body pt-1 pb-1 pl-2 pr-2">
-                        <p class="text-justify mt-0 mb-0">
+                        <p class="text-justify mt-0 mb-0 text-dark">
                             The frontend service was unable to establish connection to the driver service using the
                             provided credentials. Please check your inputs for Synchronization URI and passcode, and
                             attempt connecting again.
                         </p>
                     </div>
-                    <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-teal">
+                    <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
                         <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
                     </div>
                 </div>
