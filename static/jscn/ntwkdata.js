@@ -95,12 +95,12 @@ async function populate_network_information (ntwkiden) {
                             <div class="card-header bg-olive pl-2">
                                 <h3 class="card-title font-weight-bold">${data["attrs"]["Containers"][indx]["Name"]}</h3>
                             </div>
-                            <div class="card-body table-responsive p-0">
+                            <div class="card-body p-0">
                                 <table class="table table-sm table-hover">
                                     <thead>
                                         <tr>
-                                            <th class="pl-2 col-3">Attributes</th>
-                                            <th class="pl-2 col-9">Data</th>
+                                            <th class="pl-2" style="width: 25%;">Attributes</th>
+                                            <th class="pl-2" style="width: 75%;">Data</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -136,8 +136,9 @@ async function populate_network_information (ntwkiden) {
                     $("#ntwkadcf").append(
                         `
                         <tr>
-                            <td class="pl-2 font-weight-bold">${indx}</td>
+                            <td class="pl-2 font-weight-bold nogetout">${indx}</td>
                             <td class="pl-2 monotext nogetout">${data["attrs"]["Options"][indx]}</td>
+                        </tr>
                         `
                     );
                 }

@@ -83,8 +83,8 @@ async function initiate_dom_placeholder_creation (contiden) {
                     $("#scpuperu").append(
                         `
                         <tr>
-                            <td class="pl-2 col-3 font-weight-bold">CPU #${indx}</td>
-                            <td class="pl-2 col-9 monotext" id="scpu-${indx}">${data["stats"]["cpu_stats"]["cpu_usage"]["percpu_usage"][indx]}</td>
+                            <td class="pl-2 font-weight-bold">CPU #${indx}</td>
+                            <td class="pl-2 monotext" id="scpu-${indx}">${data["stats"]["cpu_stats"]["cpu_usage"]["percpu_usage"][indx]}</td>
                         </tr>
                         `
                     );
@@ -102,8 +102,8 @@ async function initiate_dom_placeholder_creation (contiden) {
                     $("#pcpuperu").append(
                         `
                         <tr>
-                            <td class="pl-2 col-3 font-weight-bold">CPU #${indx}</td>
-                            <td class="pl-2 col-9 monotext" id="pcpu-${indx}">${data["stats"]["precpu_stats"]["cpu_usage"]["percpu_usage"][indx]}</td>
+                            <td class="pl-2 font-weight-bold">CPU #${indx}</td>
+                            <td class="pl-2 monotext" id="pcpu-${indx}">${data["stats"]["precpu_stats"]["cpu_usage"]["percpu_usage"][indx]}</td>
                         </tr>
                         `
                     );
@@ -120,8 +120,8 @@ async function initiate_dom_placeholder_creation (contiden) {
                     $("#memostat").append(
                         `
                         <tr>
-                            <td class="pl-2 col-3 font-weight-bold">${indx}</td>
-                            <td class="pl-2 col-9 monotext" id="msta-${indx}">${data["stats"]["memory_stats"]["stats"][indx]}&nbsp;bytes</td>
+                            <td class="pl-2 font-weight-bold">${indx}</td>
+                            <td class="pl-2 monotext" id="msta-${indx}">${data["stats"]["memory_stats"]["stats"][indx]}&nbsp;bytes</td>
                         </tr>
                         `
                     );
@@ -140,42 +140,42 @@ async function initiate_dom_placeholder_creation (contiden) {
                                 <table class="table table-sm">
                                     <thead>
                                         <tr>
-                                            <th class="pl-2 col-3">Attribute</th>
-                                            <th class="pl-2 col-9">Data</th>
+                                            <th class="pl-2" style="width: 25%;">Attribute</th>
+                                            <th class="pl-2" style="width: 75%;">Data</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="pl-2 col-3 font-weight-bold">Bytes received</td>
-                                            <td class="pl-2 col-9 monotext" id="ntwk-btrc-${indx}">${data["stats"]["networks"][indx]["rx_bytes"]}</td>
+                                            <td class="pl-2 font-weight-bold">Bytes received</td>
+                                            <td class="pl-2 monotext" id="ntwk-btrc-${indx}">${data["stats"]["networks"][indx]["rx_bytes"]}</td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-2 col-3 font-weight-bold">Packets received</td>
-                                            <td class="pl-2 col-9 monotext" id="ntwk-pkrc-${indx}">${data["stats"]["networks"][indx]["rx_packets"]}</td>
+                                            <td class="pl-2 font-weight-bold">Packets received</td>
+                                            <td class="pl-2 monotext" id="ntwk-pkrc-${indx}">${data["stats"]["networks"][indx]["rx_packets"]}</td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-2 col-3 font-weight-bold">Errors on reception</td>
-                                            <td class="pl-2 col-9 monotext" id="ntwk-errc-${indx}">${data["stats"]["networks"][indx]["rx_errors"]}</td>
+                                            <td class="pl-2 font-weight-bold">Errors on reception</td>
+                                            <td class="pl-2 monotext" id="ntwk-errc-${indx}">${data["stats"]["networks"][indx]["rx_errors"]}</td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-2 col-3 font-weight-bold">Drops on reception</td>
-                                            <td class="pl-2 col-9 monotext" id="ntwk-dprc-${indx}">${data["stats"]["networks"][indx]["rx_dropped"]}</td>
+                                            <td class="pl-2 font-weight-bold">Drops on reception</td>
+                                            <td class="pl-2 monotext" id="ntwk-dprc-${indx}">${data["stats"]["networks"][indx]["rx_dropped"]}</td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-2 col-3 font-weight-bold">Bytes transmitted</td>
-                                            <td class="pl-2 col-9 monotext" id="ntwk-bttx-${indx}">${data["stats"]["networks"][indx]["tx_bytes"]}</td>
+                                            <td class="pl-2 font-weight-bold">Bytes transmitted</td>
+                                            <td class="pl-2 monotext" id="ntwk-bttx-${indx}">${data["stats"]["networks"][indx]["tx_bytes"]}</td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-2 col-3 font-weight-bold">Packets transmitted</td>
-                                            <td class="pl-2 col-9 monotext" id="ntwk-pktx-${indx}">${data["stats"]["networks"][indx]["tx_packets"]}</td>
+                                            <td class="pl-2 font-weight-bold">Packets transmitted</td>
+                                            <td class="pl-2 monotext" id="ntwk-pktx-${indx}">${data["stats"]["networks"][indx]["tx_packets"]}</td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-2 col-3 font-weight-bold">Errors on transmission</td>
-                                            <td class="pl-2 col-9 monotext" id="ntwk-ertx-${indx}">${data["stats"]["networks"][indx]["tx_errors"]}</td>
+                                            <td class="pl-2 font-weight-bold">Errors on transmission</td>
+                                            <td class="pl-2 monotext" id="ntwk-ertx-${indx}">${data["stats"]["networks"][indx]["tx_errors"]}</td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-2 col-3 font-weight-bold">Drops on transmission</td>
-                                            <td class="pl-2 col-9 monotext" id="ntwk-dptx-${indx}">${data["stats"]["networks"][indx]["tx_dropped"]}</td>
+                                            <td class="pl-2 font-weight-bold">Drops on transmission</td>
+                                            <td class="pl-2 monotext" id="ntwk-dptx-${indx}">${data["stats"]["networks"][indx]["tx_dropped"]}</td>
                                         </tr>
                                     </tbody>
                                 </table>

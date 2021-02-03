@@ -89,8 +89,8 @@ async function populate_image_revision_list (imejiden) {
                                     <table class="table table-sm table-hover">
                                         <thead>
                                             <tr>
-                                                <th class="pl-2 col-4">Attributes</th>
-                                                <th class="pl-2 col-8">Data</th>
+                                                <th class="pl-2" style="width: 25%;">Attributes</th>
+                                                <th class="pl-2" style="width: 75%;">Data</th>
                                             </tr>
                                         </thead>
                                         <tbody>

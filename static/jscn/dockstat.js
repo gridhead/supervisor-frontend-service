@@ -335,8 +335,8 @@ async function populate_version_section() {
                                 <table class="table table-sm table-hover text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th class="pl-2 col-4">Attributes</th>
-                                            <th class="pl-2 col-8">Data</th>
+                                            <th class="pl-2" style="width: 25%;">Attributes</th>
+                                            <th class="pl-2" style="width: 75%;">Data</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tablindx-${indx}">

@@ -121,6 +121,4 @@ async function container_process_list_operations (contiden) {
     await authenticate_endpoint_access();
     await populate_container_name_and_status(contiden);
     await refresh_container_process_list_periodically(contiden, rfrstime);
-    //await initiate_dom_placeholder_creation(contiden);
-    //await refresh_container_stats_periodically(contiden, rfrstime, physgraf, physline);
 }

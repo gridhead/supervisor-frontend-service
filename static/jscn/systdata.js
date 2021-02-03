@@ -92,8 +92,8 @@ async function initiate_dom_placeholder_creation_and_refreshing (rfrstime) {
                         <table class="table table-sm table-hover">
                             <thead>
                                 <tr>
-                                    <th class="pl-2 col-3">Attributes</th>
-                                    <th class="pl-2 col-9">Data</th>
+                                    <th class="pl-2" style="width: 25%;">Attributes</th>
+                                    <th class="pl-2" style="width: 75%;">Data</th>
                                 </tr>
                             </thead>
                             <tbody>

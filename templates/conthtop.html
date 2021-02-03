@@ -48,18 +48,18 @@
                 <div class="card-header bg-olive pl-2">
                     <h3 class="card-title font-weight-bold">Processes</h3>
                 </div>
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-sm table-hover text-nowrap">
+                <div class="card-body p-0">
+                    <table class="table table-sm table-hover">
                         <thead>
                             <tr>
-                                <th class="pl-2">UID</th>
-                                <th class="pl-2">PID</th>
-                                <th class="pl-2">PPID</th>
-                                <th class="pl-2">C</th>
-                                <th class="pl-2">STIME</th>
-                                <th class="pl-2">TTY</th>
-                                <th class="pl-2">TIME</th>
-                                <th class="pl-2">CMD</th>
+                                <th class="pl-2" style="width: 8.34%;">UID</th>
+                                <th class="pl-2" style="width: 8.34%;">PID</th>
+                                <th class="pl-2" style="width: 8.34%;">PPID</th>
+                                <th class="pl-2" style="width: 8.34%;">C</th>
+                                <th class="pl-2" style="width: 8.34%;">STIME</th>
+                                <th class="pl-2" style="width: 8.34%;">TTY</th>
+                                <th class="pl-2" style="width: 8.34%;">TIME</th>
+                                <th class="pl-2" style="width: 41.67%;">CMD</th>
                             </tr>
                         </thead>
                         <tbody id="proclist">
@@ -74,7 +74,7 @@
     <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="contntfd">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-teal">
+                <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
                     <h3 class="modal-title condqant font-weight-bold">Container absent</h3>
                 </div>
                 <div class="modal-body pt-1 pb-1 pl-2 pr-2">
@@ -89,7 +89,7 @@
                         containers which are currently active.
                     </p>
                 </div>
-                <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-teal">
+                <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
                     <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/contlist/'">Return to containers listing</button>
                 </div>
             </div>
