@@ -53,6 +53,13 @@
             <div class="card">
                 <div class="card-header bg-olive pl-2">
                     <h3 class="card-title font-weight-bold">Basic attributes</h3>
+                    <div class="card-tools">
+                        <ul class="nav nav-pills ml-auto">
+                            <li class="nav-item ml-1 mr-1">
+                                <a class="nav-link text-olive bg-white pt-1 pb-1" href="/proclist/"><i class="fas fa-hashtag"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="card-body table-responsive p-0">
                     <table class="table table-sm table-hover">
@@ -434,27 +441,6 @@
                     <canvas id="battover" style="width:100%; height:20vh;"></canvas>
                     <p class="pl-2 mb-1"><span id="snbttime">0</span> secs left.</p>
                     <p class="pl-2 mb-1">Plugged? <span id="snbtplug">UNAVAILABLE</span></p>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
-{% block extramod %}
-    <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="ntwkntfd">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-teal">
-                    <h3 class="modal-title condqant font-weight-bold">Network absent</h3>
-                </div>
-                <div class="modal-body pt-1 pb-1 pl-2 pr-2">
-                    <p class="text-justify mt-0 mb-0">
-                        The network identity provided does not match any from the list of existing networks on the
-                        station and hence, the information pertaining to that network could not be displayed. Please
-                        check your inputs for network identity and attempt again.
-                    </p>
-                </div>
-                <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-teal">
-                    <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/ntwklist/'">Return to networks listing</button>
                 </div>
             </div>
         </div>

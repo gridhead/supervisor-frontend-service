@@ -75,6 +75,11 @@ def systdata():
     return render_template("systdata.html")
 
 
+@main.route("/proclist/")
+def proclist():
+    return render_template("proclist.html")
+
+
 @main.route("/imejdata/<imejiden>")
 def imejdata(imejiden):
     if len(imejiden) == 71:
