@@ -30,9 +30,9 @@ loge = logging.getLogger("werkzeug")
 loge.setLevel(logging.ERROR)
 
 
-@main.route("/mainpytm/")
-def graphing():
-    return render_template("mainpytm.html")
+@main.errorhandler(404)
+def e404page(ertx):
+    return render_template("e404page.html"), 404
 
 
 @main.route("/")

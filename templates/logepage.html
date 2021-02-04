@@ -25,13 +25,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>SuperVisor v1.1.0-beta</title>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for("static", filename="plugins/fontawesome-free/css/all.min.css") }}">
-        <link rel="stylesheet" href="{{ url_for("static", filename="plugins/icheck-bootstrap/icheck-bootstrap.min.css") }}">
-        <link rel="stylesheet" href="{{ url_for("static", filename="dist/css/adminlte.min.css") }}">
+        <link rel="stylesheet" href="{{ url_for("static", filename="css3/custfrmt.css") }}">
+        <link rel="stylesheet" href="{{ url_for("static", filename="css3/fontsome.css") }}">
+        <link rel="stylesheet" href="{{ url_for("static", filename="css3/adminlte.css") }}">
     </head>
     <style>
         * {
@@ -79,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal" tabindex="-1" role="dialog" id="connfail">
+        <div class="modal fade" tabindex="-1" role="dialog" id="connfail">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
@@ -99,8 +95,8 @@
             </div>
         </div>
     </body>
-    <script src="{{ url_for("static", filename="plugins/jquery/jquery.min.js") }}"></script>
-    <script src="{{ url_for("static", filename="plugins/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
-    <script src="{{ url_for("static", filename="dist/js/adminlte.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="jscn/jquery.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="jscn/bootstrap.bundle.js") }}"></script>
+    <script src="{{ url_for("static", filename="jscn/adminlte.js") }}"></script>
     <script src="{{ url_for("static", filename="jscn/logepage.js") }}"></script>
 </html>
