@@ -48,10 +48,9 @@ service startup.
 
 ## Table of contents
 1. [Home](https://github.com/t0xic0der/supervisor-frontend-service/wiki)
-2. [Notice](https://github.com/t0xic0der/supervisor-frontend-service/wiki/Notice)
-3. [Installation](https://github.com/t0xic0der/supervisor-frontend-service/wiki/Installation)
-4. [Download releases](https://github.com/t0xic0der/supervisor-frontend-service/releases)
-5. [SuperVisor Driver Service](https://github.com/t0xic0der/supervisor-driver-service)
+2. [Installation](https://github.com/t0xic0der/supervisor-frontend-service/wiki/Installation)
+3. [Download releases](https://github.com/t0xic0der/supervisor-frontend-service/releases)
+4. [SuperVisor Driver Service](https://github.com/t0xic0der/supervisor-driver-service)
 
 ## Contribute
 You may request for the addition of new features in the [issues](https://github.com/t0xic0der/supervisor-frontend-service/issues) 
