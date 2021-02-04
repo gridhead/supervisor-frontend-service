@@ -1,0 +1,102 @@
+<!--
+##########################################################################
+*
+*   Copyright © 2019-2021 Akashdeep Dhar <t0xic0der@fedoraproject.org>
+*
+*   This program is free software: you can redistribute it and/or modify
+*   it under the terms of the GNU General Public License as published by
+*   the Free Software Foundation, either version 3 of the License, or
+*   (at your option) any later version.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*
+##########################################################################
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SuperVisor v1.1.0-beta</title>
+        <link rel="stylesheet" href="{{ url_for("static", filename="css3/custfrmt.css") }}">
+        <link rel="stylesheet" href="{{ url_for("static", filename="css3/fontsome.css") }}">
+        <link rel="stylesheet" href="{{ url_for("static", filename="css3/adminlte.css") }}">
+    </head>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        .condqant {
+            font-family: 'Barlow Condensed', sans-serif;
+        }
+        .monotext {
+            font-family: 'Roboto Mono', monospace;
+        }
+    </style>
+    <body class="hold-transition login-page text-sm text-light bg-gradient-olive" onload="sessionStorage.clear();">
+        <div class="login-box">
+            <div class="login-logo">
+                <b class="condqant font-weight-bold">SuperVisor</b>
+            </div>
+            <div class="card">
+                <div class="card-body login-card-body" style="border-radius: 5%;">
+                    <p class="login-box-msg" id="textordr">Log in to start your session</p>
+                    <form onsubmit="return false;" id="inptform">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Synchronization URI" name="drivloca" id="drivloca">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-network-wired"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" placeholder="Passcode" name="passcode" id="passcode">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span id="eyeslash" style="display: none; cursor: pointer;" onclick="hidepass()" class="fas fa-eye-slash"></span>
+                                    <span id="eyeimage" style="display: block; cursor: pointer;" onclick="showpass()" class="fas fa-eye"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-outline btn-block" style="border-color: teal;" onclick="fetchapi();">Login</button>
+                    </form>
+                    <br/>
+                    <p class="mb-1" style="text-align: center;" id="versinfo">
+                        v1.1.0-beta
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="connfail">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
+                        <h3 class="modal-title condqant font-weight-bold">Connection failed</h3>
+                    </div>
+                    <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                        <p class="text-justify mt-0 mb-0 text-dark">
+                            The frontend service was unable to establish connection to the driver service using the
+                            provided credentials. Please check your inputs for Synchronization URI and passcode, and
+                            attempt connecting again.
+                        </p>
+                    </div>
+                    <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
+                        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="{{ url_for("static", filename="jscn/jquery.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="jscn/bootstrap.bundle.js") }}"></script>
+    <script src="{{ url_for("static", filename="jscn/adminlte.js") }}"></script>
+    <script src="{{ url_for("static", filename="jscn/logepage.js") }}"></script>
+</html>

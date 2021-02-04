@@ -1,0 +1,101 @@
+<!--
+##########################################################################
+*
+*   Copyright © 2019-2021 Akashdeep Dhar <t0xic0der@fedoraproject.org>
+*
+*   This program is free software: you can redistribute it and/or modify
+*   it under the terms of the GNU General Public License as published by
+*   the Free Software Foundation, either version 3 of the License, or
+*   (at your option) any later version.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*
+##########################################################################
+-->
+
+{% extends "frameset.html" %}
+{% block onldscpt %}
+    container_process_list_operations('{{ contiden }}');
+{% endblock %}
+{% block sidebrel %}
+    <li class="nav-item"><a href="/dashbord/" class="nav-link"><i class="nav-icon fas fa-th"></i><p>Dashboard</p></a></li>
+    <li class="nav-item"><a href="/systdata/" class="nav-link"><i class="nav-icon fas fa-microchip"></i><p>System</p></a></li>
+    <li class="nav-item"><a href="/dockstat/" class="nav-link"><i class="nav-icon fas fa-anchor"></i><p>Station</p></a></li>
+    <li class="nav-item"><a href="#" class="nav-link active"><i class="nav-icon fas fa-box-open"></i><p>Containers</p></a></li>
+    <li class="nav-item"><a href="/imejlist/" class="nav-link"><i class="nav-icon fas fa-sd-card"></i><p>Images</p></a></li>
+    <li class="nav-item"><a href="/volmlist/" class="nav-link"><i class="nav-icon fas fa-database"></i><p>Volumes</p></a></li>
+    <li class="nav-item"><a href="/ntwklist/" class="nav-link"><i class="nav-icon fas fa-network-wired"></i><p>Networks</p></a></li>
+{% endblock %}
+{% block headelem %}
+    <h1 class="m-0 text-dark condqant" id="contname">UNAVAILABLE</h1>
+    <span class="badge bg-black h1 monotext" id="contstat">UNAVAILABLE</span>
+{% endblock %}
+{% block bdcumbls %}
+    <a class="breadcrumb-item" href="/contlist/">Containers</a>
+    <a class="breadcrumb-item" href="/contdata/{{ contiden }}">{{ contiden[0:10] }}</a>
+    <a class="breadcrumb-item">Processes</a>
+{% endblock %}
+{% block contwrap %}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">Processes</h3>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" style="width: 8.34%;">UID</th>
+                                <th class="pl-2" style="width: 8.34%;">PID</th>
+                                <th class="pl-2" style="width: 8.34%;">PPID</th>
+                                <th class="pl-2" style="width: 8.34%;">C</th>
+                                <th class="pl-2" style="width: 8.34%;">STIME</th>
+                                <th class="pl-2" style="width: 8.34%;">TTY</th>
+                                <th class="pl-2" style="width: 8.34%;">TIME</th>
+                                <th class="pl-2" style="width: 41.67%;">CMD</th>
+                            </tr>
+                        </thead>
+                        <tbody id="proclist">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extramod %}
+    <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="contntfd">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
+                    <h3 class="modal-title condqant font-weight-bold">Container absent</h3>
+                </div>
+                <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                    <p class="text-justify mt-0">
+                        The container identity provided does not match any from the list of existing containers on
+                        the station and hence, the information pertaining to that container could not be displayed.
+                        Please check your inputs for container identity and attempt again.
+                    </p>
+                    <p class="text-justify mb-0">
+                        Also in rare circumstances, information about running processes may fail to show up due to the
+                        fact that the container sought is not in running state. Process listing can only be shown for
+                        containers which are currently active.
+                    </p>
+                </div>
+                <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
+                    <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/contlist/'">Return to containers listing</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block pagejsas %}
+    <script src="{{ url_for("static", filename="jscn/conthtop.js") }}"></script>
+{% endblock %}

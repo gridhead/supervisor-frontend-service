@@ -1,0 +1,107 @@
+<!--
+##########################################################################
+*
+*   Copyright © 2019-2021 Akashdeep Dhar <t0xic0der@fedoraproject.org>
+*
+*   This program is free software: you can redistribute it and/or modify
+*   it under the terms of the GNU General Public License as published by
+*   the Free Software Foundation, either version 3 of the License, or
+*   (at your option) any later version.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*
+##########################################################################
+-->
+
+{% extends "frameset.html" %}
+{% block onldscpt %}
+    dashboard_operations();
+{% endblock %}
+{% block sidebrel %}
+    <li class="nav-item"><a href="#" class="nav-link active"><i class="nav-icon fas fa-th"></i><p>Dashboard</p></a></li>
+    <li class="nav-item"><a href="/systdata/" class="nav-link"><i class="nav-icon fas fa-microchip"></i><p>System</p></a></li>
+    <li class="nav-item"><a href="/dockstat/" class="nav-link"><i class="nav-icon fas fa-anchor"></i><p>Station</p></a></li>
+    <li class="nav-item"><a href="/contlist/" class="nav-link"><i class="nav-icon fas fa-box-open"></i><p>Containers</p></a></li>
+    <li class="nav-item"><a href="/imejlist/" class="nav-link"><i class="nav-icon fas fa-sd-card"></i><p>Images</p></a></li>
+    <li class="nav-item"><a href="/volmlist/" class="nav-link"><i class="nav-icon fas fa-database"></i><p>Volumes</p></a></li>
+    <li class="nav-item"><a href="/ntwklist/" class="nav-link"><i class="nav-icon fas fa-network-wired"></i><p>Networks</p></a></li>
+{% endblock %}
+{% block headelem %}
+    <h1 class="m-0 text-dark condqant">Welcome to SuperVisor!</h1>
+{% endblock %}
+{% block bdcumbls %}
+    <li class="breadcrumb-item active">Dashboard</li>
+{% endblock %}
+{% block contwrap %}
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-box-open"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Containers</span>
+                    <span class="info-box-number h2 mb-0 condqant font-weight-normal" id="contnumb">0</span>
+                </div>
+            </div>
+            <div class="card card-widget widget-user-2">
+                <div class="card-footer p-0">
+                    <ul class="nav flex-column" id="contlist">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-sd-card"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Images</span>
+                    <span class="info-box-number h2 mb-0 condqant font-weight-normal" id="imejnumb">0</span>
+                </div>
+            </div>
+            <div class="card card-widget widget-user-2">
+                <div class="card-footer p-0">
+                    <ul class="nav flex-column" id="imejlist">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-database"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Volumes</span>
+                    <span class="info-box-number h2 mb-0 condqant font-weight-normal" id="volmnumb">0</span>
+                </div>
+            </div>
+            <div class="card card-widget widget-user-2">
+                <div class="card-footer p-0">
+                    <ul class="nav flex-column" id="volmlist">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-network-wired"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Networks</span>
+                    <span class="info-box-number h2 mb-0 condqant font-weight-normal" id="ntwknumb">0</span>
+                </div>
+            </div>
+            <div class="card card-widget widget-user-2">
+                <div class="card-footer p-0">
+                    <ul class="nav flex-column" id="ntwklist">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block pagejsas %}
+    <script src="{{ url_for("static", filename="jscn/dashbard.js") }}"></script>
+{% endblock %}

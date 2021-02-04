@@ -1,0 +1,290 @@
+<!--
+##########################################################################
+*
+*   Copyright © 2019-2021 Akashdeep Dhar <t0xic0der@fedoraproject.org>
+*
+*   This program is free software: you can redistribute it and/or modify
+*   it under the terms of the GNU General Public License as published by
+*   the Free Software Foundation, either version 3 of the License, or
+*   (at your option) any later version.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*
+##########################################################################
+-->
+
+{% extends "frameset.html" %}
+{% block onldscpt %}
+    process_listing_operations();
+{% endblock %}
+{% block sidebrel %}
+    <li class="nav-item"><a href="/dashbord/" class="nav-link"><i class="nav-icon fas fa-th"></i><p>Dashboard</p></a></li>
+    <li class="nav-item"><a href="#" class="nav-link active"><i class="nav-icon fas fa-microchip"></i><p>System</p></a></li>
+    <li class="nav-item"><a href="/dockstat/" class="nav-link"><i class="nav-icon fas fa-anchor"></i><p>Station</p></a></li>
+    <li class="nav-item"><a href="/contlist/" class="nav-link"><i class="nav-icon fas fa-box-open"></i><p>Containers</p></a></li>
+    <li class="nav-item"><a href="/imejlist/" class="nav-link"><i class="nav-icon fas fa-sd-card"></i><p>Images</p></a></li>
+    <li class="nav-item"><a href="/volmlist/" class="nav-link"><i class="nav-icon fas fa-database"></i><p>Volumes</p></a></li>
+    <li class="nav-item"><a href="/ntwklist/" class="nav-link"><i class="nav-icon fas fa-network-wired"></i><p>Networks</p></a></li>
+{% endblock %}
+{% block headelem %}
+    <h1 class="m-0 text-dark condqant">Processes</h1>
+{% endblock %}
+{% block bdcumbls %}
+    <a class="breadcrumb-item" href="/systdata/">System</a>
+    <a class="breadcrumb-item active">Processes</a>
+{% endblock %}
+{% block contwrap %}
+    <div class="row">
+        <div class="col-md-4 col-sm-12 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-hashtag"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Active</span>
+                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">Processes</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">Processes</h3>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" style="width: 16.67%;">PID</th>
+                                <th class="pl-2" style="width: 33.34%;">Name</th>
+                                <th class="pl-2" style="width: 16.67%;">Username</th>
+                                <th class="pl-2" style="width: 16.67%;">MPRC</th>
+                                <th class="pl-2" style="width: 16.67%;">CPRC</th>
+                            </tr>
+                        </thead>
+                        <tbody id="proclist">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extramod %}
+    <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="procinfo">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
+                    <h3 class="modal-title condqant font-weight-bold" id="prochead">#0 UNAVAILABLE</h3>
+                </div>
+                <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                    <div class="card">
+                        <div class="card-header bg-light pl-2">
+                            <h3 class="card-title font-weight-bold text-olive">Preliminaries</h3>
+                        </div>
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-sm table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Username</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="prel-user-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Started on</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="prel-time-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Memory usage</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="prel-memo-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">CPU usage</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="prel-cpuu-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Status</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="prel-stat-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Thread count</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="prel-tdct-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Terminal</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="prel-term-mode">UNAVAILABLE</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header bg-light pl-2">
+                            <h3 class="card-title font-weight-bold text-olive">UIDs</h3>
+                        </div>
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-sm table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Real</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="uids-real-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Effective</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="uids-eftv-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Saved</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="uids-save-mode">UNAVAILABLE</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header bg-light pl-2">
+                            <h3 class="card-title font-weight-bold text-olive">GIDs</h3>
+                        </div>
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-sm table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Real</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="gids-real-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Effective</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="gids-eftv-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Saved</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="gids-save-mode">UNAVAILABLE</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header bg-light pl-2">
+                            <h3 class="card-title font-weight-bold text-olive">Context switches</h3>
+                        </div>
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-sm table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Voluntary</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="ctxs-voln-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Involuntary</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="ctxs-invo-mode">UNAVAILABLE</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header bg-light pl-2">
+                            <h3 class="card-title font-weight-bold text-olive">CPU times</h3>
+                        </div>
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-sm table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">User</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="cput-user-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">System</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="cput-syst-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Children user</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="cput-chus-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Children system</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="cput-chsy-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">IO wait</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="cput-iowt-mode">UNAVAILABLE</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header bg-light pl-2">
+                            <h3 class="card-title font-weight-bold text-olive">Memory info</h3>
+                        </div>
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-sm table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">RSS</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="memo-mrss-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">VMS</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="memo-mvms-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Shared</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="memo-shar-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Text</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="memo-text-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Lib</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="memo-mlib-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Data</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="memo-data-mode">UNAVAILABLE</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-2 font-weight-bold" style="width: 50%">Dirty</td>
+                                        <td class="pl-2 monotext nogetout" style="width: 50%" id="memo-drty-mode">UNAVAILABLE</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between pt-1 pb-1 pl-2 pr-2 bg-olive">
+                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
+                    <div class="float-right">
+                        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal" id="termbutn"><i class="fas fa-trash"></i></button>
+                        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal" id="killbutn"><i class="fas fa-times"></i></button>
+                        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal" id="contbutn"><i class="fas fa-play"></i></button>
+                        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal" id="hangbutn"><i class="fas fa-pause"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id=toolmode>
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
+                    <h3 class="modal-title condqant font-weight-bold" id="toolhead">UNAVAILABLE</h3>
+                </div>
+                <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                    <p class="mb-0 mt-0 ml-0 mr-0" id="tooldata">UNAVAILABLE</p>
+                </div>
+                <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
+                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block pagejsas %}
+    <script src="{{ url_for("static", filename="jscn/proclist.js") }}"></script>
+{% endblock %}

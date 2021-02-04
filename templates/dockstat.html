@@ -1,0 +1,176 @@
+<!--
+##########################################################################
+*
+*   Copyright © 2019-2021 Akashdeep Dhar <t0xic0der@fedoraproject.org>
+*
+*   This program is free software: you can redistribute it and/or modify
+*   it under the terms of the GNU General Public License as published by
+*   the Free Software Foundation, either version 3 of the License, or
+*   (at your option) any later version.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*
+##########################################################################
+-->
+
+{% extends "frameset.html" %}
+{% block onldscpt %}
+    docker_statistics_operations();
+{% endblock %}
+{% block sidebrel %}
+    <li class="nav-item"><a href="/dashbord/" class="nav-link"><i class="nav-icon fas fa-th"></i><p>Dashboard</p></a></li>
+    <li class="nav-item"><a href="/systdata/" class="nav-link"><i class="nav-icon fas fa-microchip"></i><p>System</p></a></li>
+    <li class="nav-item"><a href="#" class="nav-link active"><i class="nav-icon fas fa-anchor"></i><p>Station</p></a></li>
+    <li class="nav-item"><a href="/contlist/" class="nav-link"><i class="nav-icon fas fa-box-open"></i><p>Containers</p></a></li>
+    <li class="nav-item"><a href="/imejlist/" class="nav-link"><i class="nav-icon fas fa-sd-card"></i><p>Images</p></a></li>
+    <li class="nav-item"><a href="/volmlist/" class="nav-link"><i class="nav-icon fas fa-database"></i><p>Volumes</p></a></li>
+    <li class="nav-item"><a href="/ntwklist/" class="nav-link"><i class="nav-icon fas fa-network-wired"></i><p>Networks</p></a></li>
+{% endblock %}
+{% block headelem %}
+    <h1 class="m-0 text-dark condqant">Docker station</h1>
+{% endblock %}
+{% block bdcumbls %}
+    <li class="breadcrumb-item active">Statistics</li>
+{% endblock %}
+{% block contwrap %}
+    <div class="info-box">
+        <span class="info-box-icon bg-olive"><i class="fas fa-fingerprint"></i></span>
+        <div class="info-box-content">
+            <span class="info-box-text">Server ID</span>
+            <span class="info-box-number h2 mb-0 condqant font-weight-normal nogetout" id="speciden">UNAVAILABLE</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-info-circle"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Docker</span>
+                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">Information</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">Driver status</h3>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" style="width: 25%;">Attributes</th>
+                                <th class="pl-2" style="width: 75%;">Data</th>
+                            </tr>
+                        </thead>
+                        <tbody id="drstatus">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">Driver features</h3>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" width="1%;">#</th>
+                                <th class="pl-2">Specifications</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dockfeat">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">Driver specifications</h3>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" style="width: 25%;">Attributes</th>
+                                <th class="pl-2" style="width: 75%;">Data</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dockspec">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">Warnings</h3>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2">Notifications</th>
+                            </tr>
+                        </thead>
+                        <tbody id="warnlist">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-code-branch"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Docker</span>
+                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">Version</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">Driver revision</h3>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" style="width: 25%">Attributes</th>
+                                <th class="pl-2" style="width: 75%;">Data</th>
+                            </tr>
+                        </thead>
+                        <tbody id="revslist">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tablsett">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-12">
+            <div class="card card-widget widget-user-2">
+                <div class="card-footer p-0">
+                    <ul class="nav flex-column" id="contlist">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 col-12">
+            <div class="card card-widget widget-user-2">
+                <div class="card-footer p-0">
+                    <ul class="nav flex-column" id="imejlist">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block pagejsas %}
+    <script src="{{ url_for("static", filename="jscn/dockstat.js") }}"></script>
+{% endblock %}

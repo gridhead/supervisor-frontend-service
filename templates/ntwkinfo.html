@@ -1,0 +1,176 @@
+<!--
+##########################################################################
+*
+*   Copyright © 2019-2021 Akashdeep Dhar <t0xic0der@fedoraproject.org>
+*
+*   This program is free software: you can redistribute it and/or modify
+*   it under the terms of the GNU General Public License as published by
+*   the Free Software Foundation, either version 3 of the License, or
+*   (at your option) any later version.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*
+##########################################################################
+-->
+
+{% extends "frameset.html" %}
+{% block onldscpt %}
+    network_information_operations('{{ ntwkiden }}');
+{% endblock %}
+{% block sidebrel %}
+    <li class="nav-item"><a href="/dashbord/" class="nav-link"><i class="nav-icon fas fa-th"></i><p>Dashboard</p></a></li>
+    <li class="nav-item"><a href="/systdata/" class="nav-link"><i class="nav-icon fas fa-microchip"></i><p>System</p></a></li>
+    <li class="nav-item"><a href="/dockstat/" class="nav-link"><i class="nav-icon fas fa-anchor"></i><p>Station</p></a></li>
+    <li class="nav-item"><a href="/contlist/" class="nav-link"><i class="nav-icon fas fa-box-open"></i><p>Containers</p></a></li>
+    <li class="nav-item"><a href="/imejlist/" class="nav-link"><i class="nav-icon fas fa-sd-card"></i><p>Images</p></a></li>
+    <li class="nav-item"><a href="/volmlist/" class="nav-link"><i class="nav-icon fas fa-database"></i><p>Volumes</p></a></li>
+    <li class="nav-item"><a href="#" class="nav-link active"><i class="nav-icon fas fa-network-wired"></i><p>Networks</p></a></li>
+{% endblock %}
+{% block headelem %}
+    <h1 class="m-0 text-dark condqant" id="ntwkname">UNAVAILABLE</h1>
+{% endblock %}
+{% block bdcumbls %}
+    <a class="breadcrumb-item" href="/ntwklist/">Networks</a>
+    <a class="breadcrumb-item active">{{ ntwkiden[0:10] }}</a>
+{% endblock %}
+{% block contwrap %}
+    <div class="row">
+        <div class="col-md-4 col-sm-12 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-info-circle"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Information</span>
+                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">Preliminary</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">Network attributes</h3>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" style="width: 25%;">Attributes</th>
+                                <th class="pl-2" style="width: 75%;">Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Identity</td>
+                                <td class="pl-2 monotext nogetout" id="attriden">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Created at</td>
+                                <td class="pl-2 monotext nogetout" id="attrmkdt">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Scope</td>
+                                <td class="pl-2 monotext nogetout" id="attrscop">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Driver</td>
+                                <td class="pl-2 monotext nogetout" id="attrdrvr">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Enable IPv6?</td>
+                                <td class="pl-2 monotext nogetout" id="attripv6">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Internal?</td>
+                                <td class="pl-2 monotext nogetout" id="attrintl">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Attachable?</td>
+                                <td class="pl-2 monotext nogetout" id="attratbl">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Ingress?</td>
+                                <td class="pl-2 monotext nogetout" id="attrings">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Config only?</td>
+                                <td class="pl-2 monotext nogetout" id="attrcfol">UNAVAILABLE</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-12 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-box-open"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Active</span>
+                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">Containers</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12 col-12" id="ntcnlist">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-12 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-wrench"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Additional</span>
+                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">Options</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">Configurations</h3>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" style="width: 25%;">Attributes</th>
+                                <th class="pl-2" style="width: 75%;">Data</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ntwkadcf">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extramod %}
+    <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="ntwkntfd">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
+                    <h3 class="modal-title condqant font-weight-bold">Network absent</h3>
+                </div>
+                <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                    <p class="text-justify mt-0 mb-0">
+                        The network identity provided does not match any from the list of existing networks on the
+                        station and hence, the information pertaining to that network could not be displayed. Please
+                        check your inputs for network identity and attempt again.
+                    </p>
+                </div>
+                <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
+                    <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/ntwklist/'">Return to networks listing</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block pagejsas %}
+    <script src="{{ url_for("static", filename="jscn/ntwkdata.js") }}"></script>
+{% endblock %}
