@@ -145,10 +145,10 @@ def conthtop(contiden):
 @click.option("-p", "--portdata", "portdata", help="Set the port value [0-65536]", default="9696")
 @click.option("-6", "--ipprotv6", "netprotc", flag_value="ipprotv6", help="Start the server on an IPv6 address")
 @click.option("-4", "--ipprotv4", "netprotc", flag_value="ipprotv4", help="Start the server on an IPv4 address")
-@click.version_option(version="1.0.2", prog_name=click.style("SuperVisor Frontend Service", fg="magenta"))
+@click.version_option(version="1.1.0-beta", prog_name=click.style("SuperVisor Frontend Service", fg="magenta"))
 def mainfunc(portdata, netprotc):
     try:
-        click.echo(" * " + click.style("SuperVisor Frontend Service v1.0.2", fg="green"))
+        click.echo(" * " + click.style("SuperVisor Frontend Service v1.1.0-beta", fg="green"))
         click.echo(" * " + click.style("Port number    ", fg="magenta") + ": " + str(portdata))
         netpdata = ""
         if netprotc == "ipprotv6":
