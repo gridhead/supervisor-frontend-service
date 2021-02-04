@@ -1,5 +1,0 @@
-services:
-  svfrontend:
-    build: .
-    ports:
-      - "9696:9696"
