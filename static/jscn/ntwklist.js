@@ -59,7 +59,7 @@ async function populate_network_list () {
                 for (indx in data) {
                     $("#ntwklist").append(
                         `
-                        <div class="col-md-12 col-sm-12 col-12">
+                        <div class="col-md-6 col-sm-12 col-12">
                             <a class="info-box mb-1 mt-1" href="/ntwkdata/${data[indx]["id"]}">
                                 <span class="info-box-icon bg-olive"><i class="fas fa-network-wired"></i></span>
                                 <div class="info-box-content">
