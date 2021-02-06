@@ -74,7 +74,7 @@ async function populate_container_list () {
                                             <a href="/contdata/${data[indx]['id']}" class="nav-link">View preliminaries<span class="float-right"><i class="fas fa-info-circle text-olive"></i></span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/contterm/${data[indx]['id']}" class="nav-link">Attach console<span class="float-right"><i class="fas fa-terminal text-olive"></i></span></a>
+                                            <a href="/termpage/${data[indx]['id']}" class="nav-link">Attach console<span class="float-right"><i class="fas fa-terminal text-olive"></i></span></a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="/contstat/${data[indx]['id']}" class="nav-link">Watch statistics<span class="float-right"><i class="fas fa-tachometer-alt text-olive"></i></span></a>

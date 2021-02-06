@@ -33,10 +33,14 @@ function showpass() {
 
 function fetchapi() {
     let drivloca = document.getElementById("drivloca").value;
+    let sockloca = document.getElementById("sockloca").value;
     let passcode = document.getElementById("passcode").value;
-    if (drivloca.trim() !== "" && passcode.trim() !== "") {
+    if (drivloca.trim() !== "" &&
+        sockloca.trim() !== "" &&
+        passcode.trim() !== "") {
         let credjson = {
             "drivloca": drivloca,
+            "sockloca": sockloca,
             "passcode": passcode
         }
         sessionStorage.setItem("vsoniden", JSON.stringify(credjson));
@@ -47,12 +51,14 @@ function fetchapi() {
 async function testconn() {
     if (sessionStorage.getItem("vsoniden") !== null) {
         let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
+        let sockloca = JSON.parse(sessionStorage.getItem("vsoniden"))["sockloca"];
         let passcode = JSON.parse(sessionStorage.getItem("vsoniden"))["passcode"];
         try {
             await $.getJSON(drivloca + "testconn", {
                 "passcode": passcode
             }, function (data) {
                 if (data["retnmesg"] === "allow") {
+
                     document.getElementById("inptform").remove();
                     document.getElementById("textordr").innerText = "Endpoint authentication complete";
                     document.getElementById("versinfo").innerText = "Redirecting to dashboard";
@@ -60,7 +66,7 @@ async function testconn() {
                 } else {
                     $("#connfail").modal("show");
                 }
-            })
+            });
         } catch (err) {
             $("#connfail").modal("show");
         }
