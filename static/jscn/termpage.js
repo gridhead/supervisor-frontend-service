@@ -72,11 +72,16 @@ function make_terminal(element, size, ws_url, contiden) {
                     break;
                 case "disconnect":
                     term.write("\r\n" +
-                        "\u001b[33m\u001b[1m" + "CONSOLE EXITED" + "\u001b[0m\u001b[0m" +
+                        "\u001b[33m\u001b[1m" +
+                        "CONSOLE EXITED" +
+                        "\u001b[0m\u001b[0m" +
                         "\r\n" +
-                        "\u001b[32m" + "Please press BACK button to return to SUPERVISOR" + "\u001b[0m" +
+                        "\u001b[32m" +
+                        "Please press BACK button to return to SUPERVISOR" +
+                        "\u001b[0m" +
                         "\r\n" +
-                        "\u001b[32m" + "Closing this tab will LOG you out of your current session" + "\u001b[0m"
+                        "\u001b[32m" + "Closing this tab will LOG you out of your current session" +
+                        "\u001b[0m"
                     );
                     break;
             }
@@ -143,7 +148,6 @@ async function authenticate_endpoint_access (contiden) {
 }
 
 async function system_console_operations (contiden) {
-    console.log(contiden);
     if (contiden.length === 64) {
         await authenticate_endpoint_access(contiden);
     } else {
