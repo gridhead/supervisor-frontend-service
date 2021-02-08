@@ -8,7 +8,7 @@
 
 
 <p align="center">
-    <img src="https://img.shields.io/github/issues/t0xic0der/supervisor-frontend-service?style=flat-square&logo=appveyor&color=teal">
+    <a href="https://github.com/t0xic0der/supervisor-frontend-service/issues"><img src="https://img.shields.io/github/issues/t0xic0der/supervisor-frontend-service?style=flat-square&logo=appveyor&color=teal"></a>
     <img src="https://img.shields.io/github/forks/t0xic0der/supervisor-frontend-service?style=flat-square&logo=appveyor&color=teal">
     <img src="https://img.shields.io/github/stars/t0xic0der/supervisor-frontend-service?style=flat-square&logo=appveyor&color=teal">
     <img src="https://img.shields.io/github/license/t0xic0der/supervisor-frontend-service?style=flat-square&logo=appveyor&color=teal">
