@@ -4,7 +4,7 @@
 
 <h1 align="center">SuperVisor</h1>
 <h3 align="center">Frontend Service</h3>
-<p align="center">Reference frontend service for SuperVisor written in Go</p>
+<p align="center">Reference frontend service for SuperVisor written in Python</p>
 
 
 <p align="center">
