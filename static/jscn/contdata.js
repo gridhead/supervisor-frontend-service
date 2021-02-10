@@ -44,6 +44,25 @@ async function authenticate_endpoint_access () {
     }
 }
 
+async function initiate_container_attachment (contiden) {
+    if (sessionStorage.getItem("vsoniden") !== null) {
+        let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
+        let passcode = JSON.parse(sessionStorage.getItem("vsoniden"))["passcode"];
+        let sockloca = JSON.parse(sessionStorage.getItem("vsoniden"))["sockloca"];
+        let atchrqst = sockloca.replace("ws", "http");
+        await $.getJSON(atchrqst + "atchcons/", {
+            "contiden": contiden,
+            "comdexec": "sh",
+        }, function (data) {
+            if (data["retnmesg"] === "deny") {
+                $("#connfail").modal("show");
+            } else {
+                document.location.href = "/termpage/" + data["urlpatrn"];
+            }
+        });
+    }
+}
+
 async function populate_container_information(contiden) {
     let contattr = {
         "attrimej": {

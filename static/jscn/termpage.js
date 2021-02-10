@@ -22,10 +22,10 @@
 function make_terminal(element, size, ws_url, contiden) {
     var ws = new WebSocket(ws_url);
     var term = new Terminal({
-      cols: size.cols,
-      rows: size.rows,
-      screenKeys: true,
-      useStyle: true
+        cols: size.cols,
+        rows: size.rows,
+        screenKeys: true,
+        useStyle: true
     });
     ws.onopen = function(event) {
         ws.send(JSON.stringify(["set_size", size.rows, size.cols, window.innerHeight, window.innerWidth]));
@@ -56,10 +56,6 @@ function make_terminal(element, size, ws_url, contiden) {
                     "\u001b[36m\u001b[1m" +
                     "[CONTAINER CONSOLE]" +
                     "\u001b[0m\u001b[0m" +
-                    "\r\n" +
-                    "\u001b[36m" +
-                    "Run 'docker exec -ti " + contiden.substring(0, 10) + " <command>' without quotes to begin." +
-                    "\u001b[0m" +
                     "\r\n\r\n"
                 );
             }
@@ -98,7 +94,12 @@ function generate_system_console (contiden) {
     var term_cols_wide = 0.0 + 1.02 * document.getElementById("dummy-screen-rows").offsetWidth / 100;
     document.getElementById("dummy-screen").setAttribute("style", "display: none");
     var protocol = (window.location.protocol.indexOf("https") === 0) ? "wss" : "ws";
-    let wbscloca = JSON.parse(sessionStorage.getItem("vsoniden"))["sockloca"] + "websocket";
+    let wbscloca = ""
+    if (contiden === "0000000000000000000000000000000000000000000000000000000000000000") {
+        wbscloca = JSON.parse(sessionStorage.getItem("vsoniden"))["sockloca"] + "websocket";
+    } else {
+        wbscloca = JSON.parse(sessionStorage.getItem("vsoniden"))["sockloca"] + contiden;
+    }
     //var wbscloca = "ws://localhost:6969/websocket";
     function calculate_size(element) {
         var rows = Math.max(2, Math.floor(element.innerHeight / term_rows_high) - 1);
