@@ -56,13 +56,18 @@ async function testconn() {
         try {
             await $.getJSON(drivloca + "testconn", {
                 "passcode": passcode
-            }, function (data) {
-                if (data["retnmesg"] === "allow") {
-
-                    document.getElementById("inptform").remove();
-                    document.getElementById("textordr").innerText = "Endpoint authentication complete";
-                    document.getElementById("versinfo").innerText = "Redirecting to dashboard";
-                    document.location.href = "/dashbord/";
+            }, async function (data) {
+                let sockobjc = await new WebSocket(sockloca + "websocket");
+                await new Promise(r => setTimeout(r, 1000));
+                if (sockobjc.readyState !== 3) {
+                    if (data["retnmesg"] === "allow") {
+                        document.getElementById("inptform").remove();
+                        document.getElementById("textordr").innerText = "Endpoint authentication complete";
+                        document.getElementById("versinfo").innerText = "Redirecting to dashboard";
+                        document.location.href = "/dashbord/";
+                    } else {
+                        $("#connfail").modal("show");
+                    }
                 } else {
                     $("#connfail").modal("show");
                 }
