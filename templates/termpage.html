@@ -42,9 +42,15 @@
         .genrfont {
             font-family: "IBM Plex Sans";
         }
+        .terminal {
+            margin: 7.5px;
+            font-family: "IBM Plex Mono";
+            font-size: 12px;
+            background: #003525 !important;
+        }
     </style>
-    <body class="bg-gradient-olive" onload="system_console_operations('{{ contiden }}');">
-        <pre id="dummy-screen" class="text-monospace" style="visibility: hidden; font-size: 11px;" id="contwrap">
+    <body onload="system_console_operations('{{ contiden }}');" style="overflow: hidden; background: #003525 !important;">
+        <pre id="dummy-screen" class="text-monospace" style="visibility: hidden; font-size: 11px; display: inline;" id="contwrap">
             0
             1
             2
@@ -78,43 +84,43 @@
         <script src="{{ url_for("static", filename="jscn/adminlte.js") }}"></script>
         <script src="{{ url_for("static", filename="jscn/extermjs.js") }}"></script>
         <script src="{{ url_for("static", filename="jscn/termpage.js") }}"></script>
+        <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="abstcred">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
+                        <h3 class="modal-title condqant font-weight-bold">Credentials absent</h3>
+                    </div>
+                    <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                        <p class="text-justify text-dark genrfont mt-0 mb-0">
+                            The frontend service was unable to establish connection to the driver service as no
+                            credentials were provided to make the check. Please check your inputs for Synchronization
+                            URI and passcode, and attempt connecting again.
+                        </p>
+                    </div>
+                    <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
+                        <button type="button" class="btn btn-sm btn-light genrfont" onclick="document.location.href = '/'">Return to login screen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="connfail">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
+                        <h3 class="modal-title condqant font-weight-bold">Connection failed</h3>
+                    </div>
+                    <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                        <p class="text-justify text-dark genrfont mt-0 mb-0">
+                            The frontend service was unable to establish connection to the driver service using the
+                            provided credentials. Please check your inputs for Synchronization URI and passcode, and
+                            attempt connecting again.
+                        </p>
+                    </div>
+                    <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
+                        <button type="button" class="btn btn-sm btn-light genrfont" onclick="document.location.href = '/'">Return to login screen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
-    <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="abstcred">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
-                    <h3 class="modal-title condqant font-weight-bold">Credentials absent</h3>
-                </div>
-                <div class="modal-body pt-1 pb-1 pl-2 pr-2">
-                    <p class="text-justify text-dark genrfont mt-0 mb-0">
-                        The frontend service was unable to establish connection to the driver service as no
-                        credentials were provided to make the check. Please check your inputs for Synchronization
-                        URI and passcode, and attempt connecting again.
-                    </p>
-                </div>
-                <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
-                    <button type="button" class="btn btn-sm btn-light genrfont" onclick="document.location.href = '/'">Return to login screen</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="connfail">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
-                    <h3 class="modal-title condqant font-weight-bold">Connection failed</h3>
-                </div>
-                <div class="modal-body pt-1 pb-1 pl-2 pr-2">
-                    <p class="text-justify text-dark genrfont mt-0 mb-0">
-                        The frontend service was unable to establish connection to the driver service using the
-                        provided credentials. Please check your inputs for Synchronization URI and passcode, and
-                        attempt connecting again.
-                    </p>
-                </div>
-                <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
-                    <button type="button" class="btn btn-sm btn-light genrfont" onclick="document.location.href = '/'">Return to login screen</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </html>

@@ -90,8 +90,8 @@ function make_terminal(element, size, ws_url, contiden) {
 }
 
 function generate_system_console (contiden) {
-    var term_rows_high = 0.0 + 1.02 * document.getElementById("dummy-screen").offsetHeight / 31.25;
-    var term_cols_wide = 0.0 + 1.02 * document.getElementById("dummy-screen-rows").offsetWidth / 100;
+    var term_rows_high = 0.0 + 1.02 * document.getElementById("dummy-screen").offsetHeight / 40;
+    var term_cols_wide = 0.0 + 1.02 * document.getElementById("dummy-screen-rows").offsetWidth / 89;
     document.getElementById("dummy-screen").setAttribute("style", "display: none");
     var protocol = (window.location.protocol.indexOf("https") === 0) ? "wss" : "ws";
     let wbscloca = ""
@@ -100,7 +100,6 @@ function generate_system_console (contiden) {
     } else {
         wbscloca = JSON.parse(sessionStorage.getItem("vsoniden"))["sockloca"] + contiden;
     }
-    //var wbscloca = "ws://localhost:6969/websocket";
     function calculate_size(element) {
         var rows = Math.max(2, Math.floor(element.innerHeight / term_rows_high) - 1);
         var cols = Math.max(3, Math.floor(element.innerWidth / term_cols_wide) - 1);
