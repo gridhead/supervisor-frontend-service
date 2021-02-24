@@ -50,17 +50,27 @@ async function initiate_container_attachment (contiden) {
         let passcode = JSON.parse(sessionStorage.getItem("vsoniden"))["passcode"];
         let sockloca = JSON.parse(sessionStorage.getItem("vsoniden"))["sockloca"];
         let atchrqst = sockloca.replace("ws", "http");
-        await $.getJSON(atchrqst + "atchcons/", {
-            "contiden": contiden,
-            "comdexec": "sh",
-        }, function (data) {
-            if (data["retnmesg"] === "deny") {
-                $("#connfail").modal("show");
-            } else {
-                document.location.href = "/termpage/" + data["urlpatrn"];
-            }
-        });
+        let idenattc = document.getElementById("idenattc").value;
+        let comdattc = document.getElementById("comdattc").value;
+        if (idenattc.trim() !== "" && comdattc.trim() !== "") {
+            await $.getJSON(atchrqst + "atchcons/", {
+                "contiden": idenattc,
+                "comdexec": comdattc,
+            }, function (data) {
+                if (data["retnmesg"] === "deny") {
+                    $("#connfail").modal("show");
+                } else {
+                    document.location.href = "/termpage/" + data["urlpatrn"];
+                }
+            });
+        }
     }
+}
+
+function open_container_console_attachment_modal (contiden) {
+    document.getElementById("idenattc").value = contiden;
+    document.getElementById("comdattc").value = "";
+    $("#attcmode").modal("show");
 }
 
 async function populate_container_list () {
@@ -90,19 +100,19 @@ async function populate_container_list () {
                                 <div class="card-footer p-0">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a href="/contdata/${data[indx]['id']}" class="nav-link">View preliminaries<span class="float-right"><i class="fas fa-info-circle text-olive"></i></span></a>
+                                            <a onclick="document.location.href= '/contdata/${data[indx]['id']}'" class="nav-link">View preliminaries<span class="float-right"><i class="fas fa-info-circle text-olive"></i></span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a onclick="initiate_container_attachment('${data[indx]['id']}')" class="nav-link">Attach console<span class="float-right"><i class="fas fa-terminal text-olive"></i></span></a>
+                                            <a onclick="open_container_console_attachment_modal('${data[indx]['id']}')" class="nav-link">Attach console<span class="float-right"><i class="fas fa-terminal text-olive"></i></span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/contstat/${data[indx]['id']}" class="nav-link">Watch statistics<span class="float-right"><i class="fas fa-tachometer-alt text-olive"></i></span></a>
+                                            <a onclick="document.location.href= '/contstat/${data[indx]['id']}'" class="nav-link">Watch statistics<span class="float-right"><i class="fas fa-tachometer-alt text-olive"></i></span></a>
                                         </li>
                                         <li class="nav-item">    
-                                            <a href="/contlogs/${data[indx]['id']}" class="nav-link">Check logs<span class="float-right"><i class="fas fa-file-alt text-olive"></i></span></a>
+                                            <a onclick="document.location.href= '/contlogs/${data[indx]['id']}'" class="nav-link">Check logs<span class="float-right"><i class="fas fa-file-alt text-olive"></i></span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/conthtop/${data[indx]['id']}" class="nav-link">Manage processes<span class="float-right"><i class="fas fa-chart-line text-olive"></i></span></a>
+                                            <a onclick="document.location.href= '/conthtop/${data[indx]['id']}'" class="nav-link">Manage processes<span class="float-right"><i class="fas fa-chart-line text-olive"></i></span></a>
                                         </li>
                                     </ul>
                                 </div>

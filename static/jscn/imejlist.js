@@ -71,10 +71,10 @@ async function populate_image_list () {
                                 <div class="card-footer p-0">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a href="/imejdata/${data[indx]['id']}" class="nav-link">View preliminaries<span class="float-right"><i class="fas fa-info-circle text-olive"></i></span></a>
+                                            <a onclick="document.location.href='/imejdata/${data[indx]['id']}'" class="nav-link">View preliminaries<span class="float-right"><i class="fas fa-info-circle text-olive"></i></span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/imejrevs/${data[indx]['id']}" class="nav-link">Check revisions<span class="float-right"><i class="fas fa-clock text-olive"></i></span></a>
+                                            <a onclick="document.location.href='/imejrevs/${data[indx]['id']}'" class="nav-link">Check revisions<span class="float-right"><i class="fas fa-clock text-olive"></i></span></a>
                                         </li>
                                     </ul>
                                 </div>
