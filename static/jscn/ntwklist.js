@@ -62,7 +62,7 @@ async function populate_network_list () {
                         <div class="col-md-6 col-sm-12 col-12">
                             <a class="info-box mb-1 mt-1" href="/ntwkdata/${data[indx]["id"]}">
                                 <span class="info-box-icon bg-olive"><i class="fas fa-network-wired"></i></span>
-                                <div class="info-box-content">
+                                <div class="info-box-content ellipsis">
                                     <span class="info-box-text monotext">${data[indx]["id"].substring(0,10)}</span>
                                     <span class="info-box-number h2 mb-0 condqant font-weight-normal">${data[indx]["name"]}</span>
                                 </div>

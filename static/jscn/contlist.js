@@ -92,7 +92,7 @@ async function populate_container_list () {
                             <div class="card card-widget shadow-sm">
                                 <div class="info-box mb-0 mt-0">
                                     <span class="info-box-icon bg-olive"><i class="fas fa-box-open"></i></span>
-                                    <div class="info-box-content">
+                                    <div class="info-box-content ellipsis">
                                         <span class="info-box-text monotext text-olive">${data[indx]["id"].substring(0,10)}</span>
                                         <span class="info-box-number h2 mb-0 condqant font-weight-normal text-olive">${data[indx]["name"]}</span>
                                     </div>
