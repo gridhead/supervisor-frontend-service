@@ -2,7 +2,7 @@ version: "3.8"
 services:
   endpoint:
     build: .
-    command: python3 main.py -p 9696 -4
+    entrypoint: "python3 main.py -p 9696 -4"
     ports:
       - "9696:9696"
     volumes:
