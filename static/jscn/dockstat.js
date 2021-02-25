@@ -19,31 +19,6 @@
 ##########################################################################
 */
 
-async function authenticate_endpoint_access () {
-    if (sessionStorage.getItem("vsoniden") === null) {
-        $("#abstcred").modal("show");
-        return false;
-    } else {
-        let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
-        let passcode = JSON.parse(sessionStorage.getItem("vsoniden"))["passcode"];
-        try {
-            await $.getJSON(drivloca + "testconn", {
-                "passcode": passcode
-            }, function (data) {
-                if (data["retnmesg"] === "allow") {
-                    return true;
-                } else {
-                    $("#connfail").modal("show");
-                    return false;
-                }
-            })
-        } catch (err) {
-            $("#connfail").modal("show");
-            return false;
-        }
-    }
-}
-
 async function populate_information_section() {
     let dockfeat = {
         "featmmlt": {
@@ -362,9 +337,38 @@ async function populate_version_section() {
     }
 }
 
-async function docker_statistics_operations () {
-    await authenticate_endpoint_access();
+async function execute_when_authenticated () {
     await populate_information_section();
     await populate_version_section();
     document.getElementById("contwrap").removeAttribute("hidden");
+}
+
+async function authenticate_endpoint_access () {
+    if (sessionStorage.getItem("vsoniden") === null) {
+        $("#abstcred").modal("show");
+        return false;
+    } else {
+        let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
+        let passcode = JSON.parse(sessionStorage.getItem("vsoniden"))["passcode"];
+        try {
+            await $.getJSON(drivloca + "testconn", {
+                "passcode": passcode
+            }, function (data) {
+                if (data["retnmesg"] === "allow") {
+                    execute_when_authenticated();
+                    return true;
+                } else {
+                    $("#connfail").modal("show");
+                    return false;
+                }
+            })
+        } catch (err) {
+            $("#connfail").modal("show");
+            return false;
+        }
+    }
+}
+
+async function docker_statistics_operations () {
+    await authenticate_endpoint_access();
 }

@@ -57,6 +57,9 @@
                             <li class="nav-item ml-1 mr-1">
                                 <a class="nav-link text-olive bg-white pt-1 pb-1" href="/conthtop/{{ contiden }}"><i class="fas fa-chart-line"></i></a>
                             </li>
+                            <li class="nav-item ml-1 mr-1">
+                                <a class="nav-link text-olive bg-white pt-1 pb-1" onclick="open_container_console_attachment_modal('{{ contiden }}')"><i class="fas fa-terminal"></i></a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -192,6 +195,43 @@
                 </div>
                 <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
                     <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/contlist/'">Return to containers listing</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="attcmode">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
+                    <h3 class="modal-title condqant font-weight-bold">Console attachment</h3>
+                </div>
+                <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                    <p class="text-justify mt-0 mb-0">
+                        This would now allow you to attach a webconsole to the container and let you execute a command
+                        of your choice. All you need to do is enter the command below to get started with it.
+                    </p>
+                    <div class="input-group mt-2 mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <span class="fas fa-box-open"></span>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control form-control-sm" placeholder="Container identity" name="idenattc" id="idenattc" disabled>
+                    </div>
+                    <div class="input-group mt-2 mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <span class="fas fa-terminal"></span>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control form-control-sm" placeholder="Console command" name="comdattc" id="comdattc">
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between pt-1 pb-1 pl-2 pr-2 bg-olive">
+                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
+                    <div class="float-right">
+                        <button type="button" class="btn btn-sm btn-light" onclick="initiate_container_attachment();" data-dismiss="modal">Start</button>
+                    </div>
                 </div>
             </div>
         </div>

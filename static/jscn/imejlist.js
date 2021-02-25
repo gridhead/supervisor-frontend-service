@@ -59,17 +59,26 @@ async function populate_image_list () {
                 for (indx in data) {
                     $("#imejlist").append(
                         `
-                        <div class="col-md-12 col-sm-12 col-12">
-                            <a class="info-box mb-1 mt-1" href="/imejdata/${data[indx]["id"]}">
-                                <span class="info-box-icon bg-olive"><i class="fas fa-box-open"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text monotext">${data[indx]["id"].substring(7,17)}</span>
-                                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">${data[indx]["name"]}</span>
+                        <div class="col-md-6 col-sm-12 col-12">
+                            <div class="card card-widget shadow-sm">
+                                <div class="info-box mb-0 mt-0">
+                                    <span class="info-box-icon bg-olive"><i class="fas fa-sd-card"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text monotext text-olive">${data[indx]["id"].substring(7,17)}</span>
+                                        <span class="info-box-number h2 mb-0 condqant font-weight-normal text-olive">${data[indx]["name"]}</span>
+                                    </div>
                                 </div>
-                            </a>
-                            <span class="float-right text-olive text-uppercase pl-0 pr-0">
-                                <button type="button" class="btn btn-default btn-sm" onclick="document.location.href = '/imejrevs/${data[indx]["id"]}'"><i class="fas fa-clock"></i>&nbsp;View revisions</button>
-                            </span>
+                                <div class="card-footer p-0">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a onclick="document.location.href='/imejdata/${data[indx]['id']}'" class="nav-link">View preliminaries<span class="float-right"><i class="fas fa-info-circle text-olive"></i></span></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a onclick="document.location.href='/imejrevs/${data[indx]['id']}'" class="nav-link">Check revisions<span class="float-right"><i class="fas fa-clock text-olive"></i></span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                         `
                     )

@@ -19,31 +19,6 @@
 ##########################################################################
 */
 
-async function authenticate_endpoint_access () {
-    if (sessionStorage.getItem("vsoniden") === null) {
-        $("#abstcred").modal("show");
-        return false;
-    } else {
-        let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
-        let passcode = JSON.parse(sessionStorage.getItem("vsoniden"))["passcode"];
-        try {
-            await $.getJSON(drivloca + "testconn", {
-                "passcode": passcode
-            }, function (data) {
-                if (data["retnmesg"] === "allow") {
-                    return true;
-                } else {
-                    $("#connfail").modal("show");
-                    return false;
-                }
-            })
-        } catch (err) {
-            $("#connfail").modal("show");
-            return false;
-        }
-    }
-}
-
 async function populate_container_list() {
     if (sessionStorage.getItem("vsoniden") !== null) {
         let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
@@ -184,11 +159,40 @@ async function populate_volume_list() {
     }
 }
 
-async function dashboard_operations() {
-    await authenticate_endpoint_access();
+async function execute_when_authenticated () {
     await populate_container_list();
     await populate_image_list();
     await populate_network_list();
     await populate_volume_list();
     document.getElementById("contwrap").removeAttribute("hidden");
+}
+
+async function authenticate_endpoint_access () {
+    if (sessionStorage.getItem("vsoniden") === null) {
+        $("#abstcred").modal("show");
+        return false;
+    } else {
+        let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
+        let passcode = JSON.parse(sessionStorage.getItem("vsoniden"))["passcode"];
+        try {
+            await $.getJSON(drivloca + "testconn", {
+                "passcode": passcode
+            }, function (data) {
+                if (data["retnmesg"] === "allow") {
+                    execute_when_authenticated();
+                    return true;
+                } else {
+                    $("#connfail").modal("show");
+                    return false;
+                }
+            })
+        } catch (err) {
+            $("#connfail").modal("show");
+            return false;
+        }
+    }
+}
+
+async function dashboard_operations() {
+    await authenticate_endpoint_access();
 }

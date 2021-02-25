@@ -59,7 +59,7 @@ async function populate_volume_list () {
                 for (indx in data) {
                     $("#volmlist").append(
                         `
-                        <div class="col-md-12 col-sm-12 col-12">
+                        <div class="col-md-6 col-sm-12 col-12">
                             <a class="info-box mb-1 mt-1" href="/volmdata/${data[indx]["id"]}">
                                 <span class="info-box-icon bg-olive"><i class="fas fa-database"></i></span>
                                 <div class="info-box-content">

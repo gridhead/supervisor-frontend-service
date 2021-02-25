@@ -44,6 +44,35 @@ async function authenticate_endpoint_access () {
     }
 }
 
+async function initiate_container_attachment (contiden) {
+    if (sessionStorage.getItem("vsoniden") !== null) {
+        let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
+        let passcode = JSON.parse(sessionStorage.getItem("vsoniden"))["passcode"];
+        let sockloca = JSON.parse(sessionStorage.getItem("vsoniden"))["sockloca"];
+        let atchrqst = sockloca.replace("ws", "http");
+        let idenattc = document.getElementById("idenattc").value;
+        let comdattc = document.getElementById("comdattc").value;
+        if (idenattc.trim() !== "" && comdattc.trim() !== "") {
+            await $.getJSON(atchrqst + "atchcons/", {
+                "contiden": idenattc,
+                "comdexec": comdattc,
+            }, function (data) {
+                if (data["retnmesg"] === "deny") {
+                    $("#connfail").modal("show");
+                } else {
+                    document.location.href = "/termpage/" + data["urlpatrn"];
+                }
+            });
+        }
+    }
+}
+
+function open_container_console_attachment_modal (contiden) {
+    document.getElementById("idenattc").value = contiden;
+    document.getElementById("comdattc").value = "";
+    $("#attcmode").modal("show");
+}
+
 async function populate_container_information(contiden) {
     let contattr = {
         "attrimej": {
