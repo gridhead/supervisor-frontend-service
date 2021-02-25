@@ -46,6 +46,7 @@ async function authenticate_endpoint_access () {
 
 async function populate_container_logs_periodically (contiden, rfrstime) {
     if (sessionStorage.getItem("vsoniden") !== null) {
+        let ansiconv = new AnsiUp;
         while (1) {
             await new Promise(r => setTimeout(r, rfrstime * 1000));
             let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
@@ -59,7 +60,7 @@ async function populate_container_logs_periodically (contiden, rfrstime) {
                     $("#contntfd").modal("show");
                 } else {
                     if (data["logs"] !== "") {
-                        document.getElementById("logsarea").innerText = data["logs"];
+                        document.getElementById("logsarea").innerHTML = ansiconv.ansi_to_html(data["logs"]);
                         document.getElementById("contwrap").removeAttribute("hidden");
                     } else {
                         document.getElementById("logsarea").innerText = "No logs available.";
