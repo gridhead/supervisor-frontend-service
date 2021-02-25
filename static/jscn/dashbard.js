@@ -37,7 +37,7 @@ async function populate_container_list() {
                         <li class="nav-item">
                             <a href="/contdata/${data[indx]["id"]}" class="nav-link">
                                 <span class="font-weight-bold">
-                                    ${data[indx]["name"]}
+                                    ${data[indx]["name"].substring(0, 30)}
                                 </span>
                                 <span class="float-right monotext text-olive text-uppercase">
                                     ${indx}
@@ -72,7 +72,7 @@ async function populate_image_list() {
                         <li class="nav-item">
                             <a href="/imejdata/${data[indx]["id"]}" class="nav-link">
                                 <span class="font-weight-bold">
-                                    ${data[indx]["name"]}
+                                    ${data[indx]["name"].substring(0, 30)}
                                 </span>
                                 <span class="float-right monotext text-olive text-uppercase">
                                     ${indx.substr(7,10)}
@@ -107,7 +107,7 @@ async function populate_network_list() {
                         <li class="nav-item">
                             <a href="/ntwkdata/${data[indx]["id"]}" class="nav-link">
                                 <span class="font-weight-bold">
-                                    ${data[indx]["name"]}
+                                    ${data[indx]["name"].substring(0, 30)}
                                 </span>
                                 <span class="float-right monotext text-olive text-uppercase">
                                     ${indx}
@@ -142,7 +142,7 @@ async function populate_volume_list() {
                         <li class="nav-item">
                             <a href="/volmdata/${data[indx]["id"]}" class="nav-link">
                                 <span class="font-weight-bold">
-                                    ${data[indx]["name"]}
+                                    ${data[indx]["name"].substring(0, 30)}
                                 </span>
                                 <span class="float-right monotext text-olive text-uppercase">
                                     ${indx}
