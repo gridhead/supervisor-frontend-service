@@ -20,7 +20,12 @@
 */
 
 function show_theming_modal () {
-    $("#custmode").modal("show");
+    if (sessionStorage.getItem("vsoniden") === null) {
+        $("#abstcred").modal("show");
+        return false;
+    } else {
+        $("#custmode").modal("show");
+    }
 }
 
 function show_toast_notification (icontype, ttletext, conttext) {

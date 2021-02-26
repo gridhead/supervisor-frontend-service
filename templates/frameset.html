@@ -39,26 +39,26 @@
             <nav class="main-header navbar navbar-expand navbar-dark bg-olive">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                        <a class="nav-link" data-widget="pushmenu" role="button"><i class="fas fa-bars"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" onclick="show_theming_modal();" href="#" role="button"><i class="fas fa-palette"></i></a>
+                        <a class="nav-link" onclick="window.history.back();" role="button"><i class="fas fa-arrow-left"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" onclick="window.history.back();" href="#" role="button"><i class="fas fa-arrow-left"></i></a>
+                        <a class="nav-link" onclick="show_theming_modal();" role="button"><i class="fas fa-palette"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" onclick="location.reload();" href="#" role="button"><i class="fas fa-sync"></i></a>
+                        <a class="nav-link" onclick="location.reload();" role="button"><i class="fas fa-sync"></i></a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/" role="button"><i class="fas fa-power-off"></i></a>
+                        <a class="nav-link" onclick="document.location.href='/'" role="button"><i class="fas fa-power-off"></i></a>
                     </li>
                 </ul>
             </nav>
             <aside class="main-sidebar sidebar-light-olive elevation-4">
-                <a href="#" class="brand-link navbar-light bg-olive">
+                <a class="brand-link navbar-light bg-olive">
                     <span class="brand-text font-weight-heavy">
                         SuperVisor
                     </span>
