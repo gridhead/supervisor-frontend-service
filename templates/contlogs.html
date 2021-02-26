@@ -33,13 +33,13 @@
     <li class="nav-item"><a href="/ntwklist/" class="nav-link"><i class="nav-icon fas fa-network-wired"></i><p>Networks</p></a></li>
 {% endblock %}
 {% block headelem %}
-    <h1 class="m-0 text-dark condqant" id="contname">UNAVAILABLE</h1>
+    <h1 class="m-0 condqant" id="contname">UNAVAILABLE</h1>
     <span class="badge bg-black h1 monotext" id="contstat">UNAVAILABLE</span>
 {% endblock %}
 {% block bdcumbls %}
     <a class="breadcrumb-item" href="/contlist/">Containers</a>
     <a class="breadcrumb-item" href="/contdata/{{ contiden }}">{{ contiden[0:10] }}</a>
-    <a class="breadcrumb-item">Logs</a>
+    <a class="breadcrumb-item active">Logs</a>
 {% endblock %}
 {% block contwrap %}
     <div class="row">

@@ -42,6 +42,9 @@
                         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" onclick="show_theming_modal();" href="#" role="button"><i class="fas fa-palette"></i></a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" onclick="window.history.back();" href="#" role="button"><i class="fas fa-arrow-left"></i></a>
                     </li>
                     <li class="nav-item">
@@ -133,11 +136,51 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="custmode">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
+                        <h3 class="modal-title condqant font-weight-bold">Personalization</h3>
+                    </div>
+                    <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                        <p class="text-justify mt-0 mb-3">
+                            Here is where you can tweak the look and feel of the frontend service to your liking, or
+                            switch over to dark mode to reduce to glare received from your screen when working in a
+                            poorly lit environment.
+                        </p>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-12">
+                                <div class="info-box" onclick="enable_light_mode();" type="button">
+                                    <span class="info-box-icon bg-olive"><i class="fas fa-sun"></i></span>
+                                    <div class="info-box-content ellipsis">
+                                        <span class="info-box-text">Illuminance</span>
+                                        <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">Light mode</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-12">
+                                <div class="info-box" onclick="enable_dark_mode();" type="button">
+                                    <span class="info-box-icon bg-olive"><i class="fas fa-moon"></i></span>
+                                    <div class="info-box-content ellipsis">
+                                        <span class="info-box-text">Illuminance</span>
+                                        <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">Dark mode</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
+                        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% block extramod %}
         {% endblock %}
         <script src="{{ url_for("static", filename="jscn/jquery.min.js") }}"></script>
         <script src="{{ url_for("static", filename="jscn/bootstrap.bundle.js") }}"></script>
         <script src="{{ url_for("static", filename="jscn/adminlte.js") }}"></script>
+        <script src="{{ url_for("static", filename="jscn/globthem.js") }}"></script>
         {% block pagejsas %}
         {% endblock %}
     </body>
