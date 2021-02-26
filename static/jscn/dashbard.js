@@ -35,14 +35,14 @@ async function populate_container_list() {
                     $("#contlist").append(
                         `
                         <li class="nav-item">
-                            <a href="/contdata/${data[indx]["id"]}" class="nav-link">
+                            <span onclick="document.location.href='/contdata/${data[indx]["id"]}'" class="nav-link" type="button">
                                 <span class="font-weight-bold">
                                     ${data[indx]["name"].substring(0, 30)}
                                 </span>
                                 <span class="float-right monotext text-olive text-uppercase">
                                     ${indx}
                                 </span>
-                            </a>
+                            </span>
                         </li>
                         `
                     )
@@ -70,14 +70,14 @@ async function populate_image_list() {
                     $("#imejlist").append(
                         `
                         <li class="nav-item">
-                            <a href="/imejdata/${data[indx]["id"]}" class="nav-link">
+                            <span onclick="document.location.href='/imejdata/${data[indx]["id"]}'" class="nav-link" type="button">
                                 <span class="font-weight-bold">
                                     ${data[indx]["name"].substring(0, 30)}
                                 </span>
                                 <span class="float-right monotext text-olive text-uppercase">
                                     ${indx.substr(7,10)}
                                 </span>
-                            </a>
+                            </span>
                         </li>
                         `
                     )
@@ -105,14 +105,14 @@ async function populate_network_list() {
                     $("#ntwklist").append(
                         `
                         <li class="nav-item">
-                            <a href="/ntwkdata/${data[indx]["id"]}" class="nav-link">
+                            <span onclick="document.location.href='/ntwkdata/${data[indx]["id"]}'" class="nav-link" type="button">
                                 <span class="font-weight-bold">
                                     ${data[indx]["name"].substring(0, 30)}
                                 </span>
                                 <span class="float-right monotext text-olive text-uppercase">
                                     ${indx}
                                 </span>
-                            </a>
+                            </span>
                         </li>
                         `
                     )
@@ -140,14 +140,14 @@ async function populate_volume_list() {
                     $("#volmlist").append(
                         `
                         <li class="nav-item">
-                            <a href="/volmdata/${data[indx]["id"]}" class="nav-link">
+                            <span onclick="document.location.href='/volmdata/${data[indx]["id"]}'" class="nav-link" type="button">
                                 <span class="font-weight-bold">
                                     ${data[indx]["name"].substring(0, 30)}
                                 </span>
                                 <span class="float-right monotext text-olive text-uppercase">
                                     ${indx}
                                 </span>
-                            </a>
+                            </span>
                         </li>
                         `
                     )
