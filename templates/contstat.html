@@ -24,22 +24,22 @@
     container_statistics_operations('{{ contiden }}');
 {% endblock %}
 {% block sidebrel %}
-    <li class="nav-item"><a href="/dashbord/" class="nav-link"><i class="nav-icon fas fa-th"></i><p>Dashboard</p></a></li>
-    <li class="nav-item"><a href="/systdata/" class="nav-link"><i class="nav-icon fas fa-microchip"></i><p>System</p></a></li>
-    <li class="nav-item"><a href="/dockstat/" class="nav-link"><i class="nav-icon fas fa-anchor"></i><p>Station</p></a></li>
-    <li class="nav-item"><a href="#" class="nav-link active"><i class="nav-icon fas fa-box-open"></i><p>Containers</p></a></li>
-    <li class="nav-item"><a href="/imejlist/" class="nav-link"><i class="nav-icon fas fa-sd-card"></i><p>Images</p></a></li>
-    <li class="nav-item"><a href="/volmlist/" class="nav-link"><i class="nav-icon fas fa-database"></i><p>Volumes</p></a></li>
-    <li class="nav-item"><a href="/ntwklist/" class="nav-link"><i class="nav-icon fas fa-network-wired"></i><p>Networks</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/dashbord/'" class="nav-link" type="button"><i class="nav-icon fas fa-th"></i><p>Dashboard</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/systdata/'" class="nav-link" type="button"><i class="nav-icon fas fa-microchip"></i><p>System</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/dockstat/'" class="nav-link" type="button"><i class="nav-icon fas fa-anchor"></i><p>Station</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='#'" class="nav-link active" type="button"><i class="nav-icon fas fa-box-open"></i><p>Containers</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/imejlist/'" class="nav-link" type="button"><i class="nav-icon fas fa-sd-card"></i><p>Images</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/volmlist/'" class="nav-link" type="button"><i class="nav-icon fas fa-database"></i><p>Volumes</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/ntwklist/'" class="nav-link" type="button"><i class="nav-icon fas fa-network-wired"></i><p>Networks</p></a></li>
 {% endblock %}
 {% block headelem %}
     <h1 class="m-0 condqant" id="contname">UNAVAILABLE</h1>
     <span class="badge bg-black h1 monotext" id="contstat">UNAVAILABLE</span>
 {% endblock %}
 {% block bdcumbls %}
-    <a class="breadcrumb-item" href="/contlist/">Containers</a>
-    <a class="breadcrumb-item" href="/contdata/{{ contiden }}">{{ contiden[0:10] }}</a>
-    <a class="breadcrumb-item active">Stats</a>
+    <span class="breadcrumb-item" onclick="document.location.href='/contlist/'" type="button">Containers</span>
+    <span class="breadcrumb-item" onclick="document.location.href='/contdata/{{ contiden }}'" type="button">{{ contiden[0:10] }}</span>
+    <span class="breadcrumb-item active">Stats</span>
 {% endblock %}
 {% block contwrap %}
     <div class="row">
@@ -48,7 +48,7 @@
                 <span class="info-box-icon bg-olive"><i class="fas fa-microchip"></i></span>
                 <div class="info-box-content ellipsis">
                     <span class="info-box-text">Statistics</span>
-                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">CPU usage</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">CPU usage</span>
                 </div>
             </div>
         </div>
@@ -153,7 +153,7 @@
                 <span class="info-box-icon bg-olive"><i class="fas fa-microchip"></i></span>
                 <div class="info-box-content ellipsis">
                     <span class="info-box-text">Statistics</span>
-                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">Pre-CPU usage</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">Pre-CPU usage</span>
                 </div>
             </div>
         </div>
@@ -249,7 +249,7 @@
                 <span class="info-box-icon bg-olive"><i class="fas fa-memory"></i></span>
                 <div class="info-box-content ellipsis">
                     <span class="info-box-text">Statistics</span>
-                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">Memory</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">Memory</span>
                 </div>
             </div>
         </div>
@@ -310,7 +310,7 @@
                 <span class="info-box-icon bg-olive"><i class="fas fa-network-wired"></i></span>
                 <div class="info-box-content ellipsis">
                     <span class="info-box-text">Statistics</span>
-                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">Networks</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">Networks</span>
                 </div>
             </div>
         </div>
