@@ -39,6 +39,18 @@ main.secret_key = "3a5dfd3ed7a259994165c88dedf54130a68368be06e71c786de9c2346273d
 sessdict = {}
 
 
+def retnilum():
+    """
+    Returns the session-bound illumination value
+    If the session does not exist, the default illumination value is LIGHT MODE
+    """
+    if session["sessiden"] in sessdict:
+        darkmode = sessdict[session["sessiden"]]["darkmode"]
+    else:
+        darkmode = 0
+    return darkmode
+
+
 @main.errorhandler(404)
 def e404page(ertx):
     """
@@ -74,6 +86,25 @@ def svlogout():
         abort(403)
 
 
+@main.route("/lightset/", methods=["POST"])
+def lightset():
+    if "sessiden" in session:
+        if request.method == "POST":
+            darkmode = request.values["darkmode"]
+            if darkmode == "STRT":
+                if session["sessiden"] in sessdict:
+                    sessdict[session["sessiden"]]["darkmode"] = 1
+                    return dumps({"retnmesg": "allow"})
+                else:
+                    return dumps({"retnmesg": "deny"})
+            elif darkmode == "STOP":
+                if session["sessiden"] in sessdict:
+                    sessdict[session["sessiden"]]["darkmode"] = 0
+                    return dumps({"retnmesg": "allow"})
+                else:
+                    return dumps({"retnmesg": "deny"})
+
+
 @main.route("/", methods=["GET", "POST"])
 def logepage():
     """
@@ -102,11 +133,7 @@ def dashbord():
     Endpoint for station dashboard
     """
     if "sessiden" in session:
-        if session["sessiden"] in sessdict:
-            darkmode = sessdict[session["sessiden"]]["darkmode"]
-        else:
-            darkmode = 0
-        return render_template("dashbard.html", darkmode=darkmode)
+        return render_template("dashbard.html", darkmode=retnilum())
     else:
         abort(403)
 
@@ -117,7 +144,7 @@ def dockstat():
     Endpoint for container station page
     """
     if "sessiden" in session:
-        return render_template("dockstat.html")
+        return render_template("dockstat.html", darkmode=retnilum())
     else:
         abort(403)
 
@@ -128,7 +155,7 @@ def contlist():
     Endpoint for container listing page
     """
     if "sessiden" in session:
-        return render_template("contlist.html")
+        return render_template("contlist.html", darkmode=retnilum())
     else:
         abort(403)
 
@@ -139,7 +166,7 @@ def imejlist():
     Endpoint for image listing page
     """
     if "sessiden" in session:
-        return render_template("imejlist.html")
+        return render_template("imejlist.html", darkmode=retnilum())
     else:
         abort(403)
 
@@ -150,7 +177,7 @@ def volmlist():
     Endpoint for volume listing page
     """
     if "sessiden" in session:
-        return render_template("volmlist.html")
+        return render_template("volmlist.html", darkmode=retnilum())
     else:
         abort(403)
 
@@ -161,7 +188,7 @@ def ntwklist():
     Endpoint for network listing page
     """
     if "sessiden" in session:
-        return render_template("ntwklist.html")
+        return render_template("ntwklist.html", darkmode=retnilum())
     else:
         abort(403)
 
@@ -172,7 +199,7 @@ def systdata():
     Endpoint for host system performance data
     """
     if "sessiden" in session:
-        return render_template("systdata.html")
+        return render_template("systdata.html", darkmode=retnilum())
     else:
         abort(403)
 
@@ -183,7 +210,7 @@ def proclist():
     Endpoint for host system process listing page
     """
     if "sessiden" in session:
-        return render_template("proclist.html")
+        return render_template("proclist.html", darkmode=retnilum())
     else:
         abort(403)
 
@@ -195,7 +222,7 @@ def imejdata(imejiden):
     """
     if "sessiden" in session:
         if len(imejiden) == 71:
-            return render_template("imejinfo.html", imejiden=imejiden)
+            return render_template("imejinfo.html", imejiden=imejiden, darkmode=retnilum())
         else:
             abort(404)
     else:
@@ -209,7 +236,7 @@ def imejrevs(imejiden):
     """
     if "sessiden" in session:
         if len(imejiden) == 71:
-            return render_template("imejrevs.html", imejiden=imejiden)
+            return render_template("imejrevs.html", imejiden=imejiden, darkmode=retnilum())
         else:
             abort(404)
     else:
@@ -223,7 +250,7 @@ def contdata(contiden):
     """
     if "sessiden" in session:
         if len(contiden) == 64:
-            return render_template("continfo.html", contiden=contiden)
+            return render_template("continfo.html", contiden=contiden, darkmode=retnilum())
         else:
             abort(404)
     else:
@@ -237,7 +264,7 @@ def ntwkdata(ntwkiden):
     """
     if "sessiden" in session:
         if len(ntwkiden) == 64:
-            return render_template("ntwkinfo.html", ntwkiden=ntwkiden)
+            return render_template("ntwkinfo.html", ntwkiden=ntwkiden, darkmode=retnilum())
         else:
             abort(404)
     else:
@@ -250,7 +277,7 @@ def volmdata(volmiden):
     Endpoint for viewing volume information
     """
     if "sessiden" in session:
-        return render_template("volminfo.html", volmiden=volmiden)
+        return render_template("volminfo.html", volmiden=volmiden, darkmode=retnilum())
     else:
         abort(403)
 
@@ -262,7 +289,7 @@ def contlogs(contiden):
     """
     if "sessiden" in session:
         if len(contiden) == 64:
-            return render_template("contlogs.html", contiden=contiden)
+            return render_template("contlogs.html", contiden=contiden, darkmode=retnilum())
         else:
             abort(404)
     else:
@@ -276,7 +303,7 @@ def contstat(contiden):
     """
     if "sessiden" in session:
         if len(contiden) == 64:
-            return render_template("contstat.html", contiden=contiden)
+            return render_template("contstat.html", contiden=contiden, darkmode=retnilum())
         else:
             abort(404)
     else:
@@ -290,7 +317,7 @@ def conthtop(contiden):
     """
     if "sessiden" in session:
         if len(contiden) == 64:
-            return render_template("conthtop.html", contiden=contiden)
+            return render_template("conthtop.html", contiden=contiden, darkmode=retnilum())
         else:
             abort(404)
     else:
@@ -303,7 +330,7 @@ def termpage(contiden):
     Endpoint for system console page
     """
     if "sessiden" in session:
-        return render_template("termpage.html", contiden=contiden)
+        return render_template("termpage.html", contiden=contiden, darkmode=retnilum())
     else:
         abort(403)
 

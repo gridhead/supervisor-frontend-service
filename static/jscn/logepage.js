@@ -72,7 +72,8 @@ async function testconn() {
                                 "sockloca": sockloca,
                                 "passcode": passcode,
                                 "darkmode": 0
-                            }, function(data) {
+                            },
+                            function(data) {
                                 if (JSON.parse(data)["retnmesg"] === "allow") {
                                     document.location.href = "/dashbord/";
                                 }
