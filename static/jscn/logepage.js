@@ -41,7 +41,8 @@ function fetchapi() {
         let credjson = {
             "drivloca": drivloca,
             "sockloca": sockloca,
-            "passcode": passcode
+            "passcode": passcode,
+            "darkmode": 0,
         }
         sessionStorage.setItem("vsoniden", JSON.stringify(credjson));
     }

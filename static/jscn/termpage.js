@@ -121,6 +121,16 @@ function generate_system_console (contiden) {
 }
 
 async function authenticate_endpoint_access (contiden) {
+    let darkmode = JSON.parse(sessionStorage.getItem("vsoniden"))["darkmode"];
+    if (darkmode === 0) {
+        $("body").removeClass("dark-mode");
+        $("aside").addClass("sidebar-light-olive");
+        $("aside").removeClass("sidebar-dark-olive");
+    } else if (darkmode === 1) {
+        $("body").addClass("dark-mode");
+        $("aside").removeClass("sidebar-light-olive");
+        $("aside").addClass("sidebar-dark-olive");
+    }
     if (sessionStorage.getItem("vsoniden") === null) {
         $("#abstcred").modal("show");
         return false;
