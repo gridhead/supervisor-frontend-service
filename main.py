@@ -19,15 +19,24 @@
 ##########################################################################
 """
 
-import logging
+from hashlib import sha256
+from json import dumps
 
 import click
-from flask import Flask, abort, render_template
+from flask import (
+    Flask,
+    abort,
+    redirect,
+    render_template,
+    request,
+    session,
+    url_for,
+)
 
 
 main = Flask(__name__)
-loge = logging.getLogger("werkzeug")
-loge.setLevel(logging.ERROR)
+main.secret_key = "3a5dfd3ed7a259994165c88dedf54130a68368be06e71c786de9c2346273d88f"
+sessdict = {}
 
 
 @main.errorhandler(404)
@@ -38,11 +47,52 @@ def e404page(ertx):
     return render_template("e404page.html"), 404
 
 
-@main.route("/")
+@main.errorhandler(403)
+def e403page(ertx):
+    """
+    Custom 403 ERROR page
+    """
+    return render_template("e403page.html"), 403
+
+
+@main.errorhandler(500)
+def e403page(ertx):
+    """
+    Custom 500 ERROR page
+    """
+    return render_template("e500page.html"), 500
+
+
+@main.route("/svlogout/")
+def svlogout():
+    if "sessiden" in session:
+        if session["sessiden"] in sessdict:
+            sessdict.pop(session["sessiden"])
+        session.pop("sessiden", None)
+        return redirect(url_for("logepage"))
+    else:
+        abort(403)
+
+
+@main.route("/", methods=["GET", "POST"])
 def logepage():
     """
     Endpoint for login page
     """
+    if "sessiden" in session:
+        return redirect(url_for("dashbord"))
+    else:
+        if request.method == "POST":
+            sessdata = {
+                "drivloca": request.values["drivloca"],
+                "sockloca": request.values["sockloca"],
+                "passcode": request.values["passcode"],
+                "darkmode": request.values["darkmode"]
+            }
+            sessiden = sha256(dumps(sessdata).encode()).hexdigest()
+            session["sessiden"] = sessiden
+            sessdict[sessiden] = sessdata
+            return dumps({"retnmesg": "allow"})
     return render_template("logepage.html")
 
 
@@ -51,7 +101,14 @@ def dashbord():
     """
     Endpoint for station dashboard
     """
-    return render_template("dashbard.html")
+    if "sessiden" in session:
+        if session["sessiden"] in sessdict:
+            darkmode = sessdict[session["sessiden"]]["darkmode"]
+        else:
+            darkmode = 0
+        return render_template("dashbard.html", darkmode=darkmode)
+    else:
+        abort(403)
 
 
 @main.route("/dockstat/")
@@ -59,7 +116,10 @@ def dockstat():
     """
     Endpoint for container station page
     """
-    return render_template("dockstat.html")
+    if "sessiden" in session:
+        return render_template("dockstat.html")
+    else:
+        abort(403)
 
 
 @main.route("/contlist/")
@@ -67,7 +127,10 @@ def contlist():
     """
     Endpoint for container listing page
     """
-    return render_template("contlist.html")
+    if "sessiden" in session:
+        return render_template("contlist.html")
+    else:
+        abort(403)
 
 
 @main.route("/imejlist/")
@@ -75,7 +138,10 @@ def imejlist():
     """
     Endpoint for image listing page
     """
-    return render_template("imejlist.html")
+    if "sessiden" in session:
+        return render_template("imejlist.html")
+    else:
+        abort(403)
 
 
 @main.route("/volmlist/")
@@ -83,7 +149,10 @@ def volmlist():
     """
     Endpoint for volume listing page
     """
-    return render_template("volmlist.html")
+    if "sessiden" in session:
+        return render_template("volmlist.html")
+    else:
+        abort(403)
 
 
 @main.route("/ntwklist/")
@@ -91,7 +160,10 @@ def ntwklist():
     """
     Endpoint for network listing page
     """
-    return render_template("ntwklist.html")
+    if "sessiden" in session:
+        return render_template("ntwklist.html")
+    else:
+        abort(403)
 
 
 @main.route("/systdata/")
@@ -99,7 +171,10 @@ def systdata():
     """
     Endpoint for host system performance data
     """
-    return render_template("systdata.html")
+    if "sessiden" in session:
+        return render_template("systdata.html")
+    else:
+        abort(403)
 
 
 @main.route("/proclist/")
@@ -107,7 +182,10 @@ def proclist():
     """
     Endpoint for host system process listing page
     """
-    return render_template("proclist.html")
+    if "sessiden" in session:
+        return render_template("proclist.html")
+    else:
+        abort(403)
 
 
 @main.route("/imejdata/<imejiden>")
@@ -115,10 +193,13 @@ def imejdata(imejiden):
     """
     Endpoint for viewing image data
     """
-    if len(imejiden) == 71:
-        return render_template("imejinfo.html", imejiden=imejiden)
+    if "sessiden" in session:
+        if len(imejiden) == 71:
+            return render_template("imejinfo.html", imejiden=imejiden)
+        else:
+            abort(404)
     else:
-        abort(404)
+        abort(403)
 
 
 @main.route("/imejrevs/<imejiden>")
@@ -126,10 +207,13 @@ def imejrevs(imejiden):
     """
     Endpoint for viewing image revisions
     """
-    if len(imejiden) == 71:
-        return render_template("imejrevs.html", imejiden=imejiden)
+    if "sessiden" in session:
+        if len(imejiden) == 71:
+            return render_template("imejrevs.html", imejiden=imejiden)
+        else:
+            abort(404)
     else:
-        abort(404)
+        abort(403)
 
 
 @main.route("/contdata/<contiden>")
@@ -137,10 +221,13 @@ def contdata(contiden):
     """
     Endpoint for viewing container information
     """
-    if len(contiden) == 64:
-        return render_template("continfo.html", contiden=contiden)
+    if "sessiden" in session:
+        if len(contiden) == 64:
+            return render_template("continfo.html", contiden=contiden)
+        else:
+            abort(404)
     else:
-        abort(404)
+        abort(403)
 
 
 @main.route("/ntwkdata/<ntwkiden>")
@@ -148,10 +235,13 @@ def ntwkdata(ntwkiden):
     """
     Endpoint for viewing network information
     """
-    if len(ntwkiden) == 64:
-        return render_template("ntwkinfo.html", ntwkiden=ntwkiden)
+    if "sessiden" in session:
+        if len(ntwkiden) == 64:
+            return render_template("ntwkinfo.html", ntwkiden=ntwkiden)
+        else:
+            abort(404)
     else:
-        abort(404)
+        abort(403)
 
 
 @main.route("/volmdata/<volmiden>")
@@ -159,7 +249,10 @@ def volmdata(volmiden):
     """
     Endpoint for viewing volume information
     """
-    return render_template("volminfo.html", volmiden=volmiden)
+    if "sessiden" in session:
+        return render_template("volminfo.html", volmiden=volmiden)
+    else:
+        abort(403)
 
 
 @main.route("/contlogs/<contiden>")
@@ -167,10 +260,13 @@ def contlogs(contiden):
     """
     Endpoint for viewing container logging data
     """
-    if len(contiden) == 64:
-        return render_template("contlogs.html", contiden=contiden)
+    if "sessiden" in session:
+        if len(contiden) == 64:
+            return render_template("contlogs.html", contiden=contiden)
+        else:
+            abort(404)
     else:
-        abort(404)
+        abort(403)
 
 
 @main.route("/contstat/<contiden>")
@@ -178,10 +274,13 @@ def contstat(contiden):
     """
     Endpoint for viewing container statistics
     """
-    if len(contiden) == 64:
-        return render_template("contstat.html", contiden=contiden)
+    if "sessiden" in session:
+        if len(contiden) == 64:
+            return render_template("contstat.html", contiden=contiden)
+        else:
+            abort(404)
     else:
-        abort(404)
+        abort(403)
 
 
 @main.route("/conthtop/<contiden>")
@@ -189,10 +288,13 @@ def conthtop(contiden):
     """
     Endpoint for viewing container process listing
     """
-    if len(contiden) == 64:
-        return render_template("conthtop.html", contiden=contiden)
+    if "sessiden" in session:
+        if len(contiden) == 64:
+            return render_template("conthtop.html", contiden=contiden)
+        else:
+            abort(404)
     else:
-        abort(404)
+        abort(403)
 
 
 @main.route("/termpage/<contiden>")
@@ -200,7 +302,10 @@ def termpage(contiden):
     """
     Endpoint for system console page
     """
-    return render_template("termpage.html", contiden=contiden)
+    if "sessiden" in session:
+        return render_template("termpage.html", contiden=contiden)
+    else:
+        abort(403)
 
 
 @click.command()

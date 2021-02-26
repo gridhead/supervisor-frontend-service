@@ -34,7 +34,7 @@
             text-overflow: ellipsis;
         }
     </style>
-    <body class="hold-transition sidebar-mini text-sm" onload="{% block onldscpt %}{% endblock %}" style="">
+    <body class="hold-transition sidebar-mini {% if darkmode == 0 %} dark-mode {% else %} light-mode {% endif %}text-sm" onload="{% block onldscpt %}{% endblock %}" style="">
         <div class="wrapper">
             <nav class="main-header navbar navbar-expand navbar-dark bg-olive">
                 <ul class="navbar-nav">
@@ -53,7 +53,7 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" onclick="document.location.href='/'" role="button"><i class="fas fa-power-off"></i></a>
+                        <a class="nav-link" onclick="document.location.href='/svlogout/'" role="button"><i class="fas fa-power-off"></i></a>
                     </li>
                 </ul>
             </nav>

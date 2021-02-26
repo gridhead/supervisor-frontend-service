@@ -65,7 +65,19 @@ async function testconn() {
                         document.getElementById("inptform").remove();
                         document.getElementById("textordr").innerText = "Endpoint authentication complete";
                         document.getElementById("versinfo").innerText = "Redirecting to dashboard";
-                        document.location.href = "/dashbord/";
+                        await $.post(
+                            "/",
+                            {
+                                "drivloca": drivloca,
+                                "sockloca": sockloca,
+                                "passcode": passcode,
+                                "darkmode": 0
+                            }, function(data) {
+                                if (JSON.parse(data)["retnmesg"] === "allow") {
+                                    document.location.href = "/dashbord/";
+                                }
+                            }
+                        );
                     } else {
                         $("#connfail").modal("show");
                     }
