@@ -34,7 +34,7 @@
             text-overflow: ellipsis;
         }
     </style>
-    <body class="hold-transition sidebar-mini {% if darkmode == 0 %} dark-mode {% else %} light-mode {% endif %}text-sm" onload="{% block onldscpt %}{% endblock %}" style="">
+    <body class="hold-transition sidebar-mini {% if darkmode == 1 %} dark-mode {% else %} light-mode {% endif %} text-sm" onload="{% block onldscpt %}{% endblock %}" style="">
         <div class="wrapper">
             <nav class="main-header navbar navbar-expand navbar-dark bg-olive">
                 <ul class="navbar-nav">
@@ -57,7 +57,7 @@
                     </li>
                 </ul>
             </nav>
-            <aside class="main-sidebar sidebar-light-olive elevation-4">
+            <aside class="main-sidebar {% if darkmode == 1 %} sidebar-dark-olive {% else %} sidebar-light-olive {% endif %} elevation-4">
                 <a class="brand-link navbar-light bg-olive">
                     <span class="brand-text font-weight-heavy">
                         SuperVisor
