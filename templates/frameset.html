@@ -73,8 +73,41 @@
                 <div class="sidebar">
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        	{% block sidebrel %}
-                            {% endblock %}
+                            <li class="nav-item">
+                                <a onclick="document.location.href={% if request.path[0:10] == '/dashbord/' %} '#' {% else %} '/dashbord/' {% endif %};" class="nav-link {% if request.path[0:10] == '/dashbord/' %} active {% endif %}" type="button">
+                                    <i class="nav-icon fas fa-th"></i><p>Dashboard</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a onclick="document.location.href={% if request.path[0:10] in ['/systdata/','/proclist/'] %} '#' {% else %} '/systdata/' {% endif %};" class="nav-link {% if request.path[0:10] in ['/systdata/','/proclist/'] %} active {% endif %}" type="button">
+                                    <i class="nav-icon fas fa-microchip"></i><p>System</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a onclick="document.location.href={% if request.path[0:10] == '/dockstat/' %} '#' {% else %} '/dockstat/' {% endif %};" class="nav-link {% if request.path[0:10] == '/dockstat/' %} active {% endif %}" type="button">
+                                    <i class="nav-icon fas fa-anchor"></i><p>Station</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a onclick="document.location.href={% if request.path[0:10] in ['/contlist/','/contdata/','/contstat/','/contlogs/','/conthtop/'] %} '#' {% else %} '/contlist/' {% endif %};" class="nav-link {% if request.path[0:10] in ['/contlist/','/contdata/','/contstat/','/contlogs/','/conthtop/'] %} active {% endif %}" type="button">
+                                    <i class="nav-icon fas fa-box-open"></i><p>Containers</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a onclick="document.location.href={% if request.path[0:10] in ['/imejlist/','/imejdata/','/imejrevs/'] %} '#' {% else %} '/imejlist/' {% endif %};" class="nav-link {% if request.path[0:10] in ['/imejlist/','/imejdata/','/imejrevs/'] %} active {% endif %}" type="button">
+                                    <i class="nav-icon fas fa-sd-card"></i><p>Images</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a onclick="document.location.href={% if request.path[0:10] in ['/volmlist/','/volmdata/'] %} '#' {% else %} '/volmlist/' {% endif %};" class="nav-link {% if request.path[0:10] in ['/volmlist/','/volmdata/'] %} active {% endif %}" type="button">
+                                    <i class="nav-icon fas fa-database"></i><p>Volumes</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a onclick="document.location.href={% if request.path[0:10] in ['/ntwklist/','/ntwkdata/'] %} '#' {% else %} '/ntwklist/' {% endif %};" class="nav-link {% if request.path[0:10] in ['/ntwklist/','/ntwkdata/'] %} active {% endif %}" type="button">
+                                    <i class="nav-icon fas fa-network-wired"></i><p>Networks</p>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
