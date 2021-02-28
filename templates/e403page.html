@@ -1,0 +1,71 @@
+<!--
+##########################################################################
+*
+*   Copyright © 2019-2021 Akashdeep Dhar <t0xic0der@fedoraproject.org>
+*
+*   This program is free software: you can redistribute it and/or modify
+*   it under the terms of the GNU General Public License as published by
+*   the Free Software Foundation, either version 3 of the License, or
+*   (at your option) any later version.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*
+##########################################################################
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SuperVisor v1.1.0-beta</title>
+        <link rel="stylesheet" href="{{ url_for("static", filename="css3/custfrmt.css") }}">
+        <link rel="stylesheet" href="{{ url_for("static", filename="css3/fontsome.css") }}">
+        <link rel="stylesheet" href="{{ url_for("static", filename="css3/adminlte.css") }}">
+    </head>
+    <style>
+        * {
+            font-family: "IBM Plex Sans";
+        }
+        .condqant {
+            font-family: 'Barlow Condensed', sans-serif;
+        }
+        .monotext {
+            font-family: 'Roboto Mono', monospace;
+        }
+        .vertical-center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+    </style>
+    <body class="hold-transition login-page text-sm text-light bg-gradient-olive">
+        <section class="content vertical-center">
+            <div>
+                <h1 class="condqant text-warning" style="text-align: center;"><i class="fas fa-exclamation-triangle text-warning"></i></h1>
+                <h1 class="condqant text-warning display-1 text-center"> 403</h1>
+                <div>
+                    <h3 class="condqant text-center">Access denied</h3>
+                    <p class="text-center" style="max-width: 600px;">
+                        The resource you are trying to access requires you to login using valid credentials. Please try again after entering correct credentials.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default btn-sm" onclick="document.location.href = '/'">Login</button>
+                    <button type="button" class="btn btn-default btn-sm" onclick="window.history.back()">Go back</button>
+                </div>
+            </div>
+        </section>
+    </body>
+    <script src="{{ url_for("static", filename="jscn/jquery.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="jscn/bootstrap.bundle.js") }}"></script>
+    <script src="{{ url_for("static", filename="jscn/adminlte.js") }}"></script>
+</html>

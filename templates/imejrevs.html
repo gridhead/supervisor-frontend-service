@@ -36,9 +36,9 @@
     <h1 class="m-0 condqant" id="imejname">UNAVAILABLE</h1>
 {% endblock %}
 {% block bdcumbls %}
-    <span class="breadcrumb-item" onclick="document.location.href='/imejlist/'" type="button">Images</span>
-    <span class="breadcrumb-item" onclick="document.location.href='/imejdata/{{ imejiden }}'" type="button">{{ imejiden[7:17] }}</span>
-    <span class="breadcrumb-item active">Revisions</span>
+    <li class="breadcrumb-item" onclick="document.location.href='/imejlist/'" type="button">Images</li>
+    <li class="breadcrumb-item" onclick="document.location.href='/imejdata/{{ imejiden }}'" type="button">{{ imejiden[7:17] }}</li>
+    <li class="breadcrumb-item active">Revisions</li>
 {% endblock %}
 {% block contwrap %}
     <div class="row" id="revslist">

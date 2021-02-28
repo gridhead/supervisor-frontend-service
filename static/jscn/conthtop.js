@@ -26,16 +26,6 @@ async function authenticate_endpoint_access () {
     } else {
         let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
         let passcode = JSON.parse(sessionStorage.getItem("vsoniden"))["passcode"];
-        let darkmode = JSON.parse(sessionStorage.getItem("vsoniden"))["darkmode"];
-        if (darkmode === 0) {
-            $("body").removeClass("dark-mode");
-            $("aside").addClass("sidebar-light-olive");
-            $("aside").removeClass("sidebar-dark-olive");
-        } else if (darkmode === 1) {
-            $("body").addClass("dark-mode");
-            $("aside").removeClass("sidebar-light-olive");
-            $("aside").addClass("sidebar-dark-olive");
-        }
         try {
             await $.getJSON(drivloca + "testconn", {
                 "passcode": passcode
