@@ -37,9 +37,9 @@
     <span class="badge bg-black h1 monotext" id="contstat">UNAVAILABLE</span>
 {% endblock %}
 {% block bdcumbls %}
-    <span class="breadcrumb-item" onclick="document.location.href='/contlist/'" type="button">Containers</span>
-    <span class="breadcrumb-item" onclick="document.location.href='/contdata/{{ contiden }}'" type="button">{{ contiden[0:10] }}</span>
-    <span class="breadcrumb-item active">Stats</span>
+    <li class="breadcrumb-item" onclick="document.location.href='/contlist/'" type="button">Containers</li>
+    <li class="breadcrumb-item" onclick="document.location.href='/contdata/{{ contiden }}'" type="button">{{ contiden[0:10] }}</li>
+    <li class="breadcrumb-item active">Stats</li>
 {% endblock %}
 {% block contwrap %}
     <div class="row">
