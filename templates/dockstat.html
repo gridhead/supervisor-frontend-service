@@ -24,16 +24,16 @@
     docker_statistics_operations();
 {% endblock %}
 {% block sidebrel %}
-    <li class="nav-item"><a href="/dashbord/" class="nav-link"><i class="nav-icon fas fa-th"></i><p>Dashboard</p></a></li>
-    <li class="nav-item"><a href="/systdata/" class="nav-link"><i class="nav-icon fas fa-microchip"></i><p>System</p></a></li>
-    <li class="nav-item"><a href="#" class="nav-link active"><i class="nav-icon fas fa-anchor"></i><p>Station</p></a></li>
-    <li class="nav-item"><a href="/contlist/" class="nav-link"><i class="nav-icon fas fa-box-open"></i><p>Containers</p></a></li>
-    <li class="nav-item"><a href="/imejlist/" class="nav-link"><i class="nav-icon fas fa-sd-card"></i><p>Images</p></a></li>
-    <li class="nav-item"><a href="/volmlist/" class="nav-link"><i class="nav-icon fas fa-database"></i><p>Volumes</p></a></li>
-    <li class="nav-item"><a href="/ntwklist/" class="nav-link"><i class="nav-icon fas fa-network-wired"></i><p>Networks</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/dashbord/'" class="nav-link" type="button"><i class="nav-icon fas fa-th"></i><p>Dashboard</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/systdata/'" class="nav-link" type="button"><i class="nav-icon fas fa-microchip"></i><p>System</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='#'" class="nav-link active" type="button"><i class="nav-icon fas fa-anchor"></i><p>Station</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/contlist/'" class="nav-link" type="button"><i class="nav-icon fas fa-box-open"></i><p>Containers</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/imejlist/'" class="nav-link" type="button"><i class="nav-icon fas fa-sd-card"></i><p>Images</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/volmlist/'" class="nav-link" type="button"><i class="nav-icon fas fa-database"></i><p>Volumes</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/ntwklist/'" class="nav-link" type="button"><i class="nav-icon fas fa-network-wired"></i><p>Networks</p></a></li>
 {% endblock %}
 {% block headelem %}
-    <h1 class="m-0 text-dark condqant">Docker station</h1>
+    <h1 class="m-0 condqant">Docker station</h1>
 {% endblock %}
 {% block bdcumbls %}
     <li class="breadcrumb-item active">Statistics</li>
@@ -43,7 +43,7 @@
         <span class="info-box-icon bg-olive"><i class="fas fa-fingerprint"></i></span>
         <div class="info-box-content ellipsis">
             <span class="info-box-text">Server ID</span>
-            <span class="info-box-number h2 mb-0 condqant font-weight-normal" id="speciden">UNAVAILABLE</span>
+            <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal" id="speciden">UNAVAILABLE</span>
         </div>
     </div>
     <div class="row">
@@ -52,7 +52,7 @@
                 <span class="info-box-icon bg-olive"><i class="fas fa-info-circle"></i></span>
                 <div class="info-box-content ellipsis">
                     <span class="info-box-text">Docker</span>
-                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">Information</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">Information</span>
                 </div>
             </div>
             <div class="card">
@@ -128,7 +128,7 @@
                 <span class="info-box-icon bg-olive"><i class="fas fa-code-branch"></i></span>
                 <div class="info-box-content ellipsis">
                     <span class="info-box-text">Docker</span>
-                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">Version</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">Version</span>
                 </div>
             </div>
             <div class="card">

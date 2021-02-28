@@ -220,9 +220,9 @@ async function populate_information_section() {
                         `
                         <tr>
                             <td class="pl-2">
-                                <code class="monotext nogetout">
+                                <p class="monotext nogetout m-0">
                                     ${data["Warnings"][indx]}
-                                </code>
+                                </p>
                             </td>
                         </tr>
                         `

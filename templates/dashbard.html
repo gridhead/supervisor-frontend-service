@@ -24,16 +24,16 @@
     dashboard_operations();
 {% endblock %}
 {% block sidebrel %}
-    <li class="nav-item"><a href="#" class="nav-link active"><i class="nav-icon fas fa-th"></i><p>Dashboard</p></a></li>
-    <li class="nav-item"><a href="/systdata/" class="nav-link"><i class="nav-icon fas fa-microchip"></i><p>System</p></a></li>
-    <li class="nav-item"><a href="/dockstat/" class="nav-link"><i class="nav-icon fas fa-anchor"></i><p>Station</p></a></li>
-    <li class="nav-item"><a href="/contlist/" class="nav-link"><i class="nav-icon fas fa-box-open"></i><p>Containers</p></a></li>
-    <li class="nav-item"><a href="/imejlist/" class="nav-link"><i class="nav-icon fas fa-sd-card"></i><p>Images</p></a></li>
-    <li class="nav-item"><a href="/volmlist/" class="nav-link"><i class="nav-icon fas fa-database"></i><p>Volumes</p></a></li>
-    <li class="nav-item"><a href="/ntwklist/" class="nav-link"><i class="nav-icon fas fa-network-wired"></i><p>Networks</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='#'" class="nav-link active" type="button"><i class="nav-icon fas fa-th"></i><p>Dashboard</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/systdata/'" class="nav-link" type="button"><i class="nav-icon fas fa-microchip"></i><p>System</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/dockstat/'" class="nav-link" type="button"><i class="nav-icon fas fa-anchor"></i><p>Station</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/contlist/'" class="nav-link" type="button"><i class="nav-icon fas fa-box-open"></i><p>Containers</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/imejlist/'" class="nav-link" type="button"><i class="nav-icon fas fa-sd-card"></i><p>Images</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/volmlist/'" class="nav-link" type="button"><i class="nav-icon fas fa-database"></i><p>Volumes</p></a></li>
+    <li class="nav-item"><a onclick="document.location.href='/ntwklist/'" class="nav-link" type="button"><i class="nav-icon fas fa-network-wired"></i><p>Networks</p></a></li>
 {% endblock %}
 {% block headelem %}
-    <h1 class="m-0 text-dark condqant">Welcome to SuperVisor!</h1>
+    <h1 class="m-0 condqant">Welcome to SuperVisor!</h1>
 {% endblock %}
 {% block bdcumbls %}
     <li class="breadcrumb-item active">Dashboard</li>
@@ -45,7 +45,7 @@
                 <span class="info-box-icon bg-olive"><i class="fas fa-box-open"></i></span>
                 <div class="info-box-content ellipsis">
                     <span class="info-box-text">Containers</span>
-                    <span class="info-box-number h2 mb-0 condqant font-weight-normal" id="contnumb">0</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal" id="contnumb">0</span>
                 </div>
             </div>
             <div class="card card-widget widget-user-2">
@@ -60,7 +60,7 @@
                 <span class="info-box-icon bg-olive"><i class="fas fa-sd-card"></i></span>
                 <div class="info-box-content ellipsis">
                     <span class="info-box-text">Images</span>
-                    <span class="info-box-number h2 mb-0 condqant font-weight-normal" id="imejnumb">0</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal" id="imejnumb">0</span>
                 </div>
             </div>
             <div class="card card-widget widget-user-2">
@@ -75,7 +75,7 @@
                 <span class="info-box-icon bg-olive"><i class="fas fa-database"></i></span>
                 <div class="info-box-content ellipsis">
                     <span class="info-box-text">Volumes</span>
-                    <span class="info-box-number h2 mb-0 condqant font-weight-normal" id="volmnumb">0</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal" id="volmnumb">0</span>
                 </div>
             </div>
             <div class="card card-widget widget-user-2">
@@ -90,7 +90,7 @@
                 <span class="info-box-icon bg-olive"><i class="fas fa-network-wired"></i></span>
                 <div class="info-box-content ellipsis">
                     <span class="info-box-text">Networks</span>
-                    <span class="info-box-number h2 mb-0 condqant font-weight-normal" id="ntwknumb">0</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal" id="ntwknumb">0</span>
                 </div>
             </div>
             <div class="card card-widget widget-user-2">
