@@ -162,7 +162,7 @@ async function populate_image_name (imejiden) {
             if (data["retnmesg"] === "deny") {
                 $("#imejntfd").modal("show");
             } else {
-                document.getElementById("imejname").innerText = data["name"];
+                document.getElementById("imejname").innerText = data["name"].substring(0, 25);
             }
         });
     }
