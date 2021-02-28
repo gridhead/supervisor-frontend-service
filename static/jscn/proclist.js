@@ -44,6 +44,20 @@ async function authenticate_endpoint_access () {
     }
 }
 
+function show_toast_notification (icontype, ttletext, conttext) {
+    $(document).Toasts(
+        "create", {
+            title: ttletext,
+            body: conttext,
+            autohide: true,
+            autoremove: true,
+            icon: icontype,
+            delay: 2500,
+            class: "m-2"
+        }
+    );
+}
+
 async function terminate_said_process (prociden) {
     if (sessionStorage.getItem("vsoniden") !== null) {
         let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
@@ -54,13 +68,17 @@ async function terminate_said_process (prociden) {
             "opername": "TERM"
         }, function (data) {
             if (data["retnmesg"] === true) {
-                document.getElementById("toolhead").innerText = "Process terminated";
-                document.getElementById("tooldata").innerText = "Termination request for PID #" + prociden + " was accepted."
-                $("#toolmode").modal("show");
+                show_toast_notification(
+                    "fas fa-check-circle",
+                    "Process terminated",
+                    "Termination request for PID #" + prociden + " was accepted."
+                );
             } else if (data["retnmesg"] === false) {
-                document.getElementById("toolhead").innerText = "Termination failed";
-                document.getElementById("tooldata").innerText = "Termination request for PID #" + prociden + " was declined."
-                $("#toolmode").modal("show");
+                show_toast_notification(
+                    "fas fa-exclamation-circle",
+                    "Termination failed",
+                    "Termination request for PID #" + prociden + " was declined."
+                );
             } else {
                 $("#connfail").modal("show");
             }
@@ -78,13 +96,17 @@ async function kill_said_process (prociden) {
             "opername": "KILL"
         }, function (data) {
             if (data["retnmesg"] === true) {
-                document.getElementById("toolhead").innerText = "Process killed";
-                document.getElementById("tooldata").innerText = "Killing request for PID #" + prociden + " was accepted."
-                $("#toolmode").modal("show");
+                show_toast_notification(
+                    "fas fa-check-circle",
+                    "Process killed",
+                    "Killing request for PID #" + prociden + " was accepted."
+                );
             } else if (data["retnmesg"] === false) {
-                document.getElementById("toolhead").innerText = "Killing failed";
-                document.getElementById("tooldata").innerText = "Killing request for PID #" + prociden + " was declined."
-                $("#toolmode").modal("show");
+                show_toast_notification(
+                    "fas fa-exclamation-circle",
+                    "Killing failed",
+                    "Killing request for PID #" + prociden + " was declined."
+                );
             } else {
                 $("#connfail").modal("show");
             }
@@ -102,13 +124,17 @@ async function resume_said_process (prociden) {
             "opername": "CONT"
         }, function (data) {
             if (data["retnmesg"] === true) {
-                document.getElementById("toolhead").innerText = "Process resumed";
-                document.getElementById("tooldata").innerText = "Resuming request for PID #" + prociden + " was accepted."
-                $("#toolmode").modal("show");
+                show_toast_notification(
+                    "fas fa-check-circle",
+                    "Process resumed",
+                    "Resuming request for PID #" + prociden + " was accepted."
+                );
             } else if (data["retnmesg"] === false) {
-                document.getElementById("toolhead").innerText = "Resuming failed";
-                document.getElementById("tooldata").innerText = "Resuming request for PID #" + prociden + " was declined."
-                $("#toolmode").modal("show");
+                show_toast_notification(
+                    "fas fa-exclamation-circle",
+                    "Resuming failed",
+                    "Resuming request for PID #" + prociden + " was declined."
+                );
             } else {
                 $("#connfail").modal("show");
             }
@@ -126,13 +152,17 @@ async function suspend_said_process (prociden) {
             "opername": "HANG"
         }, function (data) {
             if (data["retnmesg"] === true) {
-                document.getElementById("toolhead").innerText = "Process suspended";
-                document.getElementById("tooldata").innerText = "Suspension request for PID #" + prociden + " was accepted."
-                $("#toolmode").modal("show");
+                show_toast_notification(
+                    "fas fa-check-circle",
+                    "Process suspended",
+                    "Suspension request for PID #" + prociden + " was accepted."
+                );
             } else if (data["retnmesg"] === false) {
-                document.getElementById("toolhead").innerText = "Suspension failed";
-                document.getElementById("tooldata").innerText = "Suspension request for PID #" + prociden + " was declined."
-                $("#toolmode").modal("show");
+                show_toast_notification(
+                    "fas fa-exclamation-circle",
+                    "Suspension failed",
+                    "Suspension request for PID #" + prociden + " was declined."
+                );
             } else {
                 $("#connfail").modal("show");
             }
