@@ -57,7 +57,7 @@ async function populate_network_information (ntwkiden) {
                 $("#ntwkntfd").modal("show");
             } else {
                 // Attributes
-                document.getElementById("ntwkname").innerText = data["name"];
+                document.getElementById("ntwkname").innerText = data["name"].substring(0, 25);
                 document.getElementById("attriden").innerText = data["name"];
                 document.getElementById("attrmkdt").innerText = data["attrs"]["Created"];
                 document.getElementById("attrscop").innerText = data["attrs"]["Scope"];

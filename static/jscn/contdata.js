@@ -357,7 +357,7 @@ async function populate_container_information(contiden) {
             if (data["retnmesg"] === "deny") {
                 $("#contntfd").modal("show");
             } else {
-                document.getElementById("contname").innerText = data["name"];
+                document.getElementById("contname").innerText = data["name"].substring(0, 25);
                 if (data["attrs"]["State"]["Status"] === "running") {
                     document.getElementById("contstat").innerText = data["attrs"]["State"]["Status"].toUpperCase();
                     document.getElementById("contstat").classList.add("bg-success");

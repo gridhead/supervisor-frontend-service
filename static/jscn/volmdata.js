@@ -56,7 +56,7 @@ async function populate_volume_information (volmiden) {
             if (data["retnmesg"] === "deny") {
                 $("#volmntfd").modal("show");
             } else {
-                document.getElementById("volmname").innerText = data["name"];
+                document.getElementById("volmname").innerText = data["name"].substring(0, 25);
                 document.getElementById("attriden").innerText = data["name"];
                 document.getElementById("attrmkdt").innerText = data["attrs"]["CreatedAt"];
                 document.getElementById("attrdrvr").innerText = data["attrs"]["Driver"];
