@@ -85,6 +85,13 @@ async function populate_container_list () {
                 $("#connfail").modal("show");
             } else {
                 let contlent = 0;
+                // Sorting JSON on the basis of key first before populating DOM elements
+                data = Object.keys(data).sort().reduce(
+                    (obj, key) => {
+                        obj[key] = data[key];
+                        return obj;
+                    }, {}
+                );
                 for (indx in data) {
                     $("#contlist").append(
                         `
