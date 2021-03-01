@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="{{ url_for("static", filename="css3/custfrmt.css") }}">
         <link rel="stylesheet" href="{{ url_for("static", filename="css3/fontsome.css") }}">
         <link rel="stylesheet" href="{{ url_for("static", filename="css3/adminlte.css") }}">
+        <link rel="shortcut icon" href="{{ url_for("static", filename="imgs/mainicon.svg") }}">
     </head>
     <style>
         * {
@@ -65,7 +66,7 @@
             </nav>
             <aside class="main-sidebar {% if darkmode == 1 %} sidebar-dark-olive {% else %} sidebar-light-olive {% endif %} elevation-1">
                 <a class="brand-link {% if darkmode == 1 %} navbar-dark {% else %} navbar-light {% endif %} bg-light elevation-1">
-                    <img src="{{ url_for("static", filename="imgs/supervisor.svg") }}" class="brand-image {% if darkmode == 1 %} dark-svgs {% else %} lite-svgs {% endif %}" style="opacity: .8">
+                    <img src="{{ url_for("static", filename="imgs/mainicon.svg") }}" class="brand-image {% if darkmode == 1 %} dark-svgs {% else %} lite-svgs {% endif %}" style="opacity: .8">
                     <span class="brand-text font-weight-heavy">
                         SuperVisor
                     </span>
