@@ -89,7 +89,7 @@ function make_terminal(element, size, ws_url, contiden) {
     };
 }
 
-function generate_system_console (contiden) {
+async function generate_system_console (contiden) {
     var term_rows_high = 0.0 + 1.02 * document.getElementById("dummy-screen").offsetHeight / 40;
     var term_cols_wide = 0.0 + 1.02 * document.getElementById("dummy-screen-rows").offsetWidth / 89;
     document.getElementById("dummy-screen").setAttribute("style", "display: none");
@@ -110,14 +110,20 @@ function generate_system_console (contiden) {
         };
     }
     size = calculate_size(window);
-    var terminal = make_terminal(document.body, size, wbscloca, contiden);
-    window.onresize = function() {
-        var geometry = calculate_size(window);
-        terminal.term.resize(geometry.cols, geometry.rows);
-        terminal.socket.send(
-            JSON.stringify(["set_size", geometry.rows, geometry.cols, window.innerHeight, window.innerWidth])
-        );
-    };
+    let testobjc = new WebSocket(wbscloca);
+    await new Promise(r => setTimeout(r, 1000));
+    if (testobjc.readyState !== 3) {
+        var terminal = make_terminal(document.body, size, wbscloca, contiden);
+        window.onresize = function () {
+            var geometry = calculate_size(window);
+            terminal.term.resize(geometry.cols, geometry.rows);
+            terminal.socket.send(
+                JSON.stringify(["set_size", geometry.rows, geometry.cols, window.innerHeight, window.innerWidth])
+            );
+        };
+    } else {
+        $("#edptntfd").modal("show");
+    }
 }
 
 async function authenticate_endpoint_access (contiden) {
