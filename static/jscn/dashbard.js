@@ -31,6 +31,13 @@ async function populate_container_list() {
                 $("#connfail").modal("show");
             } else {
                 let contlent = 0;
+                // Sorting JSON on the basis of key first before populating DOM elements
+                data = Object.keys(data).sort().reduce(
+                    (obj, key) => {
+                        obj[key] = data[key];
+                        return obj;
+                    }, {}
+                );
                 for (indx in data) {
                     $("#contlist").append(
                         `
@@ -66,6 +73,13 @@ async function populate_image_list() {
                 $("#connfail").modal("show");
             } else {
                 let imejlent = 0;
+                // Sorting JSON on the basis of key first before populating DOM elements
+                data = Object.keys(data).sort().reduce(
+                    (obj, key) => {
+                        obj[key] = data[key];
+                        return obj;
+                    }, {}
+                );
                 for (indx in data) {
                     $("#imejlist").append(
                         `
@@ -101,6 +115,13 @@ async function populate_network_list() {
                 $("#connfail").modal("show");
             } else {
                 let ntwklent = 0;
+                // Sorting JSON on the basis of key first before populating DOM elements
+                data = Object.keys(data).sort().reduce(
+                    (obj, key) => {
+                        obj[key] = data[key];
+                        return obj;
+                    }, {}
+                );
                 for (indx in data) {
                     $("#ntwklist").append(
                         `
@@ -136,6 +157,13 @@ async function populate_volume_list() {
                 $("#connfail").modal("show");
             } else {
                 let volmlent = 0;
+                // Sorting JSON on the basis of key first before populating DOM elements
+                data = Object.keys(data).sort().reduce(
+                    (obj, key) => {
+                        obj[key] = data[key];
+                        return obj;
+                    }, {}
+                );
                 for (indx in data) {
                     $("#volmlist").append(
                         `
