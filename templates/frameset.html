@@ -59,7 +59,7 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" onclick="document.location.href='/svlogout/'" role="button"><i class="fas fa-power-off"></i></a>
+                        <a class="nav-link" onclick="$('#logoutmd').modal('show');" role="button"><i class="fas fa-power-off"></i></a>
                     </li>
                 </ul>
             </nav>
@@ -212,6 +212,28 @@
                     </div>
                     <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
                         <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="logoutmd">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
+                        <h3 class="modal-title condqant font-weight-bold">Confirm logout</h3>
+                    </div>
+                    <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                        <p class="text-justify mt-0 mb-0">
+                            All client-side session information would be purged off and you would be logged out of your
+                            current session. Any unsaved changes would be unrecoverably lost. Are you sure you want to
+                            log out now?
+                        </p>
+                    </div>
+                    <div class="modal-footer justify-content-between pt-1 pb-1 pl-2 pr-2 bg-olive">
+                        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Return</button>
+                        <div class="float-right">
+                            <button type="button" class="btn btn-sm btn-light" onclick="document.location.href='/svlogout/';" data-dismiss="modal">Logout</button>
+                        </div>
                     </div>
                 </div>
             </div>
