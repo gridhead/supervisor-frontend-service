@@ -76,6 +76,27 @@ def e403page(ertx):
     return render_template("e500page.html"), 500
 
 
+@main.route("/credpull/", methods=["POST"])
+def credpull():
+    """
+    Fetch credentials stored at server-end
+    """
+    if "sessiden" in session:
+        if request.method == "POST":
+            if session["sessiden"] in sessdict:
+                retndict = {
+                    "retnmesg": "allow",
+                    "drivloca": sessdict[session["sessiden"]]["drivloca"],
+                    "sockloca": sessdict[session["sessiden"]]["sockloca"],
+                    "passcode": sessdict[session["sessiden"]]["passcode"],
+                }
+            else:
+                retndict = {
+                    "retnmesg": "deny"
+                }
+            return dumps(retndict)
+
+
 @main.route("/svlogout/")
 def svlogout():
     """
