@@ -94,7 +94,15 @@ def credpull():
                 retndict = {
                     "retnmesg": "deny"
                 }
-            return dumps(retndict)
+        else:
+            retndict = {
+                "retnmesg": "deny"
+            }
+    else:
+        retndict = {
+            "retnmesg": "deny"
+        }
+    return dumps(retndict)
 
 
 @main.route("/svlogout/")
@@ -122,15 +130,32 @@ def lightset():
             if darkmode == "STRT":
                 if session["sessiden"] in sessdict:
                     sessdict[session["sessiden"]]["darkmode"] = 1
-                    return dumps({"retnmesg": "allow"})
+                    retndict = {
+                        "retnmesg": "allow"
+                    }
                 else:
-                    return dumps({"retnmesg": "deny"})
-            elif darkmode == "STOP":
+                    retndict = {
+                        "retnmesg": "deny"
+                    }
+            else:
                 if session["sessiden"] in sessdict:
                     sessdict[session["sessiden"]]["darkmode"] = 0
-                    return dumps({"retnmesg": "allow"})
+                    retndict = {
+                        "retnmesg": "allow"
+                    }
                 else:
-                    return dumps({"retnmesg": "deny"})
+                    retndict = {
+                        "retnmesg": "deny"
+                    }
+        else:
+            retndict = {
+                "retnmesg": "deny"
+            }
+    else:
+        retndict = {
+            "retnmesg": "deny"
+        }
+    return dumps(retndict)
 
 
 @main.route("/", methods=["GET", "POST"])
