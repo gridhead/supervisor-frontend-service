@@ -32,6 +32,7 @@ from flask import (
     session,
     url_for,
 )
+from time import time
 
 
 main = Flask(__name__)
@@ -77,6 +78,9 @@ def e403page(ertx):
 
 @main.route("/svlogout/")
 def svlogout():
+    """
+    Logout and pop session data from session dictionary
+    """
     if "sessiden" in session:
         if session["sessiden"] in sessdict:
             sessdict.pop(session["sessiden"])
@@ -88,6 +92,9 @@ def svlogout():
 
 @main.route("/lightset/", methods=["POST"])
 def lightset():
+    """
+    Enable/disable session-bound illuminance setting
+    """
     if "sessiden" in session:
         if request.method == "POST":
             darkmode = request.values["darkmode"]
@@ -120,7 +127,8 @@ def logepage():
                 "passcode": request.values["passcode"],
                 "darkmode": request.values["darkmode"]
             }
-            sessiden = sha256(dumps(sessdata).encode()).hexdigest()
+            # Following adds timestamp to add extra uniqueness to the identity
+            sessiden = sha256((dumps(sessdata) + str(time())).encode()).hexdigest()
             session["sessiden"] = sessiden
             sessdict[sessiden] = sessdata
             return dumps({"retnmesg": "allow"})
