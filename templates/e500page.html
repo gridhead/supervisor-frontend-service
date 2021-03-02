@@ -24,7 +24,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>SuperVisor v1.1.0-beta</title>
+        <title>SuperVisor {{ frntvers }}</title>
         <link rel="stylesheet" href="{{ url_for("static", filename="css3/custfrmt.css") }}">
         <link rel="stylesheet" href="{{ url_for("static", filename="css3/fontsome.css") }}">
         <link rel="stylesheet" href="{{ url_for("static", filename="css3/adminlte.css") }}">
@@ -63,6 +63,7 @@
                     <button type="button" class="btn btn-default btn-sm" onclick="document.location.href = '/dashbord/'">Dashboard</button>
                     <button type="button" class="btn btn-default btn-sm" onclick="window.history.back()">Go back</button>
                 </div>
+                <p class="text-center mt-4 text-bold">SuperVisor {{ frntvers }}</p>
             </div>
         </section>
     </body>
