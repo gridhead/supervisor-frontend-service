@@ -42,28 +42,41 @@ let linestyl = {
 };
 
 async function authenticate_endpoint_access () {
-    if (sessionStorage.getItem("vsoniden") === null) {
-        $("#abstcred").modal("show");
-        return false;
-    } else {
-        let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
-        let passcode = JSON.parse(sessionStorage.getItem("vsoniden"))["passcode"];
-        try {
-            await $.getJSON(drivloca + "testconn", {
-                "passcode": passcode
-            }, function (data) {
-                if (data["retnmesg"] === "allow") {
-                    return true;
-                } else {
+    await $.post(
+        "/credpull/",
+        {},
+        async function (data) {
+            let retndict = JSON.parse(data)
+            if (retndict["retnmesg"] === "allow") {
+                let vsondict = {
+                    "drivloca": retndict["drivloca"],
+                    "sockloca": retndict["sockloca"],
+                    "passcode": retndict["passcode"]
+                };
+                sessionStorage.setItem("vsoniden", JSON.stringify(vsondict));
+                let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
+                let passcode = JSON.parse(sessionStorage.getItem("vsoniden"))["passcode"];
+                try {
+                    await $.getJSON(drivloca + "testconn", {
+                        "passcode": passcode
+                    }, function (data) {
+                        if (data["retnmesg"] === "allow") {
+                            return true;
+                        } else {
+                            $("#connfail").modal("show");
+                            return false;
+                        }
+                    })
+                } catch (err) {
                     $("#connfail").modal("show");
                     return false;
                 }
-            })
-        } catch (err) {
-            $("#connfail").modal("show");
-            return false;
+            } else {
+                $("#abstcred").modal("show");
+                return false;
+            }
         }
-    }
+    );
 }
 
 async function initiate_dom_placeholder_creation_and_refreshing (rfrstime) {

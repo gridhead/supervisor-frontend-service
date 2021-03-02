@@ -127,30 +127,42 @@ async function generate_system_console (contiden) {
 }
 
 async function authenticate_endpoint_access (contiden) {
-    if (sessionStorage.getItem("vsoniden") === null) {
-        $("#abstcred").modal("show");
-        return false;
-    } else {
-        let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
-        let passcode = JSON.parse(sessionStorage.getItem("vsoniden"))["passcode"];
-        let sockloca = JSON.parse(sessionStorage.getItem("vsoniden"))["sockloca"];
-        try {
-            await $.getJSON(drivloca + "testconn", {
-                "passcode": passcode
-            }, function (data) {
-                if (data["retnmesg"] === "allow") {
-                    generate_system_console(contiden);
-                    return true;
-                } else {
+    await $.post(
+        "/credpull/",
+        {},
+        async function (data) {
+            let retndict = JSON.parse(data)
+            if (retndict["retnmesg"] === "allow") {
+                let vsondict = {
+                    "drivloca": retndict["drivloca"],
+                    "sockloca": retndict["sockloca"],
+                    "passcode": retndict["passcode"]
+                };
+                sessionStorage.setItem("vsoniden", JSON.stringify(vsondict));
+                let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
+                let passcode = JSON.parse(sessionStorage.getItem("vsoniden"))["passcode"];
+                try {
+                    await $.getJSON(drivloca + "testconn", {
+                        "passcode": passcode
+                    }, function (data) {
+                        if (data["retnmesg"] === "allow") {
+                            generate_system_console(contiden);
+                            return true;
+                        } else {
+                            $("#connfail").modal("show");
+                            return false;
+                        }
+                    })
+                } catch (err) {
                     $("#connfail").modal("show");
                     return false;
                 }
-            })
-        } catch (err) {
-            $("#connfail").modal("show");
-            return false;
+            } else {
+                $("#abstcred").modal("show");
+                return false;
+            }
         }
-    }
+    );
 }
 
 async function system_console_operations (contiden) {

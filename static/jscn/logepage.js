@@ -42,9 +42,12 @@ function fetchapi() {
             "drivloca": drivloca,
             "sockloca": sockloca,
             "passcode": passcode,
-            "darkmode": 0,
         }
         sessionStorage.setItem("vsoniden", JSON.stringify(credjson));
+        let colrjson = {
+            "darkmode": 0,
+        }
+        sessionStorage.setItem("colriden", JSON.stringify(colrjson));
     }
     testconn();
 }

@@ -20,7 +20,7 @@
 */
 
 function show_theming_modal () {
-    if (sessionStorage.getItem("vsoniden") === null) {
+    if (sessionStorage.getItem("colriden") === null) {
         $("#abstcred").modal("show");
         return false;
     } else {
@@ -43,8 +43,8 @@ function show_toast_notification (icontype, ttletext, conttext) {
 }
 
 async function enable_light_mode() {
-    let vsoniden = JSON.parse(sessionStorage.getItem("vsoniden"));
-    if (vsoniden["darkmode"] === 1) {
+    let colriden = JSON.parse(sessionStorage.getItem("colriden"));
+    if (colriden["darkmode"] === 1) {
         await $.post(
             "/lightset/",
             {
@@ -52,16 +52,16 @@ async function enable_light_mode() {
             },
             function (data) {
                 if (JSON.parse(data)["retnmesg"] === "allow") {
-                    vsoniden["darkmode"] = 0;
-                    sessionStorage.setItem("vsoniden", JSON.stringify(vsoniden));
+                    colriden["darkmode"] = 0;
+                    sessionStorage.setItem("colriden", JSON.stringify(colriden));
                     show_toast_notification(
                         "fas fa-check-circle",
                         "Illuminance applied",
                         "Please refresh the page to ensure that the changes for light mode take effect"
                     );
                 } else {
-                    vsoniden["darkmode"] = 0;
-                    sessionStorage.setItem("vsoniden", JSON.stringify(vsoniden));
+                    colriden["darkmode"] = 0;
+                    sessionStorage.setItem("colriden", JSON.stringify(colriden));
                     show_toast_notification(
                         "fas fa-exclamation-circle",
                         "Restart your session",
@@ -81,8 +81,8 @@ async function enable_light_mode() {
 }
 
 async function enable_dark_mode() {
-    let vsoniden = JSON.parse(sessionStorage.getItem("vsoniden"));
-    if (vsoniden["darkmode"] === 0) {
+    let colriden = JSON.parse(sessionStorage.getItem("colriden"));
+    if (colriden["darkmode"] === 0) {
         await $.post(
             "/lightset/",
             {
@@ -90,16 +90,16 @@ async function enable_dark_mode() {
             },
             function (data) {
                 if (JSON.parse(data)["retnmesg"] === "allow") {
-                    vsoniden["darkmode"] = 1;
-                    sessionStorage.setItem("vsoniden", JSON.stringify(vsoniden));
+                    colriden["darkmode"] = 1;
+                    sessionStorage.setItem("colriden", JSON.stringify(colriden));
                     show_toast_notification(
                         "fas fa-check-circle",
                         "Illuminance applied",
                         "Please refresh the page to ensure that the changes for dark mode take effect"
                     );
                 } else {
-                    vsoniden["darkmode"] = 0;
-                    sessionStorage.setItem("vsoniden", JSON.stringify(vsoniden));
+                    colriden["darkmode"] = 0;
+                    sessionStorage.setItem("colriden", JSON.stringify(colriden));
                     show_toast_notification(
                         "fas fa-exclamation-circle",
                         "Restart your session",

@@ -76,6 +76,35 @@ def e403page(ertx):
     return render_template("e500page.html"), 500
 
 
+@main.route("/credpull/", methods=["POST"])
+def credpull():
+    """
+    Fetch credentials stored at server-end
+    """
+    if "sessiden" in session:
+        if request.method == "POST":
+            if session["sessiden"] in sessdict:
+                retndict = {
+                    "retnmesg": "allow",
+                    "drivloca": sessdict[session["sessiden"]]["drivloca"],
+                    "sockloca": sessdict[session["sessiden"]]["sockloca"],
+                    "passcode": sessdict[session["sessiden"]]["passcode"],
+                }
+            else:
+                retndict = {
+                    "retnmesg": "deny"
+                }
+        else:
+            retndict = {
+                "retnmesg": "deny"
+            }
+    else:
+        retndict = {
+            "retnmesg": "deny"
+        }
+    return dumps(retndict)
+
+
 @main.route("/svlogout/")
 def svlogout():
     """
@@ -101,15 +130,32 @@ def lightset():
             if darkmode == "STRT":
                 if session["sessiden"] in sessdict:
                     sessdict[session["sessiden"]]["darkmode"] = 1
-                    return dumps({"retnmesg": "allow"})
+                    retndict = {
+                        "retnmesg": "allow"
+                    }
                 else:
-                    return dumps({"retnmesg": "deny"})
-            elif darkmode == "STOP":
+                    retndict = {
+                        "retnmesg": "deny"
+                    }
+            else:
                 if session["sessiden"] in sessdict:
                     sessdict[session["sessiden"]]["darkmode"] = 0
-                    return dumps({"retnmesg": "allow"})
+                    retndict = {
+                        "retnmesg": "allow"
+                    }
                 else:
-                    return dumps({"retnmesg": "deny"})
+                    retndict = {
+                        "retnmesg": "deny"
+                    }
+        else:
+            retndict = {
+                "retnmesg": "deny"
+            }
+    else:
+        retndict = {
+            "retnmesg": "deny"
+        }
+    return dumps(retndict)
 
 
 @main.route("/", methods=["GET", "POST"])
