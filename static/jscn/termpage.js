@@ -36,11 +36,9 @@ function make_terminal(element, size, ws_url, contiden) {
             document.title = title;
         });
         term.open(element);
-        term.write("\u001b[33m\u001b[1m" + "SuperVisor v1.1.0-beta" + "\u001b[0m\u001b[0m" +
+        term.write("\u001b[33m\u001b[1m" + "SuperVisor Web Console" + "\u001b[0m\u001b[0m" +
             "\r\n" +
             "\u001b[32m" + "Please press BACK button to return to SUPERVISOR" + "\u001b[0m" +
-            "\r\n" +
-            "\u001b[32m" + "Closing this tab will LOG you out of your current session" + "\u001b[0m" +
             "\r\n\r\n"
         );
         if (contiden.length === 64) {
@@ -75,9 +73,7 @@ function make_terminal(element, size, ws_url, contiden) {
                         "\u001b[32m" +
                         "Please press BACK button to return to SUPERVISOR" +
                         "\u001b[0m" +
-                        "\r\n" +
-                        "\u001b[32m" + "Closing this tab will LOG you out of your current session" +
-                        "\u001b[0m"
+                        "\r\n"
                     );
                     break;
             }
