@@ -1,0 +1,365 @@
+<!--
+##########################################################################
+*
+*   Copyright © 2019-2021 Akashdeep Dhar <t0xic0der@fedoraproject.org>
+*
+*   This program is free software: you can redistribute it and/or modify
+*   it under the terms of the GNU General Public License as published by
+*   the Free Software Foundation, either version 3 of the License, or
+*   (at your option) any later version.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*
+##########################################################################
+-->
+
+{% extends "frameset.html" %}
+{% block onldscpt %}
+    metric_information_operations('{{ mtrciden }}');
+{% endblock %}
+{% block headelem %}
+    <h1 class="m-0 condqant" id="mtrciden">UNAVAILABLE</h1>
+{% endblock %}
+{% block bdcumbls %}
+    <li class="breadcrumb-item" onclick="document.location.href='/mtrclist/'" type="button">Metrics</li>
+    <li class="breadcrumb-item active">{{ mtrciden }}</li>
+{% endblock %}
+{% block contwrap %}
+    <div class="info-box">
+        <span class="info-box-icon bg-olive"><i class="fas fa-clock"></i></span>
+        <div class="info-box-content ellipsis">
+            <span class="info-box-text">Recorded at</span>
+            <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal" id="mtrctime">UNAVAILABLE</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-12 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-memory"></i></span>
+                <div class="info-box-content ellipsis">
+                    <span class="info-box-text">Statistics</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">Memory</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">Physical memory</h3>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <h2 class="condqant ml-1">Used <span class="condqant" id="physperc">0</span>%</h2>
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" style="width: 25%;">Attributes</th>
+                                <th class="pl-2" style="width: 75%;">Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Total</td>
+                                <td class="pl-2 monotext nogetout" id="phystotl">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Available</td>
+                                <td class="pl-2 monotext nogetout" id="physavbl">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Used</td>
+                                <td class="pl-2 monotext nogetout" id="physused">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Active</td>
+                                <td class="pl-2 monotext nogetout" id="physactv">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Inactive</td>
+                                <td class="pl-2 monotext nogetout" id="physinac">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Buffers</td>
+                                <td class="pl-2 monotext nogetout" id="physbuff">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Cached</td>
+                                <td class="pl-2 monotext nogetout" id="physcach">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Shared</td>
+                                <td class="pl-2 monotext nogetout" id="physshar">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Slab</td>
+                                <td class="pl-2 monotext nogetout" id="physslab">UNAVAILABLE</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">Virtual memory</h3>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <h2 class="condqant ml-1">Used <span class="condqant" id="virtperc">0</span>%</h2>
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" style="width: 25%;">Attributes</th>
+                                <th class="pl-2" style="width: 75%;">Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Total</td>
+                                <td class="pl-2 monotext nogetout" id="virttotl">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Used</td>
+                                <td class="pl-2 monotext nogetout" id="virtused">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Free</td>
+                                <td class="pl-2 monotext nogetout" id="virtfree">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Sin</td>
+                                <td class="pl-2 monotext nogetout" id="virtsine">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Sout</td>
+                                <td class="pl-2 monotext nogetout" id="virtsout">UNAVAILABLE</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-12 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-microchip"></i></span>
+                <div class="info-box-content ellipsis">
+                    <span class="info-box-text">Statistics</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">CPU</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">Clock speed</h3>
+                </div>
+                <div class="card-body table-responsive p-0" id="cppclist">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">CPU times</h3>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" style="width: 25%;">#</th>
+                                <th class="pl-2" style="width: 75%;">Attributes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cptmlist">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">CPU stress levels</h3>
+                </div>
+                <div class="card-body table-responsive p-0" id="cpsllist">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">CPU statistics</h3>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" style="width: 25%;">Attributes</th>
+                                <th class="pl-2" style="width: 75%;">Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Context switches</td>
+                                <td class="pl-2 monotext nogetout" id="cpstctxs">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Interrupts</td>
+                                <td class="pl-2 monotext nogetout" id="cpstintr">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">Soft interrupts</td>
+                                <td class="pl-2 monotext nogetout" id="cpstcint">UNAVAILABLE</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-2 font-weight-bold">System calls</td>
+                                <td class="pl-2 monotext nogetout" id="cpstsycl">UNAVAILABLE</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-12 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-compact-disc"></i></span>
+                <div class="info-box-content ellipsis">
+                    <span class="info-box-text">Statistics</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">Storage</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold" id="diouhead">Disk I/O usage</h3>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" style="width: 25%;">#</th>
+                                <th class="pl-2" style="width: 75%;">Attributes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dioulist">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-12 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-compact-disc"></i></span>
+                <div class="info-box-content ellipsis">
+                    <span class="info-box-text">Statistics</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">Networks</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold" id="ntushead">Network usage</h3>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" style="width: 25%;">NIC</th>
+                                <th class="pl-2" style="width: 75%;">Attributes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ntuslist">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-12 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-compact-disc"></i></span>
+                <div class="info-box-content ellipsis">
+                    <span class="info-box-text">Statistics</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">Sensors</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold" id="snthhead">Thermal readings</h3>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" style="width: 25%;">Component</th>
+                                <th class="pl-2" style="width: 75%;">Attributes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="snthlist">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold" id="snclhead">Cooling</h3>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" style="width: 25%;">Component</th>
+                                <th class="pl-2" style="width: 75%;">Attributes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sncllist">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold" id="snbthead">Battery</h3>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <h2 class="condqant ml-1">Remaining <span class="condqant" id="snbtperc">0</span>%</h2>
+                    <p class="pl-2 mb-1"><span id="snbttime">0</span> secs left.</p>
+                    <p class="pl-2 mb-1">Plugged? <span id="snbtplug">UNAVAILABLE</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extramod %}
+    <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="abstrcrd">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
+                    <h3 class="modal-title condqant font-weight-bold">Record absent</h3>
+                </div>
+                <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                    <p class="text-justify mt-0 mb-0">
+                        The request record was queried from the metrics storage but could not be retrieved as it is
+                        not available anymore. It might have been removed when the record retention limit was reached
+                        or the identifier might be mistyped.
+                    </p>
+                </div>
+                <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
+                    <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/mtrclist/'">Return to metric listing</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block pagejsas %}
+    <script src="{{ url_for("static", filename="jscn/jqryknob.js") }}"></script>
+    <script src="{{ url_for("static", filename="jscn/mtrcdata.js") }}"></script>
+{% endblock %}
