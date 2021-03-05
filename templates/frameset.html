@@ -109,6 +109,11 @@
                                     <i class="nav-icon fas fa-network-wired"></i><p>Networks</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a onclick="document.location.href={% if request.path[0:10] in ['/mtrclist/','/mtrcdata/'] %} '#' {% else %} '/mtrclist/' {% endif %};" class="nav-link {% if request.path[0:10] in ['/mtrclist/','/mtrcdata/'] %} active {% endif %}" type="button">
+                                    <i class="nav-icon fas fa-clipboard-list"></i><p>Metrics</p>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
