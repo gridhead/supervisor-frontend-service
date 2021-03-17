@@ -75,7 +75,7 @@ async function initiate_dom_placeholder_creation_and_population (mtrciden) {
                 document.getElementById("mtrctime").innerText = mtrctime.toString();
                 // Physical memory data population
                 let virttext = (mtrcdata["virtdata"]["used"] * 100 / mtrcdata["virtdata"]["total"]).toPrecision(3).toString();
-                document.getElementById("physperc").innerText = virttext;
+                document.getElementById("physknob").value = virttext;
                 document.getElementById("phystotl").innerText = mtrcdata["virtdata"]["total"] + " bytes";
                 document.getElementById("physavbl").innerText = mtrcdata["virtdata"]["available"] + " bytes";
                 document.getElementById("physused").innerText = mtrcdata["virtdata"]["used"] + " bytes";
@@ -87,7 +87,7 @@ async function initiate_dom_placeholder_creation_and_population (mtrciden) {
                 document.getElementById("physslab").innerText = mtrcdata["virtdata"]["slab"] + " bytes";
                 // Virtual memory data population
                 let swaptext = (mtrcdata["swapinfo"]["used"] * 100 / mtrcdata["swapinfo"]["total"]).toPrecision(3).toString();
-                document.getElementById("virtperc").innerText = swaptext;
+                document.getElementById("virtknob").value = swaptext;
                 document.getElementById("virttotl").innerText = mtrcdata["swapinfo"]["total"] + " bytes";
                 document.getElementById("virtused").innerText = mtrcdata["swapinfo"]["used"] + " bytes";
                 document.getElementById("virtfree").innerText = mtrcdata["swapinfo"]["free"] + " bytes";

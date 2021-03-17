@@ -54,7 +54,9 @@
                     <h3 class="card-title font-weight-bold">Physical memory</h3>
                 </div>
                 <div class="card-body table-responsive p-0">
-                    <h2 class="condqant ml-1">Used <span class="condqant" id="physperc">0</span>%</h2>
+                    <div class="text-center">
+                        <input id="physknob" type="text" data-skin="tron" data-thickness=0.1 value=0 data-fgColor="#3D9970" class="knob" data-readonly=true>
+                    </div>
                     <table class="table table-sm table-hover">
                         <thead>
                             <tr>
@@ -108,7 +110,9 @@
                     <h3 class="card-title font-weight-bold">Virtual memory</h3>
                 </div>
                 <div class="card-body table-responsive p-0">
-                    <h2 class="condqant ml-1">Used <span class="condqant" id="virtperc">0</span>%</h2>
+                    <div class="text-center">
+                        <input id="virtknob" type="text" data-skin="tron" data-thickness=0.1 value=0 data-fgColor="#3D9970" class="knob" data-readonly=true>
+                    </div>
                     <table class="table table-sm table-hover">
                         <thead>
                             <tr>
@@ -362,4 +366,43 @@
 {% block pagejsas %}
     <script src="{{ url_for("static", filename="jscn/jqryknob.js") }}"></script>
     <script src="{{ url_for("static", filename="jscn/mtrcdata.js") }}"></script>
+    <script>
+        $(function () {
+            $('.knob').knob({
+                font: "Barlow Condensed",
+                draw: function () {
+                    if (this.$.data('skin') == 'tron') {
+                        var a   = this.angle(this.cv),
+                        sa  = this.startAngle,
+                        sat = this.startAngle,
+                        ea, eat = sat + a, r = true
+                        this.g.lineWidth = this.lineWidth
+                        this.o.cursor
+                        && (sat = eat - 0.3)
+                        && (eat = eat + 0.3)
+                        if (this.o.displayPrevious) {
+                            ea = this.startAngle + this.angle(this.value)
+                            this.o.cursor
+                            && (sa = ea - 0.3)
+                            && (ea = ea + 0.3)
+                            this.g.beginPath()
+                            this.g.strokeStyle = this.previousColor
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false)
+                            this.g.stroke()
+                        }
+                        this.g.beginPath()
+                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false)
+                        this.g.stroke()
+                        this.g.lineWidth = 2
+                        this.g.beginPath()
+                        this.g.strokeStyle = this.o.fgColor
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false)
+                        this.g.stroke()
+                        return false
+                    }
+                }
+            }
+        )})
+    </script>
 {% endblock %}
