@@ -272,7 +272,7 @@ async function refresh_container_stats_periodically (contiden, rfrstime, physgra
                     cpuuline.append(new Date().getTime(), cpuuperc.toPrecision(3));
                     cpuugraf.streamTo(document.getElementById("cpuuover"), rfrstime * 1000);
 
-                    let usejperc = data["stats"]["memory_stats"]["usage"]/data["stats"]["memory_stats"]["limit"];
+                    let usejperc = data["stats"]["memory_stats"]["usage"] * 100 /data["stats"]["memory_stats"]["limit"];
                     document.getElementById("physperc").innerText = usejperc.toPrecision(3) + "%";
                     physline.append(new Date().getTime(), usejperc.toPrecision(3));
                     physgraf.streamTo(document.getElementById("physover"), rfrstime * 1000);
