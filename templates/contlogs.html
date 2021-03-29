@@ -33,13 +33,28 @@
     <li class="breadcrumb-item active">Logs</li>
 {% endblock %}
 {% block contwrap %}
+    <div class="callout callout-success {% if darkmode == 1 %} bg-dark {% else %} bg-light {% endif %}" id="mtrcwarn">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="document.getElementById('mtrcwarn').remove();">×</button>
+        <h5 class="text-bold">
+            Is the theming messed up here?
+        </h5>
+        <p class="text-justify">
+            The log output is supposed to have a white background even when dark theme is employed as the logs make use 
+            of <a type="button" class="text-olive" onclick="document.location.href = 'https://github.com/drudru/ansi_up'">ANSI-UP</a> 
+            JavaScript library to render all ANSI sequences like they are shown in the terminal but we are yet to find 
+            how they can be overridden to accommodate custom CSS additions to them. Please feel free to contribute to the 
+            project in 
+            <a type="button" class="button text-olive" onclick="document.location.href = 'https://github.com/t0xic0der/supervisor-frontend-service/issues/73'">this issue</a>
+            if you seem to have an idea of how it can be implemented.
+        </p>
+    </div>
     <div class="row">
         <div class="col-md-12 col-sm-12 col-12">
             <div class="card">
                 <div class="card-header bg-olive pl-2">
                     <h3 class="card-title font-weight-bold">Logs</h3>
                 </div>
-                <div class="card-body p-0">
+                <div class="card-body p-0 bg-white">
                     <pre class="monotext" id="logsarea"></pre>
                 </div>
             </div>
