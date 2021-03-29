@@ -73,12 +73,13 @@ async function initiate_metric_list_fetching_and_refreshing (rfrstime) {
                 document.getElementById("rfrsfreq").innerText = data["duration"] + " seconds";
                 document.getElementById("rtnsqant").innerText = data["mtrclist"].length + "/" + data["recsqant"] + " records";
                 document.getElementById("lastupdt").innerText = timecrnt.toString();
-                for (let indx = 0; indx < data["mtrclist"].length; indx ++) {
-                    let mtrctime = new Date(data["mtrclist"][indx] * 1000);
+                let mtrclist = data["mtrclist"].sort().reverse();
+                for (let indx = 0; indx < mtrclist.length; indx ++) {
+                    let mtrctime = new Date(mtrclist[indx] * 1000);
                     $("#mtrclist").append(
                         `
-                        <tr onclick="document.location.href = '/mtrcdata/${data["mtrclist"][indx]}';">
-                            <td class="pl-2 monotext">${data["mtrclist"][indx]}</td>
+                        <tr onclick="document.location.href = '/mtrcdata/${mtrclist[indx]}';">
+                            <td class="pl-2 monotext">${mtrclist[indx]}</td>
                             <td class="pl-2 monotext nogetout">${mtrctime.toString()}</td>
                         </tr>
                         `
