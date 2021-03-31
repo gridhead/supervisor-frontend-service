@@ -32,7 +32,9 @@ let grafstyl = {
     },
     labels: {
         fillStyle: '#008080'
-    }
+    },
+    tooltip: true,
+    timestampFormatter:SmoothieChart.timeFormatter
 };
 
 let linestyl = {
