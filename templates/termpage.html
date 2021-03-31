@@ -50,7 +50,7 @@
             background: #003525 !important;
         }
     </style>
-    <body onload="system_console_operations('{{ contiden }}');" style="overflow: hidden; background: #003525 !important;">
+    <body class="{% if darkmode == 1 %} dark-mode {% else %} light-mode {% endif %}" onload="system_console_operations('{{ contiden }}');" style="overflow: hidden; background: #003525 !important;">
         <pre id="dummy-screen" class="text-monospace" style="visibility: hidden; font-size: 11px; display: inline;" id="contwrap">
             0
             1
@@ -92,7 +92,7 @@
                         <h3 class="modal-title condqant font-weight-bold">Credentials absent</h3>
                     </div>
                     <div class="modal-body pt-1 pb-1 pl-2 pr-2">
-                        <p class="text-justify text-dark genrfont mt-0 mb-0">
+                        <p class="text-justify {% if darkmode == 1 %} text-light {% else %} text-dark {% endif %} genrfont mt-0 mb-0">
                             The frontend service was unable to establish connection to the driver service as no
                             credentials were provided to make the check. Please check your inputs for Synchronization
                             URI and passcode, and attempt connecting again.
@@ -111,7 +111,7 @@
                         <h3 class="modal-title condqant font-weight-bold">Connection failed</h3>
                     </div>
                     <div class="modal-body pt-1 pb-1 pl-2 pr-2">
-                        <p class="text-justify text-dark genrfont mt-0 mb-0">
+                        <p class="text-justify {% if darkmode == 1 %} text-light {% else %} text-dark {% endif %} genrfont mt-0 mb-0">
                             The frontend service was unable to establish connection to the driver service using the
                             provided credentials. Please check your inputs for Synchronization URI and passcode, and
                             attempt connecting again.
@@ -130,7 +130,7 @@
                         <h3 class="modal-title condqant font-weight-bold">Endpoint absent</h3>
                     </div>
                     <div class="modal-body pt-1 pb-1 pl-2 pr-2">
-                        <p class="text-justify text-dark genrfont mt-0 mb-0">
+                        <p class="text-justify {% if darkmode == 1 %} text-light {% else %} text-dark {% endif %} genrfont mt-0 mb-0">
                             The requested endpoint does not match with the ones available to connect to and hence, a
                             connection to it cannot be established. Please go back to the previous page and attempt
                             connecting again.
