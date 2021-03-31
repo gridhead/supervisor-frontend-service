@@ -57,7 +57,7 @@ async function authenticate_endpoint_access () {
     );
 }
 
-async function initiate_metric_list_fetching_and_refreshing (rfrstime) {
+async function initiate_metric_list_fetching (rfrstime) {
     if (sessionStorage.getItem("vsoniden") !== null) {
         await new Promise(r => setTimeout(r, rfrstime * 1000));
         let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
@@ -94,5 +94,5 @@ async function initiate_metric_list_fetching_and_refreshing (rfrstime) {
 async function metric_listing_operations () {
     let rfrstime = 1;
     await authenticate_endpoint_access();
-    await initiate_metric_list_fetching_and_refreshing(rfrstime);
+    await initiate_metric_list_fetching(rfrstime);
 }
