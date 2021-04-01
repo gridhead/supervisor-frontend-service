@@ -100,6 +100,7 @@ async function initiate_dom_placeholder_creation_and_population (mtrciden) {
                 document.getElementById("cpstsycl").innerText = mtrcdata["cpustats"]["syscalls"];
                 // Battery statistics
                 document.getElementById("snbtperc").innerText = mtrcdata["sensread"]["battstat"]["percent"].toPrecision(3);
+                document.getElementById("snbtlevl").setAttribute("style", "width: " + mtrcdata["sensread"]["battstat"]["percent"].toPrecision(3) + "%");
                 document.getElementById("snbttime").innerText = mtrcdata["sensread"]["battstat"]["secsleft"];
                 document.getElementById("snbtplug").innerText = mtrcdata["sensread"]["battstat"]["power_plugged"];
                 let cpuquant = Object.keys(mtrcdata["cputimes"]).length;
@@ -107,29 +108,22 @@ async function initiate_dom_placeholder_creation_and_population (mtrciden) {
                     let cppctext = (mtrcdata["cpuclock"][indx]["current"] * 100 / mtrcdata["cpuclock"][indx]["max"]).toPrecision(3).toString();
                     $("#cppclist").append(
                         `
-                        <h2 class="condqant ml-1">CPU #${indx} - <span class="condqant" id="cpuu-perc-${indx}">${cppctext}</span>%</h2>
-                        <table class="table table-sm table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="pl-2" style="width: 25%;">Attributes</th>
-                                    <th class="pl-2" style="width: 75%;">Data</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="pl-2 font-weight-bold">Current</td>
-                                    <td class="pl-2 monotext nogetout" id="cppc-curt-${indx}">${mtrcdata["cpuclock"][indx]["current"]} MHz</td>
-                                </tr>
-                                <tr>
-                                    <td class="pl-2 font-weight-bold">Minimum</td>
-                                    <td class="pl-2 monotext nogetout" id="cppc-minu-${indx}">${mtrcdata["cpuclock"][indx]["min"]} MHz</td>
-                                </tr>
-                                <tr>
-                                    <td class="pl-2 font-weight-bold">Maximum</td>
-                                    <td class="pl-2 monotext nogetout" id="cppc-maxu-${indx}">${mtrcdata["cpuclock"][indx]["max"]} MHz</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="info-box bg-light mb-0">
+                            <span class="info-box-icon"><i class="fas fa-microchip text-olive"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">CPU #${indx}</span>
+                                <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">${cppctext}%</span>
+                                <div class="progress">
+                                    <div class="progress-bar bg-olive" style="width: ${cppctext}%"></div>
+                                </div>
+                                <span class="progress-description">
+                                    <span class="text-bold">
+                                        ${mtrcdata["cpuclock"][indx]["current"]}MHz
+                                     </span>
+                                     (${mtrcdata["cpuclock"][indx]["min"]}MHz/${mtrcdata["cpuclock"][indx]["max"]}MHz)
+                                </span>
+                            </div>
+                        </div>
                         `
                     );
                     $("#cptmlist").append(
@@ -167,7 +161,16 @@ async function initiate_dom_placeholder_creation_and_population (mtrciden) {
                     );
                     $("#cpsllist").append(
                         `
-                        <h2 class="condqant ml-1">CPU #${indx} - <span class="condqant" id="cpst-perc-${indx}">${mtrcdata["cpuprcnt"][indx].toPrecision(3)}</span>%</h2>
+                        <div class="info-box bg-light mb-0">
+                            <span class="info-box-icon"><i class="fas fa-balance-scale text-olive"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">CPU #${indx}</span>
+                                <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">${mtrcdata["cpuprcnt"][indx].toPrecision(3)}%</span>
+                                <div class="progress">
+                                    <div class="progress-bar bg-olive" style="width: ${mtrcdata["cpuprcnt"][indx].toPrecision(3)}%"></div>
+                                </div>
+                            </div>
+                        </div>
                         `
                     );
                 }

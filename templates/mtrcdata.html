@@ -336,9 +336,25 @@
                     <h3 class="card-title font-weight-bold" id="snbthead">Battery</h3>
                 </div>
                 <div class="card-body table-responsive p-0">
-                    <h2 class="condqant ml-1">Remaining <span class="condqant" id="snbtperc">0</span>%</h2>
-                    <p class="pl-2 mb-1"><span id="snbttime">0</span> secs left.</p>
-                    <p class="pl-2 mb-1">Plugged? <span id="snbtplug">UNAVAILABLE</span></p>
+                    <div class="info-box bg-light mb-0">
+                        <span class="info-box-icon"><i class="fas fa-car-battery text-olive"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Remaining</span>
+                            <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">
+                                <span id="snbtperc" class="condqant">0</span>
+                                %
+                            </span>
+                            <div class="progress">
+                                <div class="progress-bar bg-olive" id="snbtlevl" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-description">
+                                <span class="text-bold">
+                                    Plugged? <span id="snbtplug" class="text-uppercase">UNAVAILABLE</span>
+                                </span>
+                                (<span id="snbttime">0</span> secs left.)
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
