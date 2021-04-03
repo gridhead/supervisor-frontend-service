@@ -100,19 +100,6 @@
     <div class="row">
         <div class="col-md-4 col-sm-12 col-12">
             <div class="info-box">
-                <span class="info-box-icon bg-olive"><i class="fas fa-box-open"></i></span>
-                <div class="info-box-content ellipsis">
-                    <span class="info-box-text">Active</span>
-                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">Containers</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-8 col-sm-12 col-12" id="ntcnlist">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-sm-12 col-12">
-            <div class="info-box">
                 <span class="info-box-icon bg-olive"><i class="fas fa-wrench"></i></span>
                 <div class="info-box-content ellipsis">
                     <span class="info-box-text">Additional</span>
@@ -140,6 +127,19 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-12 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-box-open"></i></span>
+                <div class="info-box-content ellipsis">
+                    <span class="info-box-text">Active</span>
+                    <span class="info-box-number h2 mb-0 condqant font-weight-normal">Containers</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12 col-12" id="ntcnlist">
+        </div>
+    </div>
 {% endblock %}
 {% block extramod %}
     <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="ntwkntfd">
@@ -156,7 +156,7 @@
                     </p>
                 </div>
                 <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
-                    <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/ntwklist/'">Return to networks listing</button>
+                    <button type="button" class="btn btn-sm {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %}" onclick="document.location.href = '/ntwklist/'">Return to networks listing</button>
                 </div>
             </div>
         </div>

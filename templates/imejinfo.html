@@ -39,7 +39,7 @@
                     <div class="card-tools">
                         <ul class="nav nav-pills ml-auto">
                             <li class="nav-item ml-1 mr-1">
-                                <a class="nav-link text-olive bg-light pt-1 pb-1" onclick="document.location.href='/imejrevs/{{ imejiden }}'" type="button"><i class="fas fa-clock"></i></a>
+                                <a class="nav-link text-olive {% if darkmode == 1 %} bg-dark {% else %} bg-light {% endif %} pt-1 pb-1" onclick="document.location.href='/imejrevs/{{ imejiden }}'" type="button"><i class="fas fa-clock"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -217,7 +217,7 @@
                     </p>
                 </div>
                 <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
-                    <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/imejlist/'">Return to images listing</button>
+                    <button type="button" class="btn btn-sm {% if darkmode == 1 %} btn-dark {% else %} {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %} {% endif %}" onclick="document.location.href = '/imejlist/'">Return to images listing</button>
                 </div>
             </div>
         </div>
