@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="15%" src="https://raw.githubusercontent.com/t0xic0der/supervisor-frontend-service/container-monitoring/pictures/mainicon.svg" />
+  <img width="15%" src="https://raw.githubusercontent.com/t0xic0der/supervisor-frontend-service/8ef30b5bcdc17496cfafb438837e517657ce8c27/pictures/mainicon.svg" />
 </p>
 
 <h1 align="center">SuperVisor</h1>
