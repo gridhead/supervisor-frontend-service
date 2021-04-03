@@ -94,15 +94,28 @@ async function initiate_dom_placeholder_creation (contiden) {
                 $("#contntfd").modal("show");
             } else {
                 let scpuqant = data["stats"]["cpu_stats"]["online_cpus"];
-                for (let indx = 0; indx < scpuqant; indx++) {
-                    $("#scpuperu").append(
-                        `
-                        <tr>
-                            <td class="pl-2 font-weight-bold">CPU #${indx}</td>
-                            <td class="pl-2 monotext" id="scpu-${indx}">${data["stats"]["cpu_stats"]["cpu_usage"]["percpu_usage"][indx]}</td>
-                        </tr>
-                        `
-                    );
+                if (typeof(data["stats"]["cpu_stats"]["cpu_usage"]["percpu_usage"]) !== "undefined") {
+                    for (let indx = 0; indx < scpuqant; indx++) {
+                        $("#scpuperu").append(
+                            `
+                            <tr>
+                                <td class="pl-2 font-weight-bold">CPU #${indx}</td>
+                                <td class="pl-2 monotext" id="scpu-${indx}">${data["stats"]["cpu_stats"]["cpu_usage"]["percpu_usage"][indx]}</td>
+                            </tr>
+                            `
+                        );
+                    }
+                } else {
+                    for (let indx = 0; indx < scpuqant; indx++) {
+                        $("#scpuperu").append(
+                            `
+                            <tr>
+                                <td class="pl-2 font-weight-bold">CPU #${indx}</td>
+                                <td class="pl-2 monotext" id="scpu-${indx}">UNAVAILABLE</td>
+                            </tr>
+                            `
+                        );
+                    }
                 }
                 document.getElementById("scputotu").innerText = data["stats"]["cpu_stats"]["cpu_usage"]["total_usage"];
                 document.getElementById("scpukmus").innerText = data["stats"]["cpu_stats"]["cpu_usage"]["usage_in_kernelmode"];
@@ -113,15 +126,28 @@ async function initiate_dom_placeholder_creation (contiden) {
                 document.getElementById("scputhtp").innerText = data["stats"]["cpu_stats"]["throttling_data"]["throttled_periods"];
                 document.getElementById("scputhtm").innerText = data["stats"]["cpu_stats"]["throttling_data"]["throttled_time"];
                 let pcpuqant = data["stats"]["cpu_stats"]["online_cpus"];
-                for (let indx = 0; indx < pcpuqant; indx++) {
-                    $("#pcpuperu").append(
-                        `
-                        <tr>
-                            <td class="pl-2 font-weight-bold">CPU #${indx}</td>
-                            <td class="pl-2 monotext" id="pcpu-${indx}">${data["stats"]["precpu_stats"]["cpu_usage"]["percpu_usage"][indx]}</td>
-                        </tr>
-                        `
-                    );
+                if (typeof(data["stats"]["precpu_stats"]["cpu_usage"]["percpu_usage"]) !== "undefined") {
+                    for (let indx = 0; indx < pcpuqant; indx++) {
+                        $("#pcpuperu").append(
+                            `
+                            <tr>
+                                <td class="pl-2 font-weight-bold">CPU #${indx}</td>
+                                <td class="pl-2 monotext" id="pcpu-${indx}">${data["stats"]["precpu_stats"]["cpu_usage"]["percpu_usage"][indx]}</td>
+                            </tr>
+                            `
+                        );
+                    }
+                } else {
+                    for (let indx = 0; indx < pcpuqant; indx++) {
+                        $("#pcpuperu").append(
+                            `
+                            <tr>
+                                <td class="pl-2 font-weight-bold">CPU #${indx}</td>
+                                <td class="pl-2 monotext" id="pcpu-${indx}">UNAVAILABLE</td>
+                            </tr>
+                            `
+                        );
+                    }
                 }
                 document.getElementById("pcputotu").innerText = data["stats"]["precpu_stats"]["cpu_usage"]["total_usage"];
                 document.getElementById("pcpukmus").innerText = data["stats"]["precpu_stats"]["cpu_usage"]["usage_in_kernelmode"];
@@ -220,8 +246,10 @@ async function refresh_container_stats_periodically (contiden, rfrstime, physgra
                     $("#contntfd").modal("show");
                 } else {
                     let scpuqant = data["stats"]["cpu_stats"]["online_cpus"];
-                    for (let indx = 0; indx < scpuqant; indx++) {
-                        document.getElementById("scpu-" + indx).innerText = data["stats"]["precpu_stats"]["cpu_usage"]["percpu_usage"][indx];
+                    if (typeof(data["stats"]["precpu_stats"]["cpu_usage"]["percpu_usage"]) !== "undefined") {
+                        for (let indx = 0; indx < scpuqant; indx++) {
+                            document.getElementById("scpu-" + indx).innerText = data["stats"]["precpu_stats"]["cpu_usage"]["percpu_usage"][indx];
+                        }
                     }
                     document.getElementById("scputotu").innerText = data["stats"]["cpu_stats"]["cpu_usage"]["total_usage"];
                     document.getElementById("scpukmus").innerText = data["stats"]["cpu_stats"]["cpu_usage"]["usage_in_kernelmode"];
@@ -232,8 +260,10 @@ async function refresh_container_stats_periodically (contiden, rfrstime, physgra
                     document.getElementById("scputhtp").innerText = data["stats"]["cpu_stats"]["throttling_data"]["throttled_periods"];
                     document.getElementById("scputhtm").innerText = data["stats"]["cpu_stats"]["throttling_data"]["throttled_time"];
                     let pcpuqant = data["stats"]["cpu_stats"]["online_cpus"];
-                    for (let indx = 0; indx < pcpuqant; indx++) {
-                        document.getElementById("pcpu-" + indx).innerText = data["stats"]["cpu_stats"]["cpu_usage"]["percpu_usage"][indx];
+                    if (typeof(data["stats"]["cpu_stats"]["cpu_usage"]["percpu_usage"]) !== "undefined") {
+                        for (let indx = 0; indx < pcpuqant; indx++) {
+                            document.getElementById("pcpu-" + indx).innerText = data["stats"]["cpu_stats"]["cpu_usage"]["percpu_usage"][indx];
+                        }
                     }
                     document.getElementById("pcputotu").innerText = data["stats"]["precpu_stats"]["cpu_usage"]["total_usage"];
                     document.getElementById("pcpukmus").innerText = data["stats"]["precpu_stats"]["cpu_usage"]["usage_in_kernelmode"];
