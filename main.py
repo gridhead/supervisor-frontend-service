@@ -215,6 +215,28 @@ def contlist():
         abort(403)
 
 
+@main.route("/mtrclist/")
+def mtrclist():
+    """
+    Endpoint for metric listing page
+    """
+    if "sessiden" in session:
+        return render_template("mtrclist.html", darkmode=retnilum(), frntvers=frntvers)
+    else:
+        abort(403)
+
+
+@main.route("/mtrcdata/<mtrciden>")
+def mtrcdata(mtrciden):
+    """
+    Endpoint for per-metric information page
+    """
+    if "sessiden" in session:
+        return render_template("mtrcdata.html", mtrciden=mtrciden, darkmode=retnilum(), frntvers=frntvers)
+    else:
+        abort(403)
+
+
 @main.route("/imejlist/")
 def imejlist():
     """

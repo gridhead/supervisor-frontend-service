@@ -96,7 +96,7 @@ async function populate_image_revision_list (imejiden) {
                         <div class="col-md-12 col-sm-12 col-12">
                             <div class="card">
                                 <div class="card-header bg-olive pl-2">
-                                    <h3 class="card-title font-weight-bold">#${indx}</h3>
+                                    <h3 class="card-title font-weight-bold">#${parseInt(indx)+1}</h3>
                                 </div>
                                 <div class="card-body p-0">
                                     <table class="table table-sm table-hover">

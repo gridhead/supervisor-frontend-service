@@ -26,6 +26,17 @@
 {% block headelem %}
     <h1 class="m-0 condqant" id="contname">UNAVAILABLE</h1>
     <span class="badge bg-black h1 monotext" id="contstat">UNAVAILABLE</span>
+    <style>
+        div.smoothie-chart-tooltip {
+            background: #444;
+            padding: 1em;
+            margin-top: 20px;
+            font-family: consolas;
+            color: white;
+            font-size: 10px;
+            pointer-events: none;
+        }
+    </style>
 {% endblock %}
 {% block bdcumbls %}
     <li class="breadcrumb-item" onclick="document.location.href='/contlist/'" type="button">Containers</li>
@@ -324,7 +335,7 @@
                     </p>
                 </div>
                 <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-teal">
-                    <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/contlist/'">Return to containers listing</button>
+                    <button type="button" class="btn btn-sm {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %}" onclick="document.location.href = '/contlist/'">Return to containers listing</button>
                 </div>
             </div>
         </div>

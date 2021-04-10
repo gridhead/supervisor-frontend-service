@@ -21,80 +21,21 @@
 
 {% extends "frameset.html" %}
 {% block onldscpt %}
-    system_information_operations('{{ ntwkiden }}');
+    metric_information_operations('{{ mtrciden }}');
 {% endblock %}
 {% block headelem %}
-    <h1 class="m-0 condqant" id="hostname">UNAVAILABLE</h1>
-    <style>
-        div.smoothie-chart-tooltip {
-            background: #444;
-            padding: 1em;
-            margin-top: 20px;
-            font-family: consolas;
-            color: white;
-            font-size: 10px;
-            pointer-events: none;
-        }
-    </style>
+    <h1 class="m-0 condqant" id="mtrciden">UNAVAILABLE</h1>
 {% endblock %}
 {% block bdcumbls %}
-    <li class="breadcrumb-item active">System</li>
+    <li class="breadcrumb-item" onclick="document.location.href='/mtrclist/'" type="button">Metrics</li>
+    <li class="breadcrumb-item active">{{ mtrciden }}</li>
 {% endblock %}
 {% block contwrap %}
-    <div class="row">
-        <div class="col-md-4 col-sm-12 col-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-olive"><i class="fas fa-info-circle"></i></span>
-                <div class="info-box-content ellipsis">
-                    <span class="info-box-text">Information</span>
-                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">Preliminary</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-8 col-sm-12 col-12">
-            <div class="card">
-                <div class="card-header bg-olive pl-2">
-                    <h3 class="card-title font-weight-bold">Basic attributes</h3>
-                    <div class="card-tools">
-                        <ul class="nav nav-pills ml-auto">
-                            <li class="nav-item ml-1 mr-1">
-                                <a class="nav-link text-olive {% if darkmode == 1 %} bg-dark {% else %} bg-light {% endif %} pt-1 pb-1" onclick="document.location.href='/proclist/'" type="button"><i class="fas fa-hashtag"></i></a>
-                            </li>
-                            <li class="nav-item ml-1 mr-1">
-                                <a class="nav-link text-olive {% if darkmode == 1 %} bg-dark {% else %} bg-light {% endif %} pt-1 pb-1" onclick="document.location.href='/termpage/0000000000000000000000000000000000000000000000000000000000000000'" type="button"><i class="fas fa-terminal"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-sm table-hover">
-                        <thead>
-                            <tr>
-                                <th class="pl-2" style="width: 25%;">Attributes</th>
-                                <th class="pl-2" style="width: 75%;">Data</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="pl-2 font-weight-bold">Username</td>
-                                <td class="pl-2 monotext nogetout" id="bsicuser">UNAVAILABLE</td>
-                            </tr>
-                            <tr>
-                                <td class="pl-2 font-weight-bold">System name</td>
-                                <td class="pl-2 monotext nogetout" id="bsicsyst">UNAVAILABLE</td>
-                            </tr>
-                            <tr>
-                                <td class="pl-2 font-weight-bold">Host name</td>
-                                <td class="pl-2 monotext nogetout" id="bsichost">UNAVAILABLE</td>
-                            </tr>
-                            <tr>
-                                <td class="pl-2 font-weight-bold">Version</td>
-                                <td class="pl-2 monotext nogetout" id="bsicvers">UNAVAILABLE</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    <div class="info-box">
+        <span class="info-box-icon bg-olive"><i class="fas fa-clock"></i></span>
+        <div class="info-box-content ellipsis">
+            <span class="info-box-text">Recorded at</span>
+            <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal" id="mtrctime">UNAVAILABLE</span>
         </div>
     </div>
     <div class="row">
@@ -107,14 +48,15 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8 col-sm-12 col-12">
+        <div class="col-md-4 col-sm-12 col-12">
             <div class="card">
                 <div class="card-header bg-olive pl-2">
                     <h3 class="card-title font-weight-bold">Physical memory</h3>
                 </div>
                 <div class="card-body table-responsive p-0">
-                    <h2 class="condqant ml-1"><span class="condqant" id="physperc">0</span>%</h2>
-                    <canvas id="physover" style="width:100%; height:20vh;"></canvas>
+                    <div class="text-center">
+                        <input id="physknob" type="text" data-skin="tron" data-thickness=0.1 value=0 data-fgColor="#3D9970" class="knob" data-readonly=true>
+                    </div>
                     <table class="table table-sm table-hover">
                         <thead>
                             <tr>
@@ -163,13 +105,16 @@
                     </table>
                 </div>
             </div>
+        </div>
+        <div class="col-md-4 col-sm-12 col-12">
             <div class="card">
                 <div class="card-header bg-olive pl-2">
                     <h3 class="card-title font-weight-bold">Virtual memory</h3>
                 </div>
                 <div class="card-body table-responsive p-0">
-                    <h2 class="condqant ml-1"><span class="condqant" id="virtperc">0</span>%</h2>
-                    <canvas id="virtover" style="width:100%; height:20vh;"></canvas>
+                    <div class="text-center">
+                        <input id="virtknob" type="text" data-skin="tron" data-thickness=0.1 value=0 data-fgColor="#3D9970" class="knob" data-readonly=true>
+                    </div>
                     <table class="table table-sm table-hover">
                         <thead>
                             <tr>
@@ -294,23 +239,6 @@
         <div class="col-md-8 col-sm-12 col-12">
             <div class="card">
                 <div class="card-header bg-olive pl-2">
-                    <h3 class="card-title font-weight-bold" id="mtdvhead">Mounted devices</h3>
-                </div>
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-sm table-hover">
-                        <thead>
-                            <tr>
-                                <th class="pl-2" style="width: 25%;">#</th>
-                                <th class="pl-2" style="width: 75%;">Attributes</th>
-                            </tr>
-                        </thead>
-                        <tbody id="mtdvlist">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header bg-olive pl-2">
                     <h3 class="card-title font-weight-bold" id="diouhead">Disk I/O usage</h3>
                 </div>
                 <div class="card-body table-responsive p-0">
@@ -352,40 +280,6 @@
                             </tr>
                         </thead>
                         <tbody id="ntuslist">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header bg-olive pl-2">
-                    <h3 class="card-title font-weight-bold" id="ntadhead">Network addresses</h3>
-                </div>
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-sm table-hover">
-                        <thead>
-                            <tr>
-                                <th class="pl-2" style="width: 25%;">NIC/#</th>
-                                <th class="pl-2" style="width: 75%;">Attributes</th>
-                            </tr>
-                        </thead>
-                        <tbody id="ntadlist">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header bg-olive pl-2">
-                    <h3 class="card-title font-weight-bold" id="ntsshead">Network statistics</h3>
-                </div>
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-sm table-hover">
-                        <thead>
-                            <tr>
-                                <th class="pl-2" style="width: 25%;">NIC</th>
-                                <th class="pl-2" style="width: 75%;">Attributes</th>
-                            </tr>
-                        </thead>
-                        <tbody id="ntsslist">
                         </tbody>
                     </table>
                 </div>
@@ -442,16 +336,91 @@
                     <h3 class="card-title font-weight-bold" id="snbthead">Battery</h3>
                 </div>
                 <div class="card-body table-responsive p-0">
-                    <h2 class="condqant ml-1"><span class="condqant" id="snbtperc">0</span>%</h2>
-                    <canvas id="battover" style="width:100%; height:20vh;"></canvas>
-                    <p class="pl-2 mb-1"><span id="snbttime">0</span> secs left.</p>
-                    <p class="pl-2 mb-1">Plugged? <span id="snbtplug">UNAVAILABLE</span></p>
+                    <div class="info-box mb-0">
+                        <span class="info-box-icon"><i class="fas fa-car-battery text-olive"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Remaining</span>
+                            <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">
+                                <span id="snbtperc" class="condqant">0</span>
+                                %
+                            </span>
+                            <div class="progress">
+                                <div class="progress-bar bg-olive" id="snbtlevl" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-description">
+                                <span class="text-bold">
+                                    Plugged? <span id="snbtplug" class="text-uppercase">UNAVAILABLE</span>
+                                </span>
+                                (<span id="snbttime">0</span> secs left.)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extramod %}
+    <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="abstrcrd">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header pt-1 pb-1 pl-2 pr-2 bg-olive">
+                    <h3 class="modal-title condqant font-weight-bold">Record absent</h3>
+                </div>
+                <div class="modal-body pt-1 pb-1 pl-2 pr-2">
+                    <p class="text-justify mt-0 mb-0">
+                        The request record was queried from the metrics storage but could not be retrieved as it is
+                        not available anymore. It might have been removed when the record retention limit was reached
+                        or the identifier might be mistyped.
+                    </p>
+                </div>
+                <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
+                    <button type="button" class="btn btn-sm {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %}" onclick="document.location.href = '/mtrclist/'">Return to metric listing</button>
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
 {% block pagejsas %}
-    <script type="text/javascript" src="{{ url_for('static', filename='jscn/smoothie.js') }}"></script>
-    <script src="{{ url_for("static", filename="jscn/systdata.js") }}"></script>
+    <script src="{{ url_for("static", filename="jscn/jqryknob.js") }}"></script>
+    <script src="{{ url_for("static", filename="jscn/mtrcdata.js") }}"></script>
+    <script>
+        $(function () {
+            $('.knob').knob({
+                font: "Barlow Condensed",
+                draw: function () {
+                    if (this.$.data('skin') == 'tron') {
+                        var a   = this.angle(this.cv),
+                        sa  = this.startAngle,
+                        sat = this.startAngle,
+                        ea, eat = sat + a, r = true
+                        this.g.lineWidth = this.lineWidth
+                        this.o.cursor
+                        && (sat = eat - 0.3)
+                        && (eat = eat + 0.3)
+                        if (this.o.displayPrevious) {
+                            ea = this.startAngle + this.angle(this.value)
+                            this.o.cursor
+                            && (sa = ea - 0.3)
+                            && (ea = ea + 0.3)
+                            this.g.beginPath()
+                            this.g.strokeStyle = this.previousColor
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false)
+                            this.g.stroke()
+                        }
+                        this.g.beginPath()
+                        this.g.strokeStyle = r ? this.o.fgColor : this.fgColor
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false)
+                        this.g.stroke()
+                        this.g.lineWidth = 2
+                        this.g.beginPath()
+                        this.g.strokeStyle = this.o.fgColor
+                        this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false)
+                        this.g.stroke()
+                        return false
+                    }
+                }
+            }
+        )})
+    </script>
 {% endblock %}

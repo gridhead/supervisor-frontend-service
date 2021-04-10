@@ -43,7 +43,7 @@
     </style>
     <body class="hold-transition sidebar-mini {% if darkmode == 1 %} dark-mode {% else %} light-mode {% endif %} text-sm" onload="{% block onldscpt %}{% endblock %}" style="">
         <div class="wrapper">
-            <nav class="main-header navbar navbar-expand {% if darkmode == 1 %} navbar-dark {% else %} navbar-light {% endif %} bg-light elevation-1">
+            <nav class="main-header navbar navbar-expand {% if darkmode == 1 %} navbar-dark {% else %} navbar-light {% endif %} elevation-1">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" data-widget="pushmenu" role="button"><i class="fas fa-bars"></i></a>
@@ -65,7 +65,7 @@
                 </ul>
             </nav>
             <aside class="main-sidebar {% if darkmode == 1 %} sidebar-dark-olive {% else %} sidebar-light-olive {% endif %} elevation-1">
-                <a class="brand-link {% if darkmode == 1 %} navbar-dark {% else %} navbar-light {% endif %} bg-light elevation-1">
+                <a class="brand-link {% if darkmode == 1 %} navbar-dark {% else %} navbar-light {% endif %} elevation-1">
                     <img src="{{ url_for("static", filename="imgs/mainicon.svg") }}" class="brand-image {% if darkmode == 1 %} dark-svgs {% else %} lite-svgs {% endif %}" style="opacity: .8">
                     <span class="brand-text font-weight-heavy">
                         SuperVisor
@@ -109,6 +109,11 @@
                                     <i class="nav-icon fas fa-network-wired"></i><p>Networks</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a onclick="document.location.href={% if request.path[0:10] in ['/mtrclist/','/mtrcdata/'] %} '#' {% else %} '/mtrclist/' {% endif %};" class="nav-link {% if request.path[0:10] in ['/mtrclist/','/mtrcdata/'] %} active {% endif %}" type="button">
+                                    <i class="nav-icon fas fa-clipboard-list"></i><p>Metrics</p>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -137,7 +142,7 @@
             </div>
             <footer class="main-footer">
                 <div class="float-right d-none d-sm-inline">{{ frntvers }}</div>
-                <strong data-widget="pushmenu" href="#">SuperVisor</strong>
+                <strong onclick="window.open('https://hub.docker.com/r/t0xic0der/supervisor-frontend-service', '_blank')" type="button">SuperVisor</strong>
             </footer>
         </div>
         <div class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" id="abstcred">
@@ -154,7 +159,7 @@
                         </p>
                     </div>
                     <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
-                        <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/svlogout/'">Return to login screen</button>
+                        <button type="button" class="btn btn-sm {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %}" onclick="document.location.href = '/svlogout/'">Return to login screen</button>
                     </div>
                 </div>
             </div>
@@ -173,7 +178,7 @@
                         </p>
                     </div>
                     <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
-                        <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/svlogout/'">Return to login screen</button>
+                        <button type="button" class="btn btn-sm {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %}" onclick="document.location.href = '/svlogout/'">Return to login screen</button>
                     </div>
                 </div>
             </div>
@@ -212,7 +217,7 @@
                         </div>
                     </div>
                     <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
-                        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-sm {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %}" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -231,9 +236,9 @@
                         </p>
                     </div>
                     <div class="modal-footer justify-content-between pt-1 pb-1 pl-2 pr-2 bg-olive">
-                        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Return</button>
+                        <button type="button" class="btn btn-sm {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %}" data-dismiss="modal">Return</button>
                         <div class="float-right">
-                            <button type="button" class="btn btn-sm btn-light" onclick="document.location.href='/svlogout/';" data-dismiss="modal">Logout</button>
+                            <button type="button" class="btn btn-sm {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %}" onclick="document.location.href='/svlogout/';" data-dismiss="modal">Logout</button>
                         </div>
                     </div>
                 </div>

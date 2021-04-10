@@ -189,8 +189,10 @@ async function invoke_particular_process_information (prociden) {
         let passcode = JSON.parse(sessionStorage.getItem("vsoniden"))["passcode"];
         await $.getJSON(drivloca + "basepsin", {
             "passcode": passcode,
+            "opername": "INFO",
             "prociden": prociden,
         }, function (data) {
+
             if (data["retnmesg"] === "deny") {
                 $("#connfail").modal("show");
             } else {
@@ -238,23 +240,24 @@ async function initiate_process_list_fetching_and_refreshing (rfrstime) {
             await new Promise(r => setTimeout(r, rfrstime * 1000));
             let drivloca = JSON.parse(sessionStorage.getItem("vsoniden"))["drivloca"];
             let passcode = JSON.parse(sessionStorage.getItem("vsoniden"))["passcode"];
-            await $.getJSON(drivloca + "basestat", {
+            await $.getJSON(drivloca + "basepsin", {
                 "passcode": passcode,
-                "opername": "livesync",
+                "opername": "LIST",
+                "prociden": 0
             }, function (data) {
                 if (data["retnmesg"] === "deny") {
                     $("#connfail").modal("show");
                 } else {
                     document.getElementById("proclist").innerHTML = "";
-                    for (let indx in data["procinfo"]) {
+                    for (let indx in data) {
                         $("#proclist").append(
                             `
                             <tr onclick="invoke_particular_process_information('${indx}')">
-                                <td class="pl-2 monotext">${data["procinfo"][indx]["pid"]}</td>
-                                <td class="pl-2 monotext nogetout">${data["procinfo"][indx]["name"]}</td>
-                                <td class="pl-2 monotext nogetout">${data["procinfo"][indx]["username"]}</td>
-                                <td class="pl-2 monotext nogetout">${data["procinfo"][indx]["memory_percent"].toPrecision(3)}%</td>
-                                <td class="pl-2 monotext nogetout">${data["procinfo"][indx]["cpu_percent"].toPrecision(3)}%</td>
+                                <td class="pl-2 monotext">${data[indx]["pid"]}</td>
+                                <td class="pl-2 monotext nogetout">${data[indx]["name"]}</td>
+                                <td class="pl-2 monotext nogetout">${data[indx]["username"]}</td>
+                                <td class="pl-2 monotext nogetout">${data[indx]["memory_percent"].toPrecision(3)}%</td>
+                                <td class="pl-2 monotext nogetout">${data[indx]["cpu_percent"].toPrecision(3)}%</td>
                             </tr>
                             `
                         );

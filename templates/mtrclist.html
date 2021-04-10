@@ -1,0 +1,103 @@
+<!--
+##########################################################################
+*
+*   Copyright © 2019-2021 Akashdeep Dhar <t0xic0der@fedoraproject.org>
+*
+*   This program is free software: you can redistribute it and/or modify
+*   it under the terms of the GNU General Public License as published by
+*   the Free Software Foundation, either version 3 of the License, or
+*   (at your option) any later version.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*
+##########################################################################
+-->
+
+{% extends "frameset.html" %}
+{% block onldscpt %}
+    metric_listing_operations();
+{% endblock %}
+{% block headelem %}
+    <h1 class="m-0 condqant">Metrics</h1>
+{% endblock %}
+{% block bdcumbls %}
+    <li class="breadcrumb-item active">Metrics</li>
+{% endblock %}
+{% block contwrap %}
+    <div class="callout callout-success {% if darkmode == 1 %} bg-dark {% else %} bg-light {% endif %}" id="mtrcwarn">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="document.getElementById('mtrcwarn').remove();">×</button>
+        <h5 class="text-bold">
+            How are metrics managed?
+        </h5>
+        <p class="text-justify">
+            Metrics provide a way for passive statistics monitoring of a container station to address the cases when
+            information about the station is required in a situation or time when active monitoring cannot be possible.
+            The performance readings are stored every after the frequency period until the record retention limit is
+            reached and then once that happens, the older records are moved out in favour of the newer records. Please
+            note that the records are retained from the event of booting of the container station and once rebooted,
+            the records from the last uptime would be lost. The default parameters for metrics gathering allow for
+            storing records every after 10 seconds for a retention limit of 2160 records - providing total coverage of
+            6 hours. These parameters can be easily changed when setting up the driver service.
+        </p>
+    </div>
+    <div class="info-box">
+        <span class="info-box-icon bg-olive"><i class="fas fa-clock"></i></span>
+        <div class="info-box-content ellipsis">
+            <span class="info-box-text">Last updated</span>
+            <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal" id="lastupdt">UNAVAILABLE</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-12 col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-hashtag"></i></span>
+                <div class="info-box-content ellipsis">
+                    <span class="info-box-text">Passive monitoring</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal">Metrics</span>
+                </div>
+            </div>
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-wave-square"></i></span>
+                <div class="info-box-content ellipsis">
+                    <span class="info-box-text">Frequency</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal" id="rfrsfreq">UNAVAILABLE</span>
+                </div>
+            </div>
+            <div class="info-box">
+                <span class="info-box-icon bg-olive"><i class="fas fa-boxes"></i></span>
+                <div class="info-box-content ellipsis">
+                    <span class="info-box-text">Retention</span>
+                    <span class="info-box-number h2 mt-0 mb-0 condqant font-weight-normal" id="rtnsqant">UNAVAILABLE</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-header bg-olive pl-2">
+                    <h3 class="card-title font-weight-bold">Record listing</h3>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl-2" style="width: 20%;">MID</th>
+                                <th class="pl-2" style="width: 80%;">Data</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mtrclist">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block pagejsas %}
+    <script src="{{ url_for("static", filename="jscn/mtrclist.js") }}"></script>
+{% endblock %}
