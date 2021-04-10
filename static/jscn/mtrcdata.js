@@ -108,7 +108,7 @@ async function initiate_dom_placeholder_creation_and_population (mtrciden) {
                     let cppctext = (mtrcdata["cpuclock"][indx]["current"] * 100 / mtrcdata["cpuclock"][indx]["max"]).toPrecision(3).toString();
                     $("#cppclist").append(
                         `
-                        <div class="info-box bg-light mb-0">
+                        <div class="info-box mb-0">
                             <span class="info-box-icon"><i class="fas fa-microchip text-olive"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text">CPU #${indx}</span>
@@ -161,7 +161,7 @@ async function initiate_dom_placeholder_creation_and_population (mtrciden) {
                     );
                     $("#cpsllist").append(
                         `
-                        <div class="info-box bg-light mb-0">
+                        <div class="info-box mb-0">
                             <span class="info-box-icon"><i class="fas fa-balance-scale text-olive"></i></span>
                             <div class="info-box-content">
                                 <span class="info-box-text">CPU #${indx}</span>

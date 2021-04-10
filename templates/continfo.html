@@ -40,16 +40,16 @@
                     <div class="card-tools">
                         <ul class="nav nav-pills ml-auto">
                             <li class="nav-item ml-1 mr-1">
-                                <a class="nav-link text-olive bg-light pt-1 pb-1" onclick="open_container_console_attachment_modal('{{ contiden }}')"><i class="fas fa-terminal"></i></a>
+                                <a class="nav-link text-olive {% if darkmode == 1 %} btn-dark {% else %} {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %} {% endif %} pt-1 pb-1" onclick="open_container_console_attachment_modal('{{ contiden }}')"><i class="fas fa-terminal"></i></a>
                             </li>
                             <li class="nav-item ml-1 mr-1">
-                                <a class="nav-link text-olive bg-light pt-1 pb-1" onclick="document.location.href='/contstat/{{ contiden }}'"><i class="fas fa-tachometer-alt"></i></a>
+                                <a class="nav-link text-olive {% if darkmode == 1 %} btn-dark {% else %} {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %} {% endif %} pt-1 pb-1" onclick="document.location.href='/contstat/{{ contiden }}'"><i class="fas fa-tachometer-alt"></i></a>
                             </li>
                             <li class="nav-item ml-1 mr-1">
-                                <a class="nav-link text-olive bg-light pt-1 pb-1" onclick="document.location.href='/contlogs/{{ contiden }}'"><i class="fas fa-file-alt"></i></a>
+                                <a class="nav-link text-olive {% if darkmode == 1 %} btn-dark {% else %} {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %} {% endif %} pt-1 pb-1" onclick="document.location.href='/contlogs/{{ contiden }}'"><i class="fas fa-file-alt"></i></a>
                             </li>
                             <li class="nav-item ml-1 mr-1">
-                                <a class="nav-link text-olive bg-light pt-1 pb-1" onclick="document.location.href='/conthtop/{{ contiden }}'"><i class="fas fa-chart-line"></i></a>
+                                <a class="nav-link text-olive {% if darkmode == 1 %} btn-dark {% else %} {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %} {% endif %} pt-1 pb-1" onclick="document.location.href='/conthtop/{{ contiden }}'"><i class="fas fa-chart-line"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -135,6 +135,10 @@
                     </table>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-12">
             <div class="card">
                 <div class="card-header bg-olive pl-2">
                     <h3 class="card-title font-weight-bold">Masked paths</h3>
@@ -151,6 +155,8 @@
                     </table>
                 </div>
             </div>
+        </div>
+        <div class="col-md-6 col-sm-12 col-12">
             <div class="card">
                 <div class="card-header bg-olive pl-2">
                     <h3 class="card-title font-weight-bold">Readonly paths</h3>
@@ -185,7 +191,7 @@
                     </p>
                 </div>
                 <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
-                    <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/contlist/'">Return to containers listing</button>
+                    <button type="button" class="btn btn-sm {% if darkmode == 1 %} btn-dark {% else %} {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %} {% endif %}" onclick="document.location.href = '/contlist/'">Return to containers listing</button>
                 </div>
             </div>
         </div>
@@ -219,9 +225,9 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between pt-1 pb-1 pl-2 pr-2 bg-olive">
-                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-sm {% if darkmode == 1 %} btn-dark {% else %} {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %} {% endif %}" data-dismiss="modal">Close</button>
                     <div class="float-right">
-                        <button type="button" class="btn btn-sm btn-light" onclick="initiate_container_attachment();" data-dismiss="modal">Start</button>
+                        <button type="button" class="btn btn-sm {% if darkmode == 1 %} btn-dark {% else %} {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %} {% endif %}" onclick="initiate_container_attachment();" data-dismiss="modal">Start</button>
                     </div>
                 </div>
             </div>

@@ -336,7 +336,7 @@
                     <h3 class="card-title font-weight-bold" id="snbthead">Battery</h3>
                 </div>
                 <div class="card-body table-responsive p-0">
-                    <div class="info-box bg-light mb-0">
+                    <div class="info-box mb-0">
                         <span class="info-box-icon"><i class="fas fa-car-battery text-olive"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Remaining</span>
@@ -375,7 +375,7 @@
                     </p>
                 </div>
                 <div class="modal-footer pt-1 pb-1 pl-2 pr-2 bg-olive">
-                    <button type="button" class="btn btn-sm btn-light" onclick="document.location.href = '/mtrclist/'">Return to metric listing</button>
+                    <button type="button" class="btn btn-sm {% if darkmode == 1 %} btn-dark {% else %} btn-light {% endif %}" onclick="document.location.href = '/mtrclist/'">Return to metric listing</button>
                 </div>
             </div>
         </div>
