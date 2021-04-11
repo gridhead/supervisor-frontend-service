@@ -7,7 +7,6 @@ Summary:        SuperVisor Frontend Service
 
 License:        GPLv3+
 URL:            http://github.com/t0xic0der/%{srcname}
-Source0:        https://github.com/t0xic0der/%{srcname}/archive/%{name}-%{version}.tar.gz
 Source0:        https://github.com/t0xic0der/%{srcname}/releases/download/v1.2.0-beta/%{name}-v%{version}.tar.gz
 
 BuildArch:      noarch
