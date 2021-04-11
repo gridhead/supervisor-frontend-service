@@ -37,7 +37,7 @@ from flask import (
 try:
     # Running the installation when built using setuptools
     from svfrontend.__init__ import __version__ as frntvers
-except ImportError:
+except Exception:
     # Running the installation from a development environment or Docker image
     from __init__ import __version__ as frntvers
 
