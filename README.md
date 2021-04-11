@@ -21,6 +21,18 @@ choice but they need to have the [SuperVisor Driver Service](https://github.com/
 running on their server setup and connect to the same with the synchronization URI and passcode provided on the driver 
 service startup.
 
+## Native deployment
+
+If you use Fedora (32, 33, 34 ELN, Rawhide or above), CentOS (Stream 8 or above), RHEL (8 or above), 
+Mageia (7, Cauldron or above), OpenSUSE (Leap or Tumbleweed) - you can deploy the frontend service natively using 
+a COPR. Just execute the following commands in succession to install the service.
+
+```shell
+# dnf install dnf-plugins-core -y
+# dnf copr enable t0xic0der/supervisor -y
+# dnf install svfrontend -y
+```
+
 ## In action 
 
 ![](https://raw.githubusercontent.com/t0xic0der/t0xic0der/master/supervisor-frontend-service-v1.1.0-beta.gif)
