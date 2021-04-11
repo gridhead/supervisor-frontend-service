@@ -7,7 +7,6 @@ Summary:        SuperVisor Frontend Service
 
 License:        GPLv3+
 URL:            http://github.com/t0xic0der/%{srcname}
-Source0:        https://github.com/t0xic0der/%{srcname}/archive/%{name}-%{version}.tar.gz
 Source0:        https://github.com/t0xic0der/%{srcname}/releases/download/v1.2.0-beta/%{name}-v%{version}.tar.gz
 
 BuildArch:      noarch
@@ -35,7 +34,7 @@ Reference frontend service for SuperVisor written in Flask
 %{python3_sitelib}/%{name}/
 
 %changelog
-* Sun Apr 11 2020 Akashdeep Dhar <t0xic0der@fedoraproject.org>
+* Sun Apr 11 2021 Akashdeep Dhar <t0xic0der@fedoraproject.org>
 - v1.2.0b packaged release
 * Fri Dec 18 2020 Akashdeep Dhar <t0xic0der@fedoraproject.org>
 - Initial packaged release
