@@ -24,7 +24,6 @@ from json import dumps
 from time import time
 
 import click
-from __init__ import __version__ as frntvers
 from flask import (
     Flask,
     abort,
@@ -35,6 +34,12 @@ from flask import (
     url_for,
 )
 
+try:
+    # Running the installation when built using setuptools
+    from svfrontend.__init__ import __version__ as frntvers
+except ImportError:
+    # Running the installation from a development environment or Docker image
+    from __init__ import __version__ as frntvers
 
 main = Flask(__name__)
 main.secret_key = "3a5dfd3ed7a259994165c88dedf54130a68368be06e71c786de9c2346273d88f"
