@@ -20,3 +20,4 @@
 """
 
 __version__ = "v1.2.0-beta"
+__session__ = "3a5dfd3ed7a259994165c88dedf54130a68368be06e71c786de9c2346273d88f"

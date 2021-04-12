@@ -37,12 +37,14 @@ from flask import (
 try:
     # Running the installation when built using setuptools
     from svfrontend.__init__ import __version__ as frntvers
+    from svfrontend.__init__ import __version__ as sesskeys
 except Exception:
     # Running the installation from a development environment or Docker image
     from __init__ import __version__ as frntvers
+    from __init__ import __version__ as sesskeys
 
 main = Flask(__name__)
-main.secret_key = "3a5dfd3ed7a259994165c88dedf54130a68368be06e71c786de9c2346273d88f"
+main.secret_key = sesskeys
 sessdict = {}
 
 
