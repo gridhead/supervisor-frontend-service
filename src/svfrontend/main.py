@@ -19,11 +19,14 @@
 ##########################################################################
 """
 
+import secrets
 from hashlib import sha256
 from json import dumps
+from os import getenv
 from time import time
 
 import click
+from dotenv import load_dotenv
 from flask import (
     Flask,
     abort,
@@ -37,14 +40,26 @@ from flask import (
 try:
     # Running the installation when built using setuptools
     from svfrontend.__init__ import __version__ as frntvers
-    from svfrontend.__init__ import __version__ as sesskeys
 except Exception:
     # Running the installation from a development environment or Docker image
     from __init__ import __version__ as frntvers
-    from __init__ import __version__ as sesskeys
 
 main = Flask(__name__)
-main.secret_key = sesskeys
+
+load_dotenv()
+
+if getenv("sesskeys") is not None:
+    # Check if the session secrets are available in the environment variables
+    main.secret_key = getenv("sesskeys")
+    click.echo(" * Loading up the session secret from environment variables...")
+else:
+    # If session secrets are not available in the environment variables, create and store them
+    randstrg = "".join(secrets.choice("ABCDEF" + "0123456789") for i in range(64))
+    with open(".env", "w") as envrfile:
+        envrfile.write("sesskeys="+randstrg)
+    main.secret_key = randstrg
+    click.echo(" * Setting up the session secret into environment variables...")
+
 sessdict = {}
 
 
