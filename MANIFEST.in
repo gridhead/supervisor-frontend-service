@@ -1,0 +1,2 @@
+recursive-include src/svfrontend/templates *
+recursive-include src/svfrontend/static *
