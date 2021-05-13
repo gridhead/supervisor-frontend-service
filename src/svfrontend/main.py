@@ -75,7 +75,7 @@ def e403page(ertx):
 
 
 @main.errorhandler(500)
-def e403page(ertx):
+def e500page(ertx):
     """
     Custom 500 ERROR page
     """
