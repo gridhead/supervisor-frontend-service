@@ -421,7 +421,7 @@ def termpage(contiden):
 @click.option("-p", "--portdata", "portdata", help="Set the port value [0-65536]", default="9696")
 @click.option("-6", "--ipprotv6", "netprotc", flag_value="ipprotv6", help="Start the server on an IPv6 address")
 @click.option("-4", "--ipprotv4", "netprotc", flag_value="ipprotv4", help="Start the server on an IPv4 address")
-@click.version_option(version=__version__, prog_name=click.style("SuperVisor Frontend Service", fg="magenta"))
+@click.version_option(version=frntvers, prog_name=click.style("SuperVisor Frontend Service", fg="magenta"))
 def mainfunc(portdata, netprotc):
     """
     Main function
