@@ -19,11 +19,14 @@
 ##########################################################################
 """
 
+import secrets
 from hashlib import sha256
 from json import dumps
+from os import getenv
 from time import time
 
 import click
+from dotenv import load_dotenv
 from flask import (
     Flask,
     abort,
@@ -42,7 +45,21 @@ except Exception:
     from __init__ import __version__ as frntvers
 
 main = Flask(__name__)
-main.secret_key = "3a5dfd3ed7a259994165c88dedf54130a68368be06e71c786de9c2346273d88f"
+
+load_dotenv()
+
+if getenv("sesskeys") is not None:
+    # Check if the session secrets are available in the environment variables
+    main.secret_key = getenv("sesskeys")
+    click.echo(" * Loading up the session secret from environment variables...")
+else:
+    # If session secrets are not available in the environment variables, create and store them
+    randstrg = "".join(secrets.choice("ABCDEF" + "0123456789") for i in range(64))
+    with open(".env", "w") as envrfile:
+        envrfile.write("sesskeys="+randstrg)
+    main.secret_key = randstrg
+    click.echo(" * Setting up the session secret into environment variables...")
+
 sessdict = {}
 
 
